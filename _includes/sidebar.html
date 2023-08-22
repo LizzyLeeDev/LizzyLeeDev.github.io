@@ -1,0 +1,50 @@
+<div id="container_sidebar" class="col-12 col-lg-3 mt-3 py-3">
+    <!-- 모바일 사이드바 클로즈 아이콘 -->
+    <div id="btn_sidebar_close" class="d-block d-lg-none">
+        <i class="fa-solid fa-arrow-right align-middle"></i>
+    </div>
+    <!-- 로고와 프로필 -->
+    <div id="sidebar_profile" class="mt-2 p-2" onclick="location.href = '{{ site.abountlink }}';">
+        <div class="sidebar-profile-logo text-center">
+            <img src="{{ "/assets/img/full_logo.png" }}" style="width: 3rem;"/>
+        </div>
+        <div class="mt-2">
+            <div class="sidebar-profile-item">
+                <span class="sidebar-profile-icon "><i class="fa fa-user"></i></span>
+                {{ site.profile.mastername }}
+            </div>
+            <div class="sidebar-profile-item">
+                <span class="sidebar-profile-icon "><i class="fa fa-envelope"></i></span>
+                {{ site.profile.masteremail }}
+            </div>
+            <div class="sidebar-profile-item">
+                <span class="sidebar-profile-icon "><i class="fa fa-comment"></i></span>
+                {{ site.profile.mastercomment }}
+            </div>
+        </div>
+    </div>
+    <!-- 카테고리 -->
+    <div class="mt-2">
+        <hr class="sidebar-category-border-bold">
+        <div class="sidebar-category-item" data-category="all" style="color: black!important;">
+            <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
+            All
+            <span class="sidebar-category-size">( {{ site.posts.size }} )</span>
+        </div>
+        <hr class="sidebar-category-border-bold">
+        {% for category in site.sidebarcategory %}
+            <div class="sidebar-category-item" data-category="{{ category }}">
+                <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
+                {{ category }}
+                <span class="sidebar-category-size">
+                    {% if site.categories[category].size %}
+                    ( {{ site.categories[category].size }} )
+                    {% else %}
+                    ( 0 )
+                    {% endif %}
+                </span>
+            </div>
+        {% endfor %}
+        <hr class="sidebar-category-border-bold">
+    </div>
+</div>

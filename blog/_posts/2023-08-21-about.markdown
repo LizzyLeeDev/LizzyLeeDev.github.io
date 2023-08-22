@@ -1,0 +1,41 @@
+---
+layout: post-current
+title: About me
+date: 2023-08-21 16:59:00 +0900
+categories: about
+---
+<div class="text-center">
+    <img src="{{ "/assets/img/profile.png" }}" class="mb-4" style="width: 40%; border-radius: 70%;"/>
+</div>
+⭐ 이름 : 이지연 (Lizzy Lee)<br>
+<br>
+⭐ 생년월일 : 1996. 10. 15<br>
+<br>
+⭐ 이메일 : lizzy.lee.dev@gmail.com<br>
+<br>
+⭐ 관심분야 <br>
+&nbsp;&nbsp;🔸 안드로이드 개발<br>
+&nbsp;&nbsp;🔸 웹 개발<br>
+<br>
+⭐ 사용기술<br>
+&nbsp;&nbsp;🔸 Python<br>
+&nbsp;&nbsp;🔸 PHP<br>
+&nbsp;&nbsp;🔸 Java<br>
+&nbsp;&nbsp;🔸 C<br>
+&nbsp;&nbsp;🔸 Javascript (jQuery)<br>
+&nbsp;&nbsp;🔸 React<br>
+&nbsp;&nbsp;🔸 MySQL<br>
+<br>
+⭐ 자격증<br>
+&nbsp;&nbsp;🔸 정보처리기사 (2023. 06)<br>
+&nbsp;&nbsp;🔸 디지털 포렌식 전문가 자격증 2급 (2017. 12)<br>
+<br>
+⭐ 경력<br>
+&nbsp;&nbsp;🔸 2022. 10 ~ 2023. 04 : 프리랜서 (PHP 웹개발)<br>
+&nbsp;&nbsp;🔸 2020. 03 ~ 2022. 09 : 개발자로 근무 (PHP 웹개발)<br>
+<br>
+⭐ 코멘트<br>
+&nbsp;&nbsp;🔸 파이썬이 좋아요<br>
+&nbsp;&nbsp;🔸 코딩 컨벤션을 잘 지키는 사람이 되자!<br>
+&nbsp;&nbsp;🔸 정보통신기사 필기, 정보보안기사 실기 준비중 (☍﹏⁰)<br>
+&nbsp;&nbsp;🔸 지금은 휴식 & 이직 준비중 ദ്ദി*ˊᗜˋ*) ❤️<br>

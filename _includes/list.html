@@ -1,0 +1,33 @@
+{% if list.size > 0 %}
+    <!-- 포스트 카테고리명 -->
+    <div class="category-name">
+        {{ page.title }}
+        <span class="category-list-size">총 {{ list.size }}건</span>
+    </div>
+    <hr class="post-list-border">
+    <!-- 포스트 리스트 -->
+    {% for post in list %}
+    <div class="post-list-item px-2" onclick="location.href = '{{ post.url }}';">
+        <div class="post-list-subject">{{ post.title }}</div>
+        <div class="post-list-excerpt mt-1">{{ post.excerpt | remove: '<p>' | remove: '</p>' }}</div>
+        <div class="post-list-footer mt-2 py-1">
+            <span class="post-list-category">{{ post.categories[1] }}</span>
+            <span class="post-list-uploadtime">{{ post.date | slice: 0, 16 }}</span>
+        </div>
+    </div>
+    <hr class="post-list-border">
+    {% endfor %}
+{% else %}
+    <!-- 포스트 카테고리명 -->
+    <div class="category-name">
+        {{ page.title }}
+        <span class="category-list-size">총 0건</span>
+    </div>
+    <hr class="post-list-border">
+    <!-- 포스트 리스트 -->
+    <div class="post-list-no-item px-2">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        등록된 포스트가 없습니다.
+    </div>
+    <hr class="post-list-border">
+{% endif %}
