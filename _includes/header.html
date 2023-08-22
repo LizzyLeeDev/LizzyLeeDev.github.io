@@ -262,4 +262,8 @@
     }
 </style>
 <link rel="shortcut icon" href="{{ "/assets/img/favicon.svg" }}"/>
+{% if page.title == "All" %}
+<title>Lizzy on Python</title>
+{% else %}
 <title>Lizzy on Python :: {{ page.title }}</title>
+{% endif %}
