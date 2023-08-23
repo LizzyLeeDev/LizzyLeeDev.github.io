@@ -1,6 +1,0 @@
----
-layout: post-current
-title: 파이썬 치트시트
-date: 2023-08-23 20:48:00 +0900
-categories: python
----
