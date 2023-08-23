@@ -1,0 +1,87 @@
+---
+layout: post-current
+title: 깃헙 블로그 시작하기 [1] 개발환경 구축
+date: 2023-08-23 18:12:00 +0900
+categories: jekyll
+---
+공부한 내용을 저장하기 위해 새 github를 만들었는데,<br>
+github에서 블로그 같은 기능(github pages)을 지원한다고 해서 만들어보기로 했다.<br>
+윈도우 환경에서 구축을 시작! (⩌⩊⩌)<br>
+<br>
+<div class="post-chapter">1. github repository 생성</div><br>
+github repository를 특수한 방법으로 만들면 해당 저장소가 바로 github page가 된다.<br>
+일단 repository 생성 화면에서 저장소 이름에 {유저명}.github.io라고 적어주면 된다.<br>
+<br>
+<img src="{{ "/assets/img/jekyll_00001_002.png" }}" style="width: 40rem;"/><br>
+Public으로 설정하고 생성한다.<br>
+<span class="post-overegg">Private은 유료 계정에서만 가능</span><br>
+README는 생성해도 그만 안 해도 그만이지만 생성하는게 좀 더 깔끔한 것 같다.<br>
+<br>
+생성된 저장소에서 clone용 주소를 확인해준다.<br>
+<img src="{{ "/assets/img/jekyll_00001_004.png" }}" style="width: 40rem;"/><br>
+<br>
+<div class="post-chapter">2. jekyll 설치</div><br>
+다음 공식문서를 따라 진행했다.<br>
+https://jekyllrb-ko.github.io/docs/<br>
+<br>
+컴퓨터에 Ruby가 깔려있지 않아서 Ruby 다운로드부터 진행했다.<br>
+다운로드 : <br>
+https://rubyinstaller.org/downloads/<br>
+<br>
+<img src="{{ "/assets/img/jekyll_00001_001.png" }}" style="width: 15rem;"/>
+<br>
+마지막 단계에서 ridk도 설치해야 한다.<br>
+<br>
+완료되고 나면 cmd창을 열어서 다음과 같이 gem을 업데이트한다.<br>
+<div class="post-code">
+    > gem update
+</div>
+<br>
+gem 업데이트 후, jekyll과 bundler를 설치한다.
+<div class="post-code">
+    > gem install jekyll bundler
+</div>
+<br>
+<div class="post-chapter">3. 저장소 클론</div><br>
+git이 설치되어있지 않다면 git을 깔아준다.<br>
+다운로드 : <br>
+https://git-scm.com/downloads<br>
+<img src="{{ "/assets/img/jekyll_00001_003.png" }}" style="width: 40rem;"/><br>
+<span class="post-overegg">깃 터미널 설정은 cmd로 했다.</span><br>
+<br>
+이제 나의 github pages를 저장하기 적당한 디렉토리로 이동한 뒤,<br>
+git 터미널을 열어 다음과 같이 적어준다.<br>
+<div class="post-code">
+    > git clone <span style="color: red;">(아까 확인한 저장소 clone용 주소)</span>
+</div>
+<br>
+cd를 이용해서 clone한 디렉토리 안으로 들어가 보면 다음과 같이 텅텅 비어있을것이다.
+<br>
+<img src="{{ "/assets/img/jekyll_00001_005.png" }}" style="width: 15rem;"/><br>
+<span class="post-overegg">해당 디렉토리가 이제 내 github pages의 root가 된다.</span><br>
+root에 index.html을 하나 생성해서 내부에 테스트용 Hello World를 적어준다.<br>
+<br>
+아까 열어둔 git 터미널로 다시 돌아와, bundle과 jekyll을 같이 설정한다.<br>
+<div class="post-code">
+    > bundle init<br>
+    > bundle add jekyll<br>
+    > jekyll new ./ <span style="color: red;">--force</span><br>
+    > bundle install
+</div>
+설정을 마치면 root에 _posts와 _site가 생긴다.<br>
+<br>
+&nbsp;🔸jekyll new를 root가 아니라 별도의 폴더에 실행시키면<br>
+&nbsp;&nbsp;_config.yml이 해당 폴더에 생성되는데, 이런 경우 site 관련 변수가 안 먹힌다.<br>
+<br>
+이제 jekyll server를 실행시킨다.<br>
+<div class="post-code">
+    > jekyll serve
+</div>
+jekyll server 실행시 변경사항이 있으면 자동으로 build 되는데,<br>
+서버 실행 없이 build만 하고싶으면 jekyll build를 입력하면 된다.<br>
+<br>
+&nbsp;🔸jekyll serve에 오류가 나는 경우 _config.yml의 plugins에 적힌 plugin이<br>
+&nbsp;&nbsp;깔려있지 않아 나는 오류가 많으니 bundle install을 진행 후 시도한다.<br>
+<br>
+이제 웹 브라우저를 열어 localhost:4000로 접속했을때 <br>
+화면에 아까 적은 테스트용 Hello World가 표시되면 기본 구조가 생성 완료된 것이다!<br>
