@@ -299,7 +299,7 @@
     <div class="blog-contents-center px-3 py-2" style="display: grid; grid-template-columns: 1fr 1fr;">
         <!-- 블로그 로고 -->
         <span>
-            <img src="/assets/img/full_logo_invert.jpg" onclick="location.href = '/index.html';" style="height: 42px; position: relative; bottom: 2px; cursor: pointer;"/>
+            <img src="/assets/img/full_logo_invert.jpg" onclick="location.href = '/';" style="height: 42px; position: relative; bottom: 2px; cursor: pointer;"/>
         </span>
         <!-- PC버전 -->
         <span class="container_search d-none d-lg-block" style="justify-self: flex-end;">
@@ -326,6 +326,17 @@
     </div>
     <hr class="post-list-border">
     <!-- 포스트 리스트 -->
+    
+    <div class="post-list-item px-2" onclick="location.href = '/python/20230823/python_00001';">
+        <div class="post-list-subject">파이썬 치트시트</div>
+        <div class="post-list-excerpt mt-1">
+</div>
+        <div class="post-list-footer mt-2 py-1">
+            <span class="post-list-category">python</span>
+            <span class="post-list-uploadtime">2023-08-23 20:48</span>
+        </div>
+    </div>
+    <hr class="post-list-border">
     
     <div class="post-list-item px-2" onclick="location.href = '/jekyll/20230823/jekyll_00001';">
         <div class="post-list-subject">깃헙 블로그 시작하기 [1] 개발환경 구축</div>
@@ -421,51 +432,6 @@ jekyll server 실행시 변경사항이 있으면 자동으로 build 되는데,<
     </div>
     <hr class="post-list-border">
     
-    <div class="post-list-item px-2" onclick="location.href = '/about/20230821/about';">
-        <div class="post-list-subject">About me</div>
-        <div class="post-list-excerpt mt-1"><div class="text-center">
-    <img src="/assets/img/profile.png" class="mb-4" style="width: 40%; border-radius: 70%;" />
-</div>
-⭐ 이름 : 이지연 (Lizzy Lee)<br />
-<br />
-⭐ 생년월일 : 1996. 10. 15<br />
-<br />
-⭐ 이메일 : lizzy.lee.dev@gmail.com<br />
-<br />
-⭐ 관심분야 <br />
-  🔸 안드로이드 개발<br />
-  🔸 웹 개발<br />
-<br />
-⭐ 사용기술<br />
-  🔸 Python<br />
-  🔸 PHP<br />
-  🔸 Java<br />
-  🔸 C<br />
-  🔸 Javascript (jQuery)<br />
-  🔸 React<br />
-  🔸 MySQL<br />
-<br />
-⭐ 자격증<br />
-  🔸 정보처리기사 (2023. 06)<br />
-  🔸 디지털 포렌식 전문가 자격증 2급 (2017. 12)<br />
-<br />
-⭐ 경력<br />
-  🔸 2022. 10 ~ 2023. 04 : 프리랜서 (PHP 웹개발)<br />
-  🔸 2020. 03 ~ 2022. 09 : 개발자로 근무 (PHP 웹개발)<br />
-<br />
-⭐ 코멘트<br />
-  🔸 파이썬이 좋아요<br />
-  🔸 코딩 컨벤션을 잘 지키는 사람이 되자!<br />
-  🔸 정보통신기사 필기, 정보보안기사 실기 준비중 (☍﹏⁰)<br />
-  🔸 지금은 휴식 &amp; 이직 준비중 ദ്ദി<em>ˊᗜˋ</em>) ❤️<br />
-</div>
-        <div class="post-list-footer mt-2 py-1">
-            <span class="post-list-category">about</span>
-            <span class="post-list-uploadtime">2023-08-21 16:59</span>
-        </div>
-    </div>
-    <hr class="post-list-border">
-    
 </div>
                         </div>
                         <!-- 사이드바 -->
@@ -475,7 +441,7 @@ jekyll server 실행시 변경사항이 있으면 자동으로 build 되는데,<
         <i class="fa-solid fa-arrow-right align-middle"></i>
     </div>
     <!-- 로고와 프로필 -->
-    <div id="sidebar_profile" class="mt-2 p-2" onclick="location.href = '/about/20230821/about';">
+    <div id="sidebar_profile" class="mt-2 p-2" onclick="location.href = '/category/about';">
         <div class="sidebar-profile-logo text-center">
             <img src="/assets/img/full_logo.png" style="width: 3rem;"/>
         </div>
@@ -509,7 +475,7 @@ jekyll server 실행시 변경사항이 있으면 자동으로 build 되는데,<
                 python
                 <span class="sidebar-category-size">
                     
-                    ( 0 )
+                    ( 1 )
                     
                 </span>
             </div>
@@ -560,7 +526,7 @@ jekyll server 실행시 변경사항이 있으면 자동으로 build 되는데,<
         var category = $(this).attr("data-category");
         switch(category){
             case "all":
-                location.href = "/index.html";
+                location.href = "/";
             break;
             default:
                 location.href = "/category/" + category + ".html";

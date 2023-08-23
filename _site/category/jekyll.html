@@ -299,7 +299,7 @@
     <div class="blog-contents-center px-3 py-2" style="display: grid; grid-template-columns: 1fr 1fr;">
         <!-- 블로그 로고 -->
         <span>
-            <img src="/assets/img/full_logo_invert.jpg" onclick="location.href = '/index.html';" style="height: 42px; position: relative; bottom: 2px; cursor: pointer;"/>
+            <img src="/assets/img/full_logo_invert.jpg" onclick="location.href = '/';" style="height: 42px; position: relative; bottom: 2px; cursor: pointer;"/>
         </span>
         <!-- PC버전 -->
         <span class="container_search d-none d-lg-block" style="justify-self: flex-end;">
@@ -430,7 +430,7 @@ jekyll server 실행시 변경사항이 있으면 자동으로 build 되는데,<
         <i class="fa-solid fa-arrow-right align-middle"></i>
     </div>
     <!-- 로고와 프로필 -->
-    <div id="sidebar_profile" class="mt-2 p-2" onclick="location.href = '/about/20230821/about';">
+    <div id="sidebar_profile" class="mt-2 p-2" onclick="location.href = '/category/about';">
         <div class="sidebar-profile-logo text-center">
             <img src="/assets/img/full_logo.png" style="width: 3rem;"/>
         </div>
@@ -464,7 +464,7 @@ jekyll server 실행시 변경사항이 있으면 자동으로 build 되는데,<
                 python
                 <span class="sidebar-category-size">
                     
-                    ( 0 )
+                    ( 1 )
                     
                 </span>
             </div>
@@ -515,7 +515,7 @@ jekyll server 실행시 변경사항이 있으면 자동으로 build 되는데,<
         var category = $(this).attr("data-category");
         switch(category){
             case "all":
-                location.href = "/index.html";
+                location.href = "/";
             break;
             default:
                 location.href = "/category/" + category + ".html";

@@ -299,7 +299,7 @@
     <div class="blog-contents-center px-3 py-2" style="display: grid; grid-template-columns: 1fr 1fr;">
         <!-- 블로그 로고 -->
         <span>
-            <img src="/assets/img/full_logo_invert.jpg" onclick="location.href = '/index.html';" style="height: 42px; position: relative; bottom: 2px; cursor: pointer;"/>
+            <img src="/assets/img/full_logo_invert.jpg" onclick="location.href = '/';" style="height: 42px; position: relative; bottom: 2px; cursor: pointer;"/>
         </span>
         <!-- PC버전 -->
         <span class="container_search d-none d-lg-block" style="justify-self: flex-end;">
@@ -322,15 +322,22 @@
     <!-- 포스트 카테고리명 -->
     <div class="category-name">
         Python
-        <span class="category-list-size">총 0건</span>
+        <span class="category-list-size">총 1건</span>
     </div>
     <hr class="post-list-border">
     <!-- 포스트 리스트 -->
-    <div class="post-list-no-item px-2">
-        <i class="fa-solid fa-triangle-exclamation"></i>
-        등록된 포스트가 없습니다.
+    
+    <div class="post-list-item px-2" onclick="location.href = '/python/20230823/python_00001';">
+        <div class="post-list-subject">파이썬 치트시트</div>
+        <div class="post-list-excerpt mt-1">
+</div>
+        <div class="post-list-footer mt-2 py-1">
+            <span class="post-list-category">python</span>
+            <span class="post-list-uploadtime">2023-08-23 20:48</span>
+        </div>
     </div>
     <hr class="post-list-border">
+    
 </div>
                         </div>
                         <!-- 사이드바 -->
@@ -340,7 +347,7 @@
         <i class="fa-solid fa-arrow-right align-middle"></i>
     </div>
     <!-- 로고와 프로필 -->
-    <div id="sidebar_profile" class="mt-2 p-2" onclick="location.href = '/about/20230821/about';">
+    <div id="sidebar_profile" class="mt-2 p-2" onclick="location.href = '/category/about';">
         <div class="sidebar-profile-logo text-center">
             <img src="/assets/img/full_logo.png" style="width: 3rem;"/>
         </div>
@@ -374,7 +381,7 @@
                 python
                 <span class="sidebar-category-size">
                     
-                    ( 0 )
+                    ( 1 )
                     
                 </span>
             </div>
@@ -425,7 +432,7 @@
         var category = $(this).attr("data-category");
         switch(category){
             case "all":
-                location.href = "/index.html";
+                location.href = "/";
             break;
             default:
                 location.href = "/category/" + category + ".html";
