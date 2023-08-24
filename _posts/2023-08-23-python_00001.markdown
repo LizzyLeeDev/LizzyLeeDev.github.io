@@ -1,0 +1,405 @@
+---
+layout: post-current
+title: Python Cheat Sheet
+date: 2023-08-23 20:48:00 +0900
+categories: python
+---
+<div class="post-d-none"><br><br><br></div>
+<div class="post-chapter post-chapter-collapse collapsed" data-bs-toggle="collapse" href="#chapter1">
+1. 연산자
+<span style="float: right;"><i class="fa fa-chevron-up"></i></span>
+</div>
+<div id="chapter1" class="collapse">
+    <br>
+    <table class="post-table">
+        <tr>
+            <td colspan="2" style="background-color: #F3F3F3;">산술연산자</td>
+        </tr>
+        <tr>
+            <td>+</td>
+            <td>더하기: a + b = c</td>
+        </tr>
+        <tr>
+            <td>-</td>
+            <td>빼기: a - b = c</td>
+        </tr>
+        <tr>
+            <td>*</td>
+            <td>곱하기: a * b = c</td>
+        </tr>
+        <tr>
+            <td>**</td>
+            <td>제곱: a ** b = c</td>
+        </tr>
+        <tr>
+            <td>/</td>
+            <td>나누기: a / b = c</td>
+        </tr>
+        <tr>
+            <td>//</td>
+            <td>(나눈 후)몫: a // b = c</td>
+        </tr>
+        <tr>
+            <td>%</td>
+            <td>(나눈 후)나머지: a % b = c</td>
+        </tr>
+    </table>
+    <br>
+    <table class="post-table">
+        <tr>
+            <td colspan="2" style="background-color: #F3F3F3;">비교연산자</td>
+        </tr>
+        <tr>
+            <td>==</td>
+            <td>양쪽 값이 같으면 참: a == b</td>
+        </tr>
+        <tr>
+            <td>==</td>
+            <td>
+                양쪽 값이 다르면 참: a != b
+                <div class="post-overegg" style="color: red; border: 0;"><>는 Python 3부터 삭제</div>
+            </td>
+        </tr>
+        <tr>
+            <td>></td>
+            <td>왼쪽 값이 크면 참: a > b</td>
+        </tr>
+        <tr>
+            <td>>=</td>
+            <td>왼쪽 값이 크거나 같으면 참: a >= b</td>
+        </tr>
+        <tr>
+            <td><</td>
+            <td>오른쪽 값이 크면 참: a < b</td>
+        </tr>
+        <tr>
+            <td><=</td>
+            <td>오른쪽 값이 크거나 같으면 참: a <= b</td>
+        </tr>
+    </table>
+    <br>
+    <table class="post-table">
+        <tr>
+            <td colspan="2" style="background-color: #F3F3F3;">대입연산자</td>
+        </tr>
+        <tr>
+            <td>=</td>
+            <td>왼쪽에 대입: a = b는 b 값을 a에 저장</td>
+        </tr>
+        <tr>
+            <td>+=</td>
+            <td>더한 뒤 대입: a += b는 a = a + b</td>
+        </tr>
+        <tr>
+            <td>-=</td>
+            <td>뺀 뒤 대입: a -= b는 a = a - b</td>
+        </tr>
+        <tr>
+            <td>*=</td>
+            <td>곱한 뒤 대입: a *= b는 a = a * b</td>
+        </tr>
+        <tr>
+            <td>**=</td>
+            <td>제곱한 뒤 대입: a **= b는 a = a ** b</td>
+        </tr>
+        <tr>
+            <td>/=</td>
+            <td>나눈 뒤 대입: a /= b는 a = a / b</td>
+        </tr>
+        <tr>
+            <td>//=</td>
+            <td>나눈 뒤 몫을 대입: a //= b는 a = a // b</td>
+        </tr>
+        <tr>
+            <td>%=</td>
+            <td>나눈 뒤 나머지를 대입: a %= b는 a = a % b</td>
+        </tr>
+    </table>
+    <br>
+    <table class="post-table">
+        <tr>
+            <td colspan="2" style="background-color: #F3F3F3;">논리연산자</td>
+        </tr>
+        <tr>
+            <td>and</td>
+            <td>
+                둘다 참이면 참: a and b
+                <div class="post-overegg" style="color: blue; border: 0;">a와 b는 논리값</div>
+            </td>
+        </tr>
+        <tr>
+            <td>or</td>
+            <td>
+                하나만 참이면 참: a or b
+                <div class="post-overegg" style="color: blue; border: 0;">a와 b는 논리값</div>
+            </td>
+        </tr>
+        <tr>
+            <td>not</td>
+            <td>
+                참이면 거짓, 거짓이면 참: not a
+                <div class="post-overegg" style="color: blue; border: 0;">a는 논리값</div>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table class="post-table">
+        <tr>
+            <td colspan="2" style="background-color: #F3F3F3;">비트연산자</td>
+        </tr>
+        <tr>
+            <td>&</td>
+            <td>각 비트를 AND 연산: a & b = c</td>
+        </tr>
+        <tr>
+            <td>|</td>
+            <td>각 비트를 OR 연산: a | b = c</td>
+        </tr>
+        <tr>
+            <td>^</td>
+            <td>각 비트를 XOR 연산: a ^ b = c</td>
+        </tr>
+        <tr>
+            <td>~</td>
+            <td>각 비트를 NOT 연산: ~a</td>
+        </tr>
+        <tr>
+            <td><<</td>
+            <td>비트를 왼쪽으로 SHIFT 연산: a << 2</td>
+        </tr>
+        <tr>
+            <td>>></td>
+            <td>
+                비트를 오른쪽으로 SHIFT 연산: a >> 2
+                <div class="post-overegg" style="color: blue; border: 0;">1이 들어갈 공간이 없으면 사라짐</div>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table class="post-table">
+        <tr>
+            <td colspan="2" style="background-color: #F3F3F3;">멤버연산자</td>
+        </tr>
+        <tr>
+            <td>in</td>
+            <td>포함되어있으면 참: a in list</td>
+        </tr>
+        <tr>
+            <td>not in</td>
+            <td>포함되지않으면 참: a not in list</td>
+        </tr>
+    </table>
+    <br>
+    <table class="post-table">
+        <tr>
+            <td colspan="2" style="background-color: #F3F3F3;">아이디연산자</td>
+        </tr>
+        <tr>
+            <td>is</td>
+            <td>같은 대상이면 참: a is b</td>
+        </tr>
+        <tr>
+            <td>is not</td>
+            <td>다른 대상이면 참: a is not b</td>
+        </tr>
+    </table>
+    <br>
+    <table class="post-table">
+        <tr>
+            <td colspan="3" style="background-color: #F3F3F3;">연산자 우선순위</td>
+        </tr>
+        <tr>
+            <td>01</td>
+            <td>**</td>
+            <td>제곱</td>
+        </tr>
+        <tr>
+            <td>02</td>
+            <td>+, -, ~</td>
+            <td>부호, 비트NOT</td>
+        </tr>
+        <tr>
+            <td>03</td>
+            <td>*, /, //, %</td>
+            <td>곱하기, 나누기, 몫, 나머지</td>
+        </tr>
+        <tr>
+            <td>04</td>
+            <td>+, -</td>
+            <td>더하기, 빼기</td>
+        </tr>
+        <tr>
+            <td>05</td>
+            <td><< >></td>
+            <td>비트SHIFT</td>
+        </tr>
+        <tr>
+            <td>06</td>
+            <td>&</td>
+            <td>비트AND</td>
+        </tr>
+        <tr>
+            <td>07</td>
+            <td>|, ^</td>
+            <td>비트OR, 비트XOR</td>
+        </tr>
+        <tr>
+            <td>08</td>
+            <td>>, >=, <, <=</td>
+            <td>비교연산자</td>
+        </tr>
+        <tr>
+            <td>09</td>
+            <td>==, !=</td>
+            <td>항등연산자</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>+=, -=, *=, **=, /=, //=, %=</td>
+            <td>대입연산자</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>is, is not</td>
+            <td>아이디연산자</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>in, not in</td>
+            <td>멤버연산자</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>and, or, not</td>
+            <td>논리연산자</td>
+        </tr>
+    </table>
+</div>
+<br>
+<div class="post-chapter post-chapter-collapse collapsed" data-bs-toggle="collapse" href="#chapter2">
+2. 자료형
+<span style="float: right;"><i class="fa fa-chevron-up"></i></span>
+</div>
+<div id="chapter2" class="collapse">
+    <br>
+    <table class="post-table">
+        <tr>
+            <td colspan="2" style="background-color: #F3F3F3;">숫자</td>
+        </tr>
+        <tr>
+            <td>정수형 (Int)</td>
+            <td>
+                a = 3<br>
+                소수점 아래 값이 없는 정수와 0<br>
+                앞에 0b가 붙으면 2진수, 0o가 붙으면 8진수, 0x가 붙으면 16진수
+            </td>
+        </tr>
+        <tr>
+            <td>실수형 (Float)</td>
+            <td>
+                a = 12.3<br>
+                소수점이 있는 숫자<br>
+                정수형과는 소수점 유무로 구분<br>
+                부동소수점 표현 가능 a.be+c<br>
+                부동소수점은 소수점 이하 15자리까지 정확<br>
+            </td>
+        </tr>
+        <tr>
+            <td>복소수형 (Complex)</td>
+            <td>
+                a = 1.2j<br>
+                a + bj로 표현
+                a: 실수부, b: 허수부
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table class="post-table">
+        <tr>
+            <td colspan="2" style="background-color: #F3F3F3;">문자열</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                a = "Hello World"<br>
+                ', ", ''', """ 등으로 문자열을 감싸면 문자열 리터럴<br>
+                ' 내부에서 '를 표현하고 싶을땐 \'로 표현<br>
+                여러 줄 입력시 ''', """ 사용: 개행 인식됨<br>
+                <div class="post-code mb-1">
+                    > str = """1<br>
+                    > 2<br>
+                    > 3"""<br>
+                    > <span class="post-overegg" style="color: blue; border: 0;"># str 출력시</span><br>
+                    > <span class="post-overegg" style="color: blue; border: 0;"># 1</span><br>
+                    > <span class="post-overegg" style="color: blue; border: 0;"># 2</span><br>
+                    > <span class="post-overegg" style="color: blue; border: 0;"># 3</span><br>
+                    > <span class="post-overegg" style="color: blue; border: 0;"># 으로 출력</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>str1 + str2</td>
+            <td>
+                문자열 결합<br>
+                숫자와 결합시 숫자를 문자로 캐스팅 필요
+            </td>
+        </tr>
+        <tr>
+            <td>str * int</td>
+            <td>
+                int 개수만큼 str 반복
+            </td>
+        </tr>
+        <tr>
+            <td>str[a]</td>
+            <td>
+                해당 위치에 있는 문자 리턴
+            </td>
+        </tr>
+        <tr>
+            <td>str[-a]</td>
+            <td>
+                뒤에서부터 역순으로 카운트, 해당 위치에 있는 문자 리턴
+            </td>
+        </tr>
+        <tr>
+            <td>str[a:b]</td>
+            <td>
+                a부터 b - 1까지의 문자열 리턴<br>
+                a생략시 처음부터, b생략시 끝까지<br>
+                둘다 생략시 전체
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table class="post-table">
+        <tr>
+            <td colspan="2" style="background-color: #F3F3F3;">리스트</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                a = [1, 2, 3, 'b']<br>
+                자료들의 목록으로, 어떤 자료형도 저장 가능<br>
+                입력한 순서 유지됨<br>
+                문자열과 같이 [a:b]로 접근 가능
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table class="post-table">
+        <tr>
+            <td colspan="2" style="background-color: #F3F3F3;">튜플</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                a = 1, 2, 3 또는 a = (1, 2, 3)<br>
+                자료들의 목록으로, 어떤 자료형도 저장 가능<br>
+                입력한 순서 유지됨<br>
+                문자열과 같이 +, * 연산 가능<br>
+                문자열과 같이 [a:b]로 접근 가능
+                <span class="post-overegg" style="color: red; border: 0;">튜플은 요소 값 변경이나 요소 삭제가 불가능</span>
+                <span class="post-overegg" style="color: red; border: 0;">튜플은 요소 값 변경이나 요소 삭제가 불가능</span>
+                <span>
+            </td>
+        </tr>
+    </table>
+</div>
