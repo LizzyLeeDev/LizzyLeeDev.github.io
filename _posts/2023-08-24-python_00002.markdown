@@ -1,0 +1,75 @@
+---
+layout: post-current
+title: Python Coding Style (PEP8)
+date: 2023-08-24 19:59:00 +0900
+categories: python
+---
+<div class="d-flex">
+    <span>-&nbsp;&nbsp;</span>
+    <p>
+        들여쓰기에 4개의 스페이스를 사용하고, 탭을 사용하지 마세요.
+    </p>
+</div>
+<br>
+<div class="d-flex">
+    <span>-&nbsp;&nbsp;</span>
+    <p>
+        한 줄에 79자가 넘어가지 않도록 하세요.
+    </p>
+</div>
+<br>
+<div class="d-flex">
+    <span>-&nbsp;&nbsp;</span>
+    <p>
+        함수, 클래스, 함수 내 큰 코드 블록 사이에 줄을 넣어 분리하세요.
+    </p>
+</div>
+<br>
+<div class="d-flex">
+    <span>-&nbsp;&nbsp;</span>
+    <p>
+        주석은 별도의 줄로 넣으세요.
+    </p>
+</div>
+<br>
+<div class="d-flex">
+    <span>-&nbsp;&nbsp;</span>
+    <p>
+        독스트링(""")을 사용하세요.
+    </p>
+</div>
+<br>
+<div class="d-flex">
+    <span>-&nbsp;&nbsp;</span>
+    <p>
+        연산자 양 옆, 콤마 뒤에 스페이스를 넣으세요.<br>
+        괄호 바로 안쪽에는 스페이스를 넣지 마세요.<br>
+        <span class="post-overegg" style="color: blue; border: 0;">a = f(1, 2) + g(3, 4)</span>
+    </p>
+</div>
+<br>
+<div class="d-flex">
+    <span>-&nbsp;&nbsp;</span>
+    <p>
+        클래스는 UpperCamelCase로 네이밍하세요.<br>
+        함수와 메서드는 lowercase_with_underscores로 네이밍하세요.<br>
+        첫번째 메서드 인자의 이름은 항상 self를 사용하세요.
+    </p>
+</div>
+<br>
+<div class="d-flex">
+    <span>-&nbsp;&nbsp;</span>
+    <p>
+        특별한 인코딩을 사용하지 마세요.<br>
+        파이썬은 UTF-8, 다른걸 쓰면 적어도 ASCII 정도가 최선입니다.
+    </p>
+</div>
+<br>
+<div class="d-flex">
+    <span>-&nbsp;&nbsp;</span>
+    <p>
+        다른사람이 읽을 가능성이 있는 코드는 식별자에 ASCII 이외의 문자를 사용하지 마세요.
+    </p>
+</div>
+<br>
+<span class="post-overegg" style="color: blue; border: 0;">출처: https://docs.python.org/3/tutorial/controlflow.html#intermezzo-coding-style</span>

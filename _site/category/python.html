@@ -155,6 +155,17 @@
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
     }
+    .post-list-excerpt * {
+        font-size: 0.8rem;
+        font-family: 'Gowun Dodum', sans-serif;
+        color: #BBB;
+        overflow: hidden;
+        line-height: 1.3;
+        max-height: 3.9em;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
     .post-list-footer {
         line-height: 0.8;
         display: grid;
@@ -253,6 +264,9 @@
         padding: 0px 0.25rem;
     }
     /* 사이드바 프로필에서 사용할 스타일 */
+    #sidebar_profile {
+        overflow-x: hidden;
+    }
     #sidebar_profile:hover {
         font-weight: bold;
         background-color: #F3F3F3;
@@ -266,6 +280,7 @@
     .sidebar-profile-item {
         font-family: 'Orbit', sans-serif;
         font-size: 0.7rem;
+        white-space: nowrap;
     }
     .sidebar-profile-icon {
         min-width: 10px;
@@ -350,10 +365,89 @@
     <!-- 포스트 카테고리명 -->
     <div class="category-name">
         Python
-        <span class="category-list-size">총 1건</span>
+        <span class="category-list-size">총 2건</span>
     </div>
     <hr class="post-list-border">
     <!-- 포스트 리스트 -->
+    
+    <div class="post-list-item px-2" onclick="location.href = '/python/20230824/python_00002';">
+        <div class="post-list-subject">Python Coding Style (PEP8)</div>
+        <div class="post-list-excerpt mt-1"><div class="d-flex">
+    <span>-&nbsp;&nbsp;</span>
+    
+        들여쓰기에 4개의 스페이스를 사용하고, 탭을 사용하지 마세요.
+    
+</div>
+<br />
+<div class="d-flex">
+    <span>-&nbsp;&nbsp;</span>
+    
+        한 줄에 79자가 넘어가지 않도록 하세요.
+    
+</div>
+<br />
+<div class="d-flex">
+    <span>-&nbsp;&nbsp;</span>
+    
+        함수, 클래스, 함수 내 큰 코드 블록 사이에 줄을 넣어 분리하세요.
+    
+</div>
+<br />
+<div class="d-flex">
+    <span>-&nbsp;&nbsp;</span>
+    
+        주석은 별도의 줄로 넣으세요.
+    
+</div>
+<br />
+<div class="d-flex">
+    <span>-&nbsp;&nbsp;</span>
+    
+        독스트링(""")을 사용하세요.
+    
+</div>
+<br />
+<div class="d-flex">
+    <span>-&nbsp;&nbsp;</span>
+    
+        연산자 양 옆, 콤마 뒤에 스페이스를 넣으세요.<br />
+        괄호 바로 안쪽에는 스페이스를 넣지 마세요.<br />
+        <span class="post-overegg" style="color: blue; border: 0;">a = f(1, 2) + g(3, 4)</span>
+    
+</div>
+<br />
+<div class="d-flex">
+    <span>-&nbsp;&nbsp;</span>
+    
+        클래스는 UpperCamelCase로 네이밍하세요.<br />
+        함수와 메서드는 lowercase_with_underscores로 네이밍하세요.<br />
+        첫번째 메서드 인자의 이름은 항상 self를 사용하세요.
+    
+</div>
+<br />
+<div class="d-flex">
+    <span>-&nbsp;&nbsp;</span>
+    
+        특별한 인코딩을 사용하지 마세요.<br />
+        파이썬은 UTF-8, 다른걸 쓰면 적어도 ASCII 정도가 최선입니다.
+    
+</div>
+<br />
+<div class="d-flex">
+    <span>-&nbsp;&nbsp;</span>
+    
+        다른사람이 읽을 가능성이 있는 코드는 식별자에 ASCII 이외의 문자를 사용하지 마세요.
+    
+</div>
+<br />
+<span class="post-overegg" style="color: blue; border: 0;">출처: https://docs.python.org/3/tutorial/controlflow.html#intermezzo-coding-style</span>
+</div>
+        <div class="post-list-footer mt-2 py-1">
+            <span class="post-list-category">python</span>
+            <span class="post-list-uploadtime">2023-08-24 19:59</span>
+        </div>
+    </div>
+    <hr class="post-list-border">
     
     <div class="post-list-item px-2" onclick="location.href = '/python/20230823/python_00001';">
         <div class="post-list-subject">Python Cheat Sheet</div>
@@ -731,7 +825,7 @@
         <tr>
             <td colspan="2">
                 a = [1, 2, 3, 'b']<br />
-                자료들의 목록으로, 어떤 자료형도 저장 가능<br />
+                시퀀스형 자료구조, 어떤 자료형도 저장 가능<br />
                 입력한 순서 유지됨<br />
                 문자열과 같이 [a:b]로 접근 가능
             </td>
@@ -745,18 +839,48 @@
         <tr>
             <td colspan="2">
                 a = 1, 2, 3 또는 a = (1, 2, 3)<br />
-                자료들의 목록으로, 어떤 자료형도 저장 가능<br />
+                시퀀스형 자료구조, 어떤 자료형도 저장 가능<br />
                 입력한 순서 유지됨<br />
                 문자열과 같이 +, * 연산 가능<br />
-                문자열과 같이 [a:b]로 접근 가능
+                문자열과 같이 [a:b]로 접근 가능<br />
                 <span class="post-overegg" style="color: red; border: 0;">튜플은 요소 값 변경이나 요소 삭제가 불가능</span>
-                <span class="post-overegg" style="color: red; border: 0;">튜플은 요소 값 변경이나 요소 삭제가 불가능</span>
-                <span>
-            &lt;/td&gt;
-        &lt;/tr&gt;
-    &lt;/table&gt;
-&lt;/div&gt;
-</span></td></tr></table></div>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <table class="post-table">
+        <tr>
+            <td colspan="2" style="background-color: #F3F3F3;">세트</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                a = set("Hello") set함수는 1개의 인자만 전달 가능(리스트 등)<br />
+                또는 a = {1, 2, 3}<br />
+                시퀀스형 자료구조, 어떤 자료형도 저장 가능<br />
+                입력한 순서 유지되지 않음<br />
+                중복 허용되지 않음<br />
+                + 연산 불가능<br />
+                [a:b]로 접근 불가능
+            </td>
+        </tr>
+    </table>
+    <br />
+    <table class="post-table">
+        <tr>
+            <td colspan="2" style="background-color: #F3F3F3;">딕셔너리</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                a = {'key1': 'val1', 'key2': 2}<br />
+                시퀀스형 자료구조, 어떤 자료형도 저장 가능<br />
+                키/값 쌍으로, 키는 변경 불가능 (문자열 또는 튜플 등) 해야함<br />
+                키는 중복 불가능, 같은 키에 값을 넣으면 수정됨<br />
+                + 연산 불가능<br />
+                딕셔너리[키]로 접근 가능
+            </td>
+        </tr>
+    </table>
+</div>
 </div>
         <div class="post-list-footer mt-2 py-1">
             <span class="post-list-category">python</span>
@@ -799,7 +923,7 @@
         <div class="sidebar-category-item" data-category="all" style="color: black!important;">
             <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
             All
-            <span class="sidebar-category-size">( 2 )</span>
+            <span class="sidebar-category-size">( 3 )</span>
         </div>
         <hr class="sidebar-category-border-bold">
         
@@ -808,7 +932,7 @@
                 python
                 <span class="sidebar-category-size">
                     
-                    ( 1 )
+                    ( 2 )
                     
                 </span>
             </div>

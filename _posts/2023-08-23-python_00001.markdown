@@ -378,7 +378,7 @@ categories: python
         <tr>
             <td colspan="2">
                 a = [1, 2, 3, 'b']<br>
-                자료들의 목록으로, 어떤 자료형도 저장 가능<br>
+                시퀀스형 자료구조, 어떤 자료형도 저장 가능<br>
                 입력한 순서 유지됨<br>
                 문자열과 같이 [a:b]로 접근 가능
             </td>
@@ -392,13 +392,44 @@ categories: python
         <tr>
             <td colspan="2">
                 a = 1, 2, 3 또는 a = (1, 2, 3)<br>
-                자료들의 목록으로, 어떤 자료형도 저장 가능<br>
+                시퀀스형 자료구조, 어떤 자료형도 저장 가능<br>
                 입력한 순서 유지됨<br>
                 문자열과 같이 +, * 연산 가능<br>
-                문자열과 같이 [a:b]로 접근 가능
+                문자열과 같이 [a:b]로 접근 가능<br>
                 <span class="post-overegg" style="color: red; border: 0;">튜플은 요소 값 변경이나 요소 삭제가 불가능</span>
-                <span class="post-overegg" style="color: red; border: 0;">튜플은 요소 값 변경이나 요소 삭제가 불가능</span>
-                <span>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table class="post-table">
+        <tr>
+            <td colspan="2" style="background-color: #F3F3F3;">세트</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                a = set("Hello") set함수는 1개의 인자만 전달 가능(리스트 등)<br>
+                또는 a = {1, 2, 3}<br>
+                시퀀스형 자료구조, 어떤 자료형도 저장 가능<br>
+                입력한 순서 유지되지 않음<br>
+                중복 허용되지 않음<br>
+                + 연산 불가능<br>
+                [a:b]로 접근 불가능
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table class="post-table">
+        <tr>
+            <td colspan="2" style="background-color: #F3F3F3;">딕셔너리</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                a = {'key1': 'val1', 'key2': 2}<br>
+                시퀀스형 자료구조, 어떤 자료형도 저장 가능<br>
+                키/값 쌍으로, 키는 변경 불가능 (문자열 또는 튜플 등) 해야함<br>
+                키는 중복 불가능, 같은 키에 값을 넣으면 수정됨<br>
+                + 연산 불가능<br>
+                딕셔너리[키]로 접근 가능
             </td>
         </tr>
     </table>
