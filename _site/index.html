@@ -368,10 +368,73 @@
     <!-- 포스트 카테고리명 -->
     <div class="category-name">
         All
-        <span class="category-list-size">총 3건</span>
+        <span class="category-list-size">총 4건</span>
     </div>
     <hr class="post-list-border">
     <!-- 포스트 리스트 -->
+    
+    <div class="post-list-item px-2" onclick="location.href = '/python/20230826/python_00003';">
+        <div class="post-list-subject">Python OJ Start Kit</div>
+        <div class="post-list-excerpt mt-1"><div class="post-d-none"><br /><br /><br /></div>
+파이썬을 이용해서 OJ의 알고리즘 문제들을 풀기 위해<br />
+공부한 내용 중 특별히 많이 쓰이는 내용을 작성했다.<br />
+<br />
+<div class="post-chapter">시간 계산</div>
+<br />
+<div class="post-code">
+    &gt; import time <br />
+    &gt; <br />
+    &gt; <span style="color: blue;"># 시작시간 체크</span><br />
+    &gt; code_start = time.time() <br />
+    &gt; <br />
+    &gt; <span style="color: blue;"># 동작할 내용 여기에 추가</span><br />
+    &gt; <br />
+    &gt; <span style="color: blue;"># 완료시간 체크</span><br />
+    &gt; code_end = time.time()<br />
+    &gt; <br />
+    &gt; <span style="color: blue;"># 총 실행시간 표시 (소수점 5자리까지)</span><br />
+    &gt; print("실행시간: ", round(code_end - code_start, 5), "s")
+</div>
+<br />
+<div class="post-chapter">입력</div>
+<br />
+🔸한 줄에 여러개의 정수를 입력받아 리스트로 저장하는 경우<br />
+<br />
+<div class="post-code">
+    &gt; a = list(map(int, input().split()))<br />
+    &gt; <span style="color: blue;"># (1) input()으로 입력받은 한 줄을 split()으로 나눈다.</span><br />
+    &gt; <span style="color: blue;"># (2) map을 이용해서 (1)에서 입력받은 내용을 int로 캐스팅한다.</span><br />
+    &gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue;">map(함수명, 반복가능 자료형)</span><br />
+    &gt; <span style="color: blue;"># (3) (2)에서 작업한 내용을 list로 저장한다.</span>
+</div>
+<br />
+🔸한 줄에 여러개의 정수를 입력받아 여러 변수에 저장하는 경우<br />
+<br />
+<div class="post-code">
+    &gt; a, b = map(int, input().split())<br />
+    &gt; <span style="color: blue;"># 입력 개수에 알맞게 변수 설정</span><br />
+</div>
+<br />
+🔸input()보다 입력이 빠른 sys.stdin.readline()<br />
+<br />
+<div class="post-code">
+    &gt; <span style="color: blue;"># sys 라이브러리 추가</span><br />
+    &gt; import sys<br />
+    &gt; <br />
+    &gt; a = sys.stdin.readline().rstrip()<br />
+    &gt; <span style="color: blue;"># readline 사용시 개행문자 제거를 위해 rstrip 필수</span><br />
+    &gt; <span style="color: blue;"># readline에 정수를 인자로 주면 해당 글자수 만큼 입력</span><br />
+</div>
+<br />
+Python 2.7에서 3으로 오면서 input과 readline간의 차이가 적어졌다는 것 같다.<br />
+<span class="post-overegg" style="color: blue; border: 0;">출처: https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwiOmq7mwvqAAxUNklYBHVTwAxMQFnoECAkQAQ&amp;url=https%3A%2F%2Fstackoverflow.com%2Fquestions%2F22623528%2Fsys-stdin-readline-and-input-which-one-is-faster-when-reading-lines-of-inpu&amp;usg=AOvVaw1wLpCxvHWwQYYsZh41ry32&amp;opi=89978449</span>
+</div>
+        <div class="post-list-footer mt-2 py-1">
+            <span class="post-list-category">python</span>
+            <span class="post-list-uploadtime">2023-08-26 22:40</span>
+        </div>
+    </div>
+    <hr class="post-list-border">
     
     <div class="post-list-item px-2" onclick="location.href = '/python/20230824/python_00002';">
         <div class="post-list-subject">Python Coding Style (PEP8)</div>
@@ -1029,6 +1092,37 @@
         </tr>
     </table>
 </div>
+<br />
+<div class="post-chapter post-chapter-collapse collapsed" data-bs-toggle="collapse" href="#chapter4">
+4. 함수
+<span style="float: right;"><i class="fa fa-chevron-up"></i></span>
+</div>
+<div id="chapter4" class="collapse">
+    <br />
+    <table class="post-table">
+        <tr>
+            <td colspan="2" style="background-color: #F3F3F3;">함수 정의</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                def 예약어로 생성<br />
+                함수에 포함된 명령어는 들여쓰기로 작성<br />
+                매개변수에 초기값 지정 가능<br />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="post-code my-1">
+                    &gt; def factorial(n):<br />
+                    &gt; &nbsp;&nbsp;&nbsp;&nbsp;ans = 0<br />
+                    &gt; &nbsp;&nbsp;&nbsp;&nbsp;for i in range(1,n):<br />
+                    &gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans *= i<br />
+                    &gt; &nbsp;&nbsp;&nbsp;&nbsp;return ans
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
 </div>
         <div class="post-list-footer mt-2 py-1">
             <span class="post-list-category">python</span>
@@ -1165,7 +1259,7 @@ jekyll server 실행시 변경사항이 있으면 자동으로 build 되는데,<
         <div class="sidebar-category-item" data-category="all" style="color: black!important;">
             <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
             All
-            <span class="sidebar-category-size">( 3 )</span>
+            <span class="sidebar-category-size">( 4 )</span>
         </div>
         <hr class="sidebar-category-border-bold">
         
@@ -1174,7 +1268,7 @@ jekyll server 실행시 변경사항이 있으면 자동으로 build 되는데,<
                 python
                 <span class="sidebar-category-size">
                     
-                    ( 2 )
+                    ( 3 )
                     
                 </span>
             </div>

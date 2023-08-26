@@ -579,3 +579,34 @@ categories: python
         </tr>
     </table>
 </div>
+<br>
+<div class="post-chapter post-chapter-collapse collapsed" data-bs-toggle="collapse" href="#chapter4">
+4. 함수
+<span style="float: right;"><i class="fa fa-chevron-up"></i></span>
+</div>
+<div id="chapter4" class="collapse">
+    <br>
+    <table class="post-table">
+        <tr>
+            <td colspan="2" style="background-color: #F3F3F3;">함수 정의</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                def 예약어로 생성<br>
+                함수에 포함된 명령어는 들여쓰기로 작성<br>
+                매개변수에 초기값 지정 가능<br>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="post-code my-1">
+                    > def factorial(n):<br>
+                    > &nbsp;&nbsp;&nbsp;&nbsp;ans = 1<br>
+                    > &nbsp;&nbsp;&nbsp;&nbsp;for i in range(1, n+1):<br>
+                    > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans *= i<br>
+                    > &nbsp;&nbsp;&nbsp;&nbsp;return ans
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

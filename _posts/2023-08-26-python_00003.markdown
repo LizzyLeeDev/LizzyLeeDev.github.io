@@ -1,0 +1,57 @@
+---
+layout: post-current
+title: Python OJ Start Kit
+date: 2023-08-26 22:40:00 +0900
+categories: python
+---
+<div class="post-d-none"><br><br><br></div>
+파이썬을 이용해서 OJ의 알고리즘 문제들을 풀기 위해<br>
+공부한 내용 중 특별히 많이 쓰이는 내용을 작성했다.<br>
+<br>
+<div class="post-chapter">시간 계산</div><br>
+<div class="post-code">
+    > import time <br>
+    > <br>
+    > <span style="color: blue;"># 시작시간 체크</span><br>
+    > code_start = time.time() <br>
+    > <br>
+    > <span style="color: blue;"># 동작할 내용 여기에 추가</span><br>
+    > <br>
+    > <span style="color: blue;"># 완료시간 체크</span><br>
+    > code_end = time.time()<br>
+    > <br>
+    > <span style="color: blue;"># 총 실행시간 표시 (소수점 5자리까지)</span><br>
+    > print("실행시간: ", round(code_end - code_start, 5), "s")
+</div>
+<br>
+<div class="post-chapter">입력</div><br>
+🔸한 줄에 여러개의 정수를 입력받아 리스트로 저장하는 경우<br>
+<br>
+<div class="post-code">
+    > a = list(map(int, input().split()))<br>
+    > <span style="color: blue;"># (1) input()으로 입력받은 한 줄을 split()으로 나눈다.</span><br>
+    > <span style="color: blue;"># (2) map을 이용해서 (1)에서 입력받은 내용을 int로 캐스팅한다.</span><br>
+    > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue;">map(함수명, 반복가능 자료형)</span><br>
+    > <span style="color: blue;"># (3) (2)에서 작업한 내용을 list로 저장한다.</span>
+</div>
+<br>
+🔸한 줄에 여러개의 정수를 입력받아 여러 변수에 저장하는 경우<br>
+<br>
+<div class="post-code">
+    > a, b = map(int, input().split())<br>
+    > <span style="color: blue;"># 입력 개수에 알맞게 변수 설정</span><br>
+</div>
+<br>
+🔸input()보다 입력이 빠른 sys.stdin.readline()<br>
+<br>
+<div class="post-code">
+    > <span style="color: blue;"># sys 라이브러리 추가</span><br>
+    > import sys<br>
+    > <br>
+    > a = sys.stdin.readline().rstrip()<br>
+    > <span style="color: blue;"># readline 사용시 개행문자 제거를 위해 rstrip 필수</span><br>
+    > <span style="color: blue;"># readline에 정수를 인자로 주면 해당 글자수 만큼 입력</span><br>
+</div>
+<br>
+Python 2.7에서 3으로 오면서 input과 readline간의 차이가 적어졌다는 것 같다.<br>
+<span class="post-overegg" style="color: blue; border: 0;">출처: https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiOmq7mwvqAAxUNklYBHVTwAxMQFnoECAkQAQ&url=https%3A%2F%2Fstackoverflow.com%2Fquestions%2F22623528%2Fsys-stdin-readline-and-input-which-one-is-faster-when-reading-lines-of-inpu&usg=AOvVaw1wLpCxvHWwQYYsZh41ry32&opi=89978449</span>
