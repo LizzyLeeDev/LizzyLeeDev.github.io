@@ -5,21 +5,19 @@
     /* 사이드바 토글 */
     $("#btn_sidebar_open").click(function () {
         $("#container_sidebar").addClass("sidebar-open");
+        // popstate 이벤트용 더미 스테이트
+        history.pushState(null, null, null);
     });
     $("#btn_sidebar_close").click(function () {
-        $("#container_sidebar").removeClass("sidebar-open");
+        // popstate 이벤트를 통해 닫기
+        $(window).trigger("popstate");
     });
     /* 모바일 뒤로가기 이벤트시 사이드바 우선 닫기 */
-    
-    $(function () {
-        $(window).on('popstate', function(e) {
-            alert("popstate event");
-            if($("#container_sidebar").hasClass("sidebar-open")){
-                e.stopPropagation();
-                $("#container_sidebar").removeClass("sidebar-open");
-            }
-        });
-    })
+    $(window).on("popstate", function(e) {
+        if($("#container_sidebar").hasClass("sidebar-open")){
+            $("#container_sidebar").removeClass("sidebar-open");
+        }
+    });
     /* 카테고리 */
     $("#container_sidebar .sidebar-category-item").click(function () {
         var category = $(this).attr("data-category");
