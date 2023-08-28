@@ -6,14 +6,16 @@
     $("#btn_sidebar_open").click(function () {
         $("#container_sidebar").addClass("sidebar-open");
         // popstate 이벤트용 더미 스테이트
+        console.log("pushstate");
         history.pushState(null, null, null);
     });
     $("#btn_sidebar_close").click(function () {
         // popstate 이벤트를 통해 닫기
-        $(window).trigger("popstate");
+        history.back();
     });
     /* 모바일 뒤로가기 이벤트시 사이드바 우선 닫기 */
     $(window).on("popstate", function(e) {
+        console.log("popstate");
         if($("#container_sidebar").hasClass("sidebar-open")){
             $("#container_sidebar").removeClass("sidebar-open");
         }
