@@ -24,7 +24,7 @@ profile:
 
 abountlink: /category/about
 
-sidebarcategory: [python, algorithm, jekyll]
+sidebarcategory: [python, algorithm, jekyll, project]
 
 themecolor:
   categoryname: FFA8DB
