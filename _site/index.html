@@ -254,6 +254,7 @@
         background-color: #F3F3F3;
         padding: 0.25rem 0.5rem;
         border-radius: 0.25rem;
+        overflow-x: auto;
     }
     .post-overegg {
         font-size: 0.7rem;
@@ -368,13 +369,217 @@
     <!-- 포스트 카테고리명 -->
     <div class="category-name">
         All
-        <span class="category-list-size">총 5건</span>
+        <span class="category-list-size">총 7건</span>
     </div>
     <hr class="post-list-border">
     <!-- 포스트 리스트 -->
     
+    <div class="post-list-item px-2" onclick="location.href = '/project/20230828/project_00002';">
+        <div class="post-list-subject">Project Nectarist [02] 메뉴와 화면기획</div>
+        <div class="post-list-excerpt mt-1">저번에 정리했던 큰 메뉴는 다음과 같다.<br />
+<br />
+1) 칵테일 정보<br />
+2) 칵테일 계산기<br />
+3) 커뮤니티<br />
+4) 칼럼<br />
+5) 공지사항<br />
+<br />
+사이트의 목적인 칵테일 정보 찾기와 칵테일 계산하기를 우선순위가 높은 메뉴로 보고,<br />
+다음으로 많이 사용할 것이라 생각되는 커뮤니티를 다음에 배치했다.<br />
+칼럼과 공지사항은 필요한 사람만 보는 메뉴라고 생각해 끝부분에 배치했다.<br />
+<br />
+<div class="post-chapter">1. 화면 정의</div>
+<br />
+사용자가 있다는 점과 큰 메뉴를 토대로 발생할 수 있는 화면을 생각해보면..<br />
+<br />
+0-1) 메인화면<br />
+0-2) 로그인화면<br />
+0-3) 마이페이지/내 정보 보기<br />
+0-4) 마이페이지/내 작성글 보기(+덧글)<br />
+0-5) 마이페이지/내 냉장고<br />
+0-6) 관리자/메인 캐러셀 설정<br />
+0-7) 관리자/칼럼과 공지사항 관리<br />
+0-8) 관리자/칼럼과 공지사항 등록<br />
+1-1) 칵테일 목록<br />
+1-2) 칵테일 상세정보<br />
+2-1) 계산기 초기화면 (냉장고를 보여주고, 재료를 수정, 계산하기)<br />
+2-2) 계산기 결과화면 (계산된 칵테일 목록, 추천 칵테일 목록)<br />
+3-1) 게시글 목록<br />
+3-2) 게시글 상세보기<br />
+3-3) 게시글 작성하기<br />
+4-1) 칼럼 목록<br />
+4-2) 칼럼 상세보기<br />
+5-1) 공지사항 목록<br />
+5-2) 공지사항 상세보기<br />
+6-1) 아이디 찾기<br />
+6-2) 비밀번호 찾기<br />
+6-3) 회원가입<br />
+<br />
+등이 있겠다.<br />
+추가적으로 검색기능, 사용자 정보 확인, 사용자간 쪽지 기능들을 생각할 수 있겠지만<br />
+우선순위가 낮은 기능이라고 생각되어 우선적인 구현에서는 제외했다.<br />
+<br />
+<div class="post-chapter">2. 화면 설계</div>
+<br />
+구체화된 화면을 화면기획서로 작성하면 다음과 같다.<br />
+똑같이 동작하는 화면은 중간중간 생략했다.<br />
+<img src="/assets/img/project_00002_001.jpg" style="width: 40rem; max-width: 100%;" /><br />
+<img src="/assets/img/project_00002_002.jpg" style="width: 40rem; max-width: 100%;" /><br />
+<img src="/assets/img/project_00002_003.jpg" style="width: 40rem; max-width: 100%;" /><br />
+<img src="/assets/img/project_00002_004.jpg" style="width: 40rem; max-width: 100%;" /><br />
+<img src="/assets/img/project_00002_005.jpg" style="width: 40rem; max-width: 100%;" /><br />
+<img src="/assets/img/project_00002_006.jpg" style="width: 40rem; max-width: 100%;" /><br />
+<img src="/assets/img/project_00002_007.jpg" style="width: 40rem; max-width: 100%;" /><br />
+<img src="/assets/img/project_00002_008.jpg" style="width: 40rem; max-width: 100%;" /><br />
+<img src="/assets/img/project_00002_009.jpg" style="width: 40rem; max-width: 100%;" /><br />
+<img src="/assets/img/project_00002_010.jpg" style="width: 40rem; max-width: 100%;" /><br />
+<img src="/assets/img/project_00002_011.jpg" style="width: 40rem; max-width: 100%;" /><br />
+<img src="/assets/img/project_00002_012.jpg" style="width: 40rem; max-width: 100%;" /><br />
+<img src="/assets/img/project_00002_013.jpg" style="width: 40rem; max-width: 100%;" /><br />
+<img src="/assets/img/project_00002_014.jpg" style="width: 40rem; max-width: 100%;" /><br />
+<img src="/assets/img/project_00002_015.jpg" style="width: 40rem; max-width: 100%;" /><br />
+<img src="/assets/img/project_00002_016.jpg" style="width: 40rem; max-width: 100%;" /><br />
+<img src="/assets/img/project_00002_017.jpg" style="width: 40rem; max-width: 100%;" /><br />
+<img src="/assets/img/project_00002_018.jpg" style="width: 40rem; max-width: 100%;" /><br />
+(4-2번 3-2와 같아 생략)<br />
+<img src="/assets/img/project_00002_019.jpg" style="width: 40rem; max-width: 100%;" /><br />
+(5-2번 3-2와 같아 생략)<br />
+<img src="/assets/img/project_00002_020.jpg" style="width: 40rem; max-width: 100%;" /><br />
+<img src="/assets/img/project_00002_021.jpg" style="width: 40rem; max-width: 100%;" /><br />
+<img src="/assets/img/project_00002_022.jpg" style="width: 40rem; max-width: 100%;" /><br />
+</div>
+        <div class="post-list-footer mt-2 py-1">
+            <span class="post-list-category">project</span>
+            <span class="post-list-uploadtime">2023-08-28 18:58</span>
+        </div>
+    </div>
+    <hr class="post-list-border">
+    
+    <div class="post-list-item px-2" onclick="location.href = '/jekyll/20230828/jekyll_00002';">
+        <div class="post-list-subject">깃헙 블로그 시작하기 [02] 레이아웃 만들기</div>
+        <div class="post-list-excerpt mt-1">저번에 대략적인 개발환경을 셋팅했으니,<br />
+어떤 방향으로 블로그를 만들어 나갈지 간단하게 방향을 잡으려고 한다.<br />
+<br />
+<div class="post-chapter">1. 화면 기획하기</div>
+<br />
+내가 만들으려는 블로그의 모양은 대략적으로 다음과 같다.<br />
+<img src="/assets/img/jekyll_00002_001.jpg" style="width: 45rem;" /><br />
+상단에는 상단 바, 아래쪽은 컨텐츠와 사이드 바가 있고<br />
+상단바/컨텐츠/사이드바가 들어가는 부분은 화면 중앙에 표시,<br />
+양 옆 부분은 실제 화면 너비에 따라 늘어나도록 처리하려고 한다.<br />
+<br />
+상단바에는 로고와 나중에 추가될 기능들이 들어가도록 하고,<br />
+사이드바는 블로그 주인 프로필과 메뉴,<br />
+메인 화면은 단순히 전체 카테고리 보기가 표시되도록 할 것이다.<br />
+컨텐츠 부분은 “카테고리별 포스트 목록”과 <br />
+포스트 클릭시 표시되는 “포스트 내용 상세보기” 가 들어갈 예정이다.<br />
+<br />
+<img src="/assets/img/jekyll_00002_002.png" style="width: 40rem;" /><br />
+지킬 마크다운 파일과 레이아웃의 동작 구조는 위와 같다.<br />
+많은 파일들에서 반복되는 부분을 레이아웃으로 작성한 뒤,<br />
+마크다운 파일에서 레이아웃을 호출하면 해당 레이아웃이 화면에 표시되고<br />
+레이아웃의 특정 부분에 마크다운 파일의 내용이 들어가도록 되어있다.<br />
+<br />
+나는 컨텐츠 부분에 리스트 또는 포스트 내용이 들어가도록 작성할 것이므로<br />
+상단바와 사이드바만 있는 레이아웃 한개만 작성해도 문제는 없겠지만..<br />
+<img src="/assets/img/jekyll_00002_003.png" style="width: 40rem;" /><br />
+위와 같이 매번 포스트에 제목이나 시간을 형식에 맞춰 <br />
+적어줘야 하는 불편함이 있기 때문에<br />
+리스트 레이아웃과 포스트 레이아웃을 따로 작성하기로 했다.<br />
+<br />
+레이아웃에서 공통으로 사용되는 부분은 별도 파일로 작성 후,<br />
+레이아웃에서 호출하려고 한다.<br />
+<br />
+대략적인 코드 구성은 <br />
+<br />
+(1) head에서 공통 CSS 호출, 사용자 스타일 작성<br />
+(2) body 상단에 상단바 작성<br />
+(3) 포스트 또는 리스트 표시<br />
+(4) 사이드바 <br />
+(5) 기타 js 호출, 사용자 스크립트 작성<br />
+<br />
+위와 같이 5 단계로 될 것 같으니, 1/2/4/5번을 별도 파일로 작성할 것이다.<br />
+<br />
+기타 상단바나 사이드바의 자세한 배치가 기획에 들어가면 좋겠지만<br />
+간단한 작성을 위해 생략하고 개발하면서 즉석으로 결정하기로 했다.<br />
+추가적으로, 모바일 화면에서의 responsive 한 사용을 위해 부트스트랩을 포함할 예정이다.<br />
+<br />
+<div class="post-chapter">2. 레이아웃 틀 작성하기</div>
+<br />
+지킬 블로그 디렉토리의 root에 _layouts와 _includes 디렉토리를 생성한다.<br />
+<span class="post-overegg">_layouts는 레이아웃을 위해 사용되는 디렉토리명, _includes는 호출할 조각 파일을 위해 사용되는 디렉토리명이다.</span><br />
+<br />
+우선 리스트 레이아웃의 틀을 다음과 같이 작성했다.<br />
+/_layouts/list-current.html<br />
+<div class="post-code">
+    <xmp>
+    <html>
+        <head>
+            <!-- 헤더 (link,style) -->
+        </head>
+        <body>
+            <div>
+                <!-- 상단바 -->
+                <!-- 컨텐츠 -->
+                <div id="container_contents">
+                    <div class="blog-contents-center">
+                        <div>
+                            <!-- 리스트 -->
+                            <div id="container_list">
+                            </div>
+                            <!-- 사이드바 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </body>
+        <foot>
+            <!-- 푸터 (script) -->
+        </foot>
+    </html>
+    </xmp>
+</div>
+<br />
+blog-contents-center 클래스에는 컨텐츠를 중앙에 정렬하는 스타일을 적용하고,<br />
+상단바에도 똑같이 적용해 줄 예정이다.<br />
+<br />
+혹시 나중에 레이아웃을 바꿀때를 대비해서<br />
+현재 사용하는 레이아웃은 -current를 뒤에 붙이고,<br />
+변경될때마다 이전 레이아웃의 이름을 -001, -002 등으로 변경할 것이다.<br />
+<br />
+이제 헤더와 푸터에 들어갈 내용을 간단하게 작성한다.<br />
+/_includes/header.html<br />
+<div class="post-code">
+    <xmp>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- 외부 CSS 추가 -->
+    <!-- 사용자 스타일 추가 -->
+    <style></style>
+    <title>Lizzy on Python</title>
+    </xmp>
+</div>
+<br />
+/_includes/footer.html<br />
+<div class="post-code">
+    <xmp>
+    <!-- 사용자 스크립트 추가 -->
+    <script></script>
+    <!-- 외부 js 추가 -->
+    </xmp>
+</div>
+<br />
+이렇게 대략적인 레이아웃 틀과 파일 나누기가 완료되었다.<br />
+</div>
+        <div class="post-list-footer mt-2 py-1">
+            <span class="post-list-category">jekyll</span>
+            <span class="post-list-uploadtime">2023-08-28 15:27</span>
+        </div>
+    </div>
+    <hr class="post-list-border">
+    
     <div class="post-list-item px-2" onclick="location.href = '/project/20230827/project_00001';">
-        <div class="post-list-subject">Project Nectarist 01 - 프로젝트 계획,분석</div>
+        <div class="post-list-subject">Project Nectarist [01] 프로젝트 계획,분석</div>
         <div class="post-list-excerpt mt-1">노트북을 바꾸면서 학부때부터 했던 모든 프로젝트를 잃어버린 나..<br />
 이번에 건강회복 겸 쉬는동안 간단하게 몇 가지 프로젝트를 진행해서<br />
 내가 쓸수있는 기술들을 좀 정리해보려고 한다.<br />
@@ -405,6 +610,7 @@
 칵테일만 가지고 글을 검색하는 것도 가능할 것이다.<br />
 <br />
 위의 내용을 정리하면 다음과 같다.<br />
+<br />
 <ol>
   <li>칵테일과 관련된 웹사이트를 만든다.<br /> 
 이 사이트는 회원제로 운영한다.<br /></li>
@@ -1196,7 +1402,7 @@ Python 2.7에서 3으로 오면서 input과 readline간의 차이가 적어졌�
     <hr class="post-list-border">
     
     <div class="post-list-item px-2" onclick="location.href = '/jekyll/20230823/jekyll_00001';">
-        <div class="post-list-subject">깃헙 블로그 시작하기 [1] 개발환경 구축</div>
+        <div class="post-list-subject">깃헙 블로그 시작하기 [01] 개발환경 구축</div>
         <div class="post-list-excerpt mt-1">공부한 내용을 저장하기 위해 새 github를 만들었는데,<br />
 github에서 블로그 같은 기능(github pages)을 지원한다고 해서 만들어보기로 했다.<br />
 윈도우 환경에서 구축을 시작! (⩌⩊⩌)<br />
@@ -1323,7 +1529,7 @@ jekyll server 실행시 변경사항이 있으면 자동으로 build 되는데,<
         <div class="sidebar-category-item" data-category="all" style="color: black!important;">
             <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
             All
-            <span class="sidebar-category-size">( 5 )</span>
+            <span class="sidebar-category-size">( 7 )</span>
         </div>
         <hr class="sidebar-category-border-bold">
         
@@ -1352,7 +1558,7 @@ jekyll server 실행시 변경사항이 있으면 자동으로 build 되는데,<
                 jekyll
                 <span class="sidebar-category-size">
                     
-                    ( 1 )
+                    ( 2 )
                     
                 </span>
             </div>
@@ -1362,7 +1568,7 @@ jekyll server 실행시 변경사항이 있으면 자동으로 build 되는데,<
                 project
                 <span class="sidebar-category-size">
                     
-                    ( 1 )
+                    ( 2 )
                     
                 </span>
             </div>
@@ -1384,9 +1590,20 @@ jekyll server 실행시 변경사항이 있으면 자동으로 build 되는데,<
     /* 사이드바 토글 */
     $("#btn_sidebar_open").click(function () {
         $("#container_sidebar").addClass("sidebar-open");
+        // popstate 이벤트용 더미 스테이트
+        console.log("pushstate");
+        history.pushState(null, null, null);
     });
     $("#btn_sidebar_close").click(function () {
-        $("#container_sidebar").removeClass("sidebar-open");
+        // popstate 이벤트를 통해 닫기
+        history.back();
+    });
+    /* 모바일 뒤로가기 이벤트시 사이드바 우선 닫기 */
+    $(window).on("popstate", function(e) {
+        console.log("popstate");
+        if($("#container_sidebar").hasClass("sidebar-open")){
+            $("#container_sidebar").removeClass("sidebar-open");
+        }
     });
     /* 카테고리 */
     $("#container_sidebar .sidebar-category-item").click(function () {

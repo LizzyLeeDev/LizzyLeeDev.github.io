@@ -1,0 +1,75 @@
+---
+layout: post-current
+title: Project Nectarist [02] 메뉴와 화면기획
+date: 2023-08-28 18:58:00 +0900
+categories: project
+---
+저번에 정리했던 큰 메뉴는 다음과 같다.<br>
+<br>
+1) 칵테일 정보<br>
+2) 칵테일 계산기<br>
+3) 커뮤니티<br>
+4) 칼럼<br>
+5) 공지사항<br>
+<br>
+사이트의 목적인 칵테일 정보 찾기와 칵테일 계산하기를 우선순위가 높은 메뉴로 보고,<br>
+다음으로 많이 사용할 것이라 생각되는 커뮤니티를 다음에 배치했다.<br>
+칼럼과 공지사항은 필요한 사람만 보는 메뉴라고 생각해 끝부분에 배치했다.<br>
+<br>
+<div class="post-chapter">1. 화면 정의</div><br>
+사용자가 있다는 점과 큰 메뉴를 토대로 발생할 수 있는 화면을 생각해보면..<br>
+<br>
+0-1) 메인화면<br>
+0-2) 로그인화면<br>
+0-3) 마이페이지/내 정보 보기<br>
+0-4) 마이페이지/내 작성글 보기(+덧글)<br>
+0-5) 마이페이지/내 냉장고<br>
+0-6) 관리자/메인 캐러셀 설정<br>
+0-7) 관리자/칼럼과 공지사항 관리<br>
+0-8) 관리자/칼럼과 공지사항 등록<br>
+1-1) 칵테일 목록<br>
+1-2) 칵테일 상세정보<br>
+2-1) 계산기 초기화면 (냉장고를 보여주고, 재료를 수정, 계산하기)<br>
+2-2) 계산기 결과화면 (계산된 칵테일 목록, 추천 칵테일 목록)<br>
+3-1) 게시글 목록<br>
+3-2) 게시글 상세보기<br>
+3-3) 게시글 작성하기<br>
+4-1) 칼럼 목록<br>
+4-2) 칼럼 상세보기<br>
+5-1) 공지사항 목록<br>
+5-2) 공지사항 상세보기<br>
+6-1) 아이디 찾기<br>
+6-2) 비밀번호 찾기<br>
+6-3) 회원가입<br>
+<br>
+등이 있겠다.<br>
+추가적으로 검색기능, 사용자 정보 확인, 사용자간 쪽지 기능들을 생각할 수 있겠지만<br>
+우선순위가 낮은 기능이라고 생각되어 우선적인 구현에서는 제외했다.<br>
+<br>
+<div class="post-chapter">2. 화면 설계</div><br>
+구체화된 화면을 화면기획서로 작성하면 다음과 같다.<br>
+똑같이 동작하는 화면은 중간중간 생략했다.<br>
+<img src="{{ "/assets/img/project_00002_001.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
+<img src="{{ "/assets/img/project_00002_002.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
+<img src="{{ "/assets/img/project_00002_003.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
+<img src="{{ "/assets/img/project_00002_004.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
+<img src="{{ "/assets/img/project_00002_005.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
+<img src="{{ "/assets/img/project_00002_006.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
+<img src="{{ "/assets/img/project_00002_007.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
+<img src="{{ "/assets/img/project_00002_008.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
+<img src="{{ "/assets/img/project_00002_009.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
+<img src="{{ "/assets/img/project_00002_010.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
+<img src="{{ "/assets/img/project_00002_011.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
+<img src="{{ "/assets/img/project_00002_012.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
+<img src="{{ "/assets/img/project_00002_013.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
+<img src="{{ "/assets/img/project_00002_014.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
+<img src="{{ "/assets/img/project_00002_015.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
+<img src="{{ "/assets/img/project_00002_016.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
+<img src="{{ "/assets/img/project_00002_017.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
+<img src="{{ "/assets/img/project_00002_018.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
+(4-2번 3-2와 같아 생략)<br>
+<img src="{{ "/assets/img/project_00002_019.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
+(5-2번 3-2와 같아 생략)<br>
+<img src="{{ "/assets/img/project_00002_020.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
+<img src="{{ "/assets/img/project_00002_021.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
+<img src="{{ "/assets/img/project_00002_022.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>

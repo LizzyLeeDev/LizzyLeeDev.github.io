@@ -254,6 +254,7 @@
         background-color: #F3F3F3;
         padding: 0.25rem 0.5rem;
         border-radius: 0.25rem;
+        overflow-x: auto;
     }
     .post-overegg {
         font-size: 0.7rem;
@@ -1165,7 +1166,7 @@ Python 2.7에서 3으로 오면서 input과 readline간의 차이가 적어졌�
         <div class="sidebar-category-item" data-category="all" style="color: black!important;">
             <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
             All
-            <span class="sidebar-category-size">( 5 )</span>
+            <span class="sidebar-category-size">( 7 )</span>
         </div>
         <hr class="sidebar-category-border-bold">
         
@@ -1194,7 +1195,7 @@ Python 2.7에서 3으로 오면서 input과 readline간의 차이가 적어졌�
                 jekyll
                 <span class="sidebar-category-size">
                     
-                    ( 1 )
+                    ( 2 )
                     
                 </span>
             </div>
@@ -1204,7 +1205,7 @@ Python 2.7에서 3으로 오면서 input과 readline간의 차이가 적어졌�
                 project
                 <span class="sidebar-category-size">
                     
-                    ( 1 )
+                    ( 2 )
                     
                 </span>
             </div>
@@ -1226,9 +1227,20 @@ Python 2.7에서 3으로 오면서 input과 readline간의 차이가 적어졌�
     /* 사이드바 토글 */
     $("#btn_sidebar_open").click(function () {
         $("#container_sidebar").addClass("sidebar-open");
+        // popstate 이벤트용 더미 스테이트
+        console.log("pushstate");
+        history.pushState(null, null, null);
     });
     $("#btn_sidebar_close").click(function () {
-        $("#container_sidebar").removeClass("sidebar-open");
+        // popstate 이벤트를 통해 닫기
+        history.back();
+    });
+    /* 모바일 뒤로가기 이벤트시 사이드바 우선 닫기 */
+    $(window).on("popstate", function(e) {
+        console.log("popstate");
+        if($("#container_sidebar").hasClass("sidebar-open")){
+            $("#container_sidebar").removeClass("sidebar-open");
+        }
     });
     /* 카테고리 */
     $("#container_sidebar .sidebar-category-item").click(function () {
