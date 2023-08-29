@@ -73,3 +73,5 @@ categories: project
 <img src="{{ "/assets/img/project_00002_020.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
 <img src="{{ "/assets/img/project_00002_021.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
 <img src="{{ "/assets/img/project_00002_022.jpg" }}" style="width: 40rem; max-width: 100%;"/><br>
+<br>
+<a href="/assets/file/230828_Nectarist_ui.pptx"><i class="fa fa-file"></i> 화면계획서 파일 </a>
