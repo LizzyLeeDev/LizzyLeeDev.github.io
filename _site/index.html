@@ -369,10 +369,396 @@
     <!-- 포스트 카테고리명 -->
     <div class="category-name">
         All
-        <span class="category-list-size">총 8건</span>
+        <span class="category-list-size">총 10건</span>
     </div>
     <hr class="post-list-border">
     <!-- 포스트 리스트 -->
+    
+    <div class="post-list-item px-2" onclick="location.href = '/project/20230831/project_00005';">
+        <div class="post-list-subject">Project Nectarist [05] Django를 이용한 개발</div>
+        <div class="post-list-excerpt mt-1">python 파일을 수정할때마다 자동으로 새로고침이 되고<br />
+디렉토리도 밖으로 뺐으니 외부에 있는 nectarist_web을 이용해서<br />
+개발을 시작할 수 있겠다.<br />
+<br />
+<div class="post-chapter">1. url과 공통 템플릿</div>
+<br />
+<br />
+사이트에 기본 접속하면 메인 화면이 표시되고,<br />
+사이트/cocktailinfo 는 칵테일정보..등으로 카테고리를 나눌 것이다.<br />
+<br />
+일단 메인 화면부터 작성해보겠다.<br />
+<br />
+urls.py<br />
+<div class="post-code">
+from django.urls import path<br />
+<br />
+from . import views<br />
+<br />
+urlpatterns = [<br />
+&nbsp;&nbsp;# 맵핑url, view.py, 별칭<br />
+&nbsp;&nbsp;path("", views.main, name="main"),<br />
+]<br />
+</div>
+일단 /로 들어오면 메인화면으로 보내기로 했으니,<br />
+““를 views.py의 main과 맵핑한다.<br />
+<br />
+views.py<br />
+<div class="post-code">
+from django.http import HttpResponse<br />
+from django.shortcuts import render<br />
+<br />
+def main(request):<br />
+&nbsp;&nbsp;return render(request, 'sites/main.html', {})<br />
+</div>
+main은 sites/main.html을 부르도록 처리한다.<br />
+<br />
+각 카테고리에서 사용될 화면은 nectarist_web/sites에 추가할 것이다.<br />
+sites 디렉토리를 만들어주고, 여기에 main.html을 작성한다.<br />
+<br />
+<img src="/assets/img/project_00005_001.jpg" style="width: 40rem;" /><br />
+메인화면에서 빨간색으로 표시된 부분이 모든 화면에서 공통적으로 표시되는 곳으로,<br />
+해당 부분부터 작업을 할 것이다.<br />
+<br />
+공통적으로 사용할 화면은 nectarist_web/templates에 추가할 것이다.<br />
+templates 디렉토리를 만들고, 여기에 layout.html을 작성한다.<br />
+<span class="post-overegg">사이트의 가장 상위의 화면이 될 파일이다.</span><br />
+<br />
+<img src="/assets/img/project_00005_002.jpg" style="width: 40rem;" /><br />
+css는 header로, js는 footer로 나눠서 관리하고
+화면은 위와 같이 4개의 구역으로 파일을 나눌 것이다.
+<br />
+<div class="post-chapter">2. 개발과 디렉토리 구조</div>
+<br />
+<br />
+<img src="/assets/img/project_00005_003.png" style="width: 40rem;" /><br />
+<br />
+화면계획서를 참고로 하여 위와 같이 화면을 작성했다.<br />
+실제 DB 데이터가 들어가야 하는 부분은 아직 샘플 데이터로 작성했다.<br />
+<br />
+현재 디렉토리 구조는 다음과 같다.<br />
+<br />
+<img src="/assets/img/project_00005_004.png" style="width: 40rem;" /><br />
+<br />
+다음은 docker로 DB를 띄워서 사이트와 연동을 할 예정이다.
+</div>
+        <div class="post-list-footer mt-2 py-1">
+            <span class="post-list-category">project</span>
+            <span class="post-list-uploadtime">2023-08-31 15:00</span>
+        </div>
+    </div>
+    <hr class="post-list-border">
+    
+    <div class="post-list-item px-2" onclick="location.href = '/project/20230831/project_00004';">
+        <div class="post-list-subject">Project Nectarist [04] Docker를 이용한 개발환경</div>
+        <div class="post-list-excerpt mt-1">이번 프로젝트의 환경은 Django-uWSGI-Nginx + MySQL로 정했다.<br />
+학부생때 썼던 추억이 있어서 선택했다.ദ്ദി<em>ˊᗜˋ</em>)<br />
+개발이 완료되고나면 AWS 등에 올릴까 고민중이다.<br />
+<br />
+로컬에서 개발한 다음 AWS에 올리려면 <br />
+노트북에 DB나 서버를 덕지덕지 깔았다가 지워야 한다는 얘기인데..<br />
+노트북에 뭔가 까는걸 싫어하는 편이라 어떻게 할지 고민하다가,<br />
+이번 프로젝트에 Docker를 적용하기로 했다.<br />
+<br />
+<img src="/assets/img/project_00004_001.png" style="width: 40rem;" /><br />
+<br />
+어차피 한 덩어리로 돌아갈 Django-uWSGI-Nginx를<br />
+하나의 컨테이너로 붙여서 돌리고,<br />
+소스코드 부분은 따로 볼륨을 마운트 해서 돌리면 좋을 것 같다.<br />
+그러면 AWS에 올릴때 단순히 이미지 돌리고, 소스코드만 올리면 되겠다.<br />
+<br />
+경험상 서버랑 DB를 따로 재시작하는 경우가 대부분이었어서<br />
+DB는 별도의 컨테이너로 분리할 예정이다.<br />
+DB 데이터도 외부 볼륨을 마운트하면 괜찮게 사용할 수 있지 않을까.<br />
+<br />
+<div class="post-chapter">1. Docker 설치하기</div>
+<br />
+<br />
+<img src="/assets/img/project_00004_002.png" style="width: 40rem;" /><br />
+<br />
+<img src="/assets/img/project_00004_003.png" style="width: 40rem;" /><br />
+Docker 홈페이지에서 Docker를 다운받아서 설치해줬다.<br />
+<br />
+<img src="/assets/img/project_00004_004.png" style="width: 40rem;" /><br />
+실행시키면 요상한 에러가 뜨는데, <br />
+WSL은 윈도우에서 리눅스 기능을 사용할 수 있게 해주는 거라고 한다.<br />
+윈10부터 기본 탑재되어있다는데, 최근에 윈11로 업데이트한게 영향이 있을지도 모르겠다.<br />
+<br />
+<img src="/assets/img/project_00004_005.png" style="width: 40rem;" /><br />
+업데이트로 간단하게 해결했다.<br />
+<br />
+<img src="/assets/img/project_00004_006.png" style="width: 40rem;" /><br />
+윈도우에서의 도커 데스크탑인데, ui도 귀엽고 상당히 편리하다.<br />
+터미널과 같이 쓰기에 딱 좋은 듯 하다.<br />
+<br />
+<div class="post-chapter">2. Docker Image 만들기</div>
+<br />
+<br />
+기존에 이미 Django-uWSGI-Nginx 이미지가 있지만, <br />
+내가 쓰려는 의도대로 쓸 자신이 없어서 직접 이미지를 만들기로 했다.<br />
+<br />
+이미지 생성을 위해 Dockerfile을 다음과 같이 만들었다.<br />
+<br />
+<div class="post-code">
+FROM python<br />
+<br />
+RUN rm -rf /var/lib/apt/lists/*<br />
+RUN apt-get update<br />
+RUN apt-get -y install vim<br />
+RUN apt-get -y install systemctl<br />
+RUN apt-get -y install nginx<br />
+RUN apt-get -y install gcc<br />
+RUN apt-get -y install libc-dev<br />
+RUN pip3 install django<br />
+RUN pip3 install uwsgi<br />
+<br />
+CMD ["nginx", "-g", "daemon off;"]<br />
+<br />
+EXPOSE 80
+</div>
+<br />
+python 기본 이미지를 베이스로 시작했는데,<br />
+slim이나 alpine은 구조나 기능들이 평소 사용하던것과 많이 다르다보니<br />
+다루기 힘들어서 선택할 수가 없었다. (apt도 안되고 systemd도 없다!)<br />
+<br />
+rm-rf를 통해 apt 관련 오류를 없애주고,<br />
+apt 버전이 낮아 업데이트 처리했다.<br />
+<span class="post-overegg">컨테이너를 빌드할때마다 apt 버전이 달라질 수 있으니 좋은 방법은 아닐 것이다.</span><br />
+파일 추가와 서비스 관리를 위해 vim과 systemctl을 먼저 깔았다.<br />
+<span class="post-overegg">systemctl이 먼저 깔려있어야 nginx를 systemctl로 움직일 수가 있다.</span><br />
+nginx를 설치하고, uwsgi 빌드에 필요한 gcc와 libc-dev를 추가했다.<br />
+pip로는 django와 uwsgi를 설치했다.<br />
+기본적으로 항상 실행되어야 하는 두가지 중nginx를 daemon off 했고,<br />
+uwsgi는 서비스로 등록할 예정이다.<br />
+<br />
+웹서버답게 포트 80을 expose했다.<br />
+<br />
+<img src="/assets/img/project_00004_007.png" style="width: 40rem;" /><br />
+<br />
+위와 같이 빌드를 마친 후, 해당 이미지를 살짝 수정하기 위해 컨테이너로 만들어 접속한다.<br />
+<br />
+<div class="post-code">
+&gt; cd /usr<br />
+&gt; django-admin startproject nectarist<br />
+</div>
+<br />
+위 명령어를 통해 /usr/nectarist에 새 django 프로젝트를 만들었다.<br />
+이때 /usr/nectarist의 구조는 다음과 같다.<br />
+<br />
+<div class="post-code">
+/usr/nectarist<br />
+&nbsp;ㄴmanage.py<br />
+&nbsp;ㄴnectarist<br />
+&nbsp;&nbsp;ㄴ__init__.py<br />
+&nbsp;&nbsp;ㄴasgi.py<br />
+&nbsp;&nbsp;ㄴsettings.py<br />
+&nbsp;&nbsp;ㄴurls.py<br />
+&nbsp;&nbsp;ㄴwsgi.py<br />
+</div>
+<br />
+접근을 위해 /usr/nectarist/nectarist/settings.py를 수정한다.<br />
+<br />
+최상단에 다음 코드 추가 <br />
+<div class="post-code">
+import os
+</div>
+<br />
+ALLOWED_HOSTS <br />
+<div class="post-code">
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost']
+</div>
+<span class="post-overegg">하나만 넣어도 되지만..넉넉하게 모든 로컬호스트를 넣었다</span><br />
+<br />
+TEMPLASTES 의 DIRS 부분 수정:<br />
+<div class="post-code">
+TEMPLATES = [<br />
+&nbsp;&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;"BACKEND": "django.template.backends.django.DjangoTemplates",<br />
+&nbsp;&nbsp;&nbsp;&nbsp;"DIRS": [os.path.join(BASE_DIR, "nectarist_web")]<br />
+</div>
+<br />
+STATIC_URL 수정 및 STATICFILES_DIRS 추가 :<br />
+<div class="post-code">
+STATIC_URL = '/static/'<br />
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'nectarist_web', 'static')]<br />
+</div>
+<br />
+css,js,img등을 django-nginx간 연결하기 위해선 static 폴더 설정이 필요하다.<br />
+나는 nectarist_web만 외부로 빼서 작업하기 때문에 <br />
+해당 폴더 내의 /usr/nectarist/nectarist/static 폴더를 정적 폴더로 설정했다.<br />
+<br />
+/usr/nectarist로 돌아와서, 설정파일을 위한 conf와 로그를 위한 logs 디렉토리를 만들었다.<br />
+<br />
+<div class="post-code">
+&gt; cd /usr/nectarist
+&gt; mkdir conf<br />
+&gt; mkdir logs<br />
+</div>
+<br />
+이제 /usr/nectarist/conf로 이동해서, <br />
+uWSGI 서비스에 사용할 설정파일을 vim으로 생성한다.<br />
+<br />
+<div class="post-code">
+&gt; cd /usr/nectarist/conf<br />
+&gt; vim nectarist-uwsgi.ini
+</div>
+<br />
+<div class="post-code">
+[uwsgi]<br />
+chdir = /usr/nectarist<br />
+module = nectarist.wsgi<br />
+<br />
+socket = :8000<br />
+<br />
+vacuum = true<br />
+logto = /usr/nectarist/logs/uwsgi.log
+<br />
+py-autoreload = 1<br />
+</div>
+<br />
+chdir은 프로젝트 기본 경로고, module은 프로젝트 안의 wsgi.py를 선택하는 내용이다.<br />
+socket은 nginx가 upstream을 8000부터 찾으니 8000으로 설정했다.<br />
+log는 아까 만든 logs 폴더로 저장하도록 처리했다.<br />
+py-autoreload는 python파일이 변경될때마다 uwsgi를 재실행시켜주는 소중한 옵션이다.<br />
+<br />
+다음은 /etc/systemd/system/ 에 방금 만든 uwsgi 설정파일을 서비스로 만든다.<br />
+<br />
+<div class="post-code">
+&gt; cd /etc/systemd/system<br />
+&gt; vim uwsgi.service
+</div>
+<br />
+<div class="post-code">
+[Unit]<br />
+Description=uWSGI service<br />
+<br />
+[Service]<br />
+ExecStart=/usr/local/bin/uwsgi -i /usr/nectarist/conf/nectarist-uwsgi.ini<br />
+<br />
+Restart=always<br />
+Type=notify<br />
+StandardError=syslog<br />
+NotifyAccess=all<br />
+<br />
+[Install]<br />
+WantedBy=multi-user.target<br />
+</div>
+<br />
+<div class="post-code">
+&gt; systemctl enable uwsgi
+</div>
+<br />
+systemctl을 통해 uwsgi 서비스를 등록했으니,<br />
+다음은 /etc/nginx/conf.d로 이동해 nginx를 설정해준다.<br />
+<br />
+<div class="post-code">
+&gt; cd /etc/nginx/conf.d<br />
+&gt; vim nectarist-nginx.conf
+</div>
+<br />
+<div class="post-code">
+server {<br />
+&nbsp;&nbsp;listen 80;<br />
+&nbsp;&nbsp;server_name localhost;<br />
+&nbsp;&nbsp;charset utf-8;<br />
+<br />
+&nbsp;&nbsp;location / {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;uwsgi_pass 127.0.0.1:8000;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;include /etc/nginx/uwsgi_params;<br />
+&nbsp;&nbsp;}<br />
+<br />
+&nbsp;&nbsp;location /static/ {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;alias /usr/nectarist/nectarist_web/static/;<br />
+&nbsp;&nbsp;}<br />
+}
+</div>
+<br />
+settings.py에서 설정한 static 폴더를 alias에서도 똑같이 잡아준다.
+<br />
+이제 작업 내용을 이미지에 커밋한다.<br />
+<br />
+<div class="post-code">
+&gt; docker commit 컨테이너ID 이미지/태그
+</div>
+<br />
+이제 사용하던 컨테이너를 없애고 커밋한 이미지로 새 컨테이너를 뽑아준다.<br />
+nginx는 컨테이너 실행시 켜지다보니 컨테이너를 다시 뽑아야 설정이 반영된다.<br />
+uwsgi를 재시작 해준다. <br />
+(컨테이너를 실행할때 매번 재시작 해줘야 하는게 큰 흠인데, 다른 방법을 찾아봐야겠다.)<br />
+<br />
+<div class="post-code">
+&gt; systemctl daemon-reload<br />
+&gt; systemctl restart uwsgi
+</div>
+<br />
+잘 동작되지 않으면 /var/log/nginx/error.log를 확인하면 좋다.<br />
+connect failed~connecting to upstream~같은 오류가 있다면 nginx가 uwsgi를 찾는 동작중이니,uswgi쪽을 수정 및 재시작하는게 필요하고, 해당 오류 없이 bind() failed등이 표시되면<br />
+nginx문제니 커밋 후 컨테이너를 다시 뽑아서 확인한다.<br />
+<br />
+<img src="/assets/img/project_00004_008.png" style="width: 40rem;" /><br />
+<br />
+localhost:80번으로 접속했을 때 위와 같이 귀여운 django 화면이 표시되면 성공이다.<br />
+<br />
+<div class="post-chapter">3. volume mount</div>
+<br />
+<br />
+이제 django app을 만들고, 해당 앱의 디렉토리를 로컬로 분리할 것이다.<br />
+일단 django root(/usr/nectarist) django app을 만들어준다.<br />
+<br />
+<div class="post-code">
+&gt; python manage.py startapp nectarist_web
+</div>
+<br />
+nextarist_web이라는 디렉토리가 생기는데,<br />
+볼륨을 저장할 디렉토리에 해당 디렉토리를 통째로 docker cp 해준다.<br />
+<br />
+<div class="post-code">
+&gt; docker cp 컨테이너ID:/usr/nectarist/nectarist_web 볼륨을저장할디렉토리/nectarist_web
+</div>
+<br />
+통째로 복사가 끝났다면 이제 마운트를 통해 디렉토리를 가져올 것이기 때문에<br />
+docker 내부에 있는 해당 디렉토리는 삭제한다.<br />
+<br />
+이제 프로젝트 설정 경로(/usr/nectarist/nectarist)에 있는 urls.py를 수정해준다.<br />
+<br />
+<div class="post-code">
+urlpatterns = [<br />
+&nbsp;&nbsp;path('', include('nectarist_web.urls')),<br />
+&nbsp;&nbsp;path('admin/', admin.site.urls),<br />
+]
+</div>
+<br />
+위쪽의 path를 추가하는데, 웹사이트 url을 url.com이라고 가정했을때<br />
+url.com 또는 그 밑으로 들어온 경로는 전부 새로 만든 앱인 nectarist_web으로 이동하도록 처리했다.<br />
+<br />
+여기까지의 정보를 이미지에 docker commit 해준다. <br />
+<br />
+이제 볼륨을 저장할 디렉토리에 docker-compose.yml 파일을 만든 뒤, 내용을 다음과 같이 적어준다.<br />
+<br />
+<div class="post-code">
+version: "3.7"<br />
+<br />
+services:<br />
+&nbsp;&nbsp;app: <br />
+&nbsp;&nbsp;&nbsp;&nbsp;image: nectarist/nginx-django:2.0.0<br />
+&nbsp;&nbsp;&nbsp;&nbsp;ports:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 80:80<br />
+&nbsp;&nbsp;&nbsp;&nbsp;volumes:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ./nectarist_web:/usr/nectarist/nectarist_web<br />
+</div>
+<br />
+image 부분은 아까 새로 commit한 이미지를 적어준다.<br />
+ports는 -p 옵션과 같게 설정한다.<br />
+volumes는 바깥쪽 경로:docker 내부 경로로 적는다.<br />
+<br />
+이제 이 디렉토리에서 docker-compose up (-d)을 실행하면 마운트된 볼륨과 함께 신선한 컨테이너가 생긴다.<br />
+바깥의 마운트된 디렉토리를 수정하면서 개발을 진행하면 된다.
+</div>
+        <div class="post-list-footer mt-2 py-1">
+            <span class="post-list-category">project</span>
+            <span class="post-list-uploadtime">2023-08-31 01:44</span>
+        </div>
+    </div>
+    <hr class="post-list-border">
     
     <div class="post-list-item px-2" onclick="location.href = '/project/20230830/project_00003';">
         <div class="post-list-subject">Project Nectarist [03] 테이블 설계</div>
@@ -1610,7 +1996,7 @@ jekyll server 실행시 변경사항이 있으면 자동으로 build 되는데,<
         <div class="sidebar-category-item" data-category="all" style="color: black!important;">
             <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
             All
-            <span class="sidebar-category-size">( 8 )</span>
+            <span class="sidebar-category-size">( 10 )</span>
         </div>
         <hr class="sidebar-category-border-bold">
         
@@ -1649,7 +2035,7 @@ jekyll server 실행시 변경사항이 있으면 자동으로 build 되는데,<
                 project
                 <span class="sidebar-category-size">
                     
-                    ( 3 )
+                    ( 5 )
                     
                 </span>
             </div>
