@@ -79,8 +79,7 @@ apt 버전이 낮아 업데이트 처리했다.<br>
 <span class="post-overegg">systemctl이 먼저 깔려있어야 nginx를 systemctl로 움직일 수가 있다.</span><br>
 nginx를 설치하고, uwsgi 빌드에 필요한 gcc와 libc-dev를 추가했다.<br>
 pip로는 django와 uwsgi를 설치했다.<br>
-기본적으로 항상 실행되어야 하는 두가지 중nginx를 daemon off 했고,<br>
-uwsgi는 서비스로 등록할 예정이다.<br>
+기본적으로 항상 실행되어야 하는 두가지 중 nginx를 daemon off 했다. (실행시키고 꺼버리기 위해서)<br>
 <br>
 웹서버답게 포트 80을 expose했다.<br>
 <br>
@@ -116,9 +115,9 @@ import os
 <br>
 ALLOWED_HOSTS <br>
 <div class="post-code">
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['localhost']
 </div>
-<span class="post-overegg">하나만 넣어도 되지만..넉넉하게 모든 로컬호스트를 넣었다</span><br>
+<span class="post-overegg">일단 로컬에서만 개발할거라 로컬호스트만 넣었다</span><br>
 <br>
 TEMPLASTES 의 DIRS 부분 수정:<br>
 <div class="post-code">
@@ -126,7 +125,23 @@ TEMPLATES = [<br>
 &nbsp;&nbsp;{<br>
 &nbsp;&nbsp;&nbsp;&nbsp;"BACKEND": "django.template.backends.django.DjangoTemplates",<br>
 &nbsp;&nbsp;&nbsp;&nbsp;"DIRS": [os.path.join(BASE_DIR, "nectarist_web")]<br>
-</div><br>
+</div>
+<span class="post-overegg">프로젝트 밑의 "nectarist_web" 디렉토리에 기본 자리를 잡았다</span><br><br>
+INSTALLED_APPS 부분 확인:<br>
+<div class="post-code">
+INSTALLED_APPS = [<br>
+&nbsp;&nbsp;'django.contrib.admin',<br>
+&nbsp;&nbsp;'django.contrib.auth',<br>
+&nbsp;&nbsp;'django.contrib.contenttypes',<br>
+&nbsp;&nbsp;'django.contrib.sessions',<br>
+&nbsp;&nbsp;'django.contrib.messages',<br>
+&nbsp;&nbsp;'django.contrib.staticfiles',<br>
+&nbsp;&nbsp;'nectarist_web.apps.NectaristWebConfig',<br>
+]
+</div>
+<br>
+가장 마지막 부분에 (내가 만든 앱 이름).apps.(apps.py에 있는 class명)이 없으면 적어준다.<br>
+<br>
 STATIC_URL 수정 및 STATICFILES_DIRS 추가 :<br>
 <div class="post-code">
 STATIC_URL = '/static/'<br>
@@ -166,10 +181,8 @@ logto = /usr/nectarist/logs/uwsgi.log
 py-autoreload = 1<br>
 </div>
 <br>
-chdir은 프로젝트 기본 경로고, module은 프로젝트 안의 wsgi.py를 선택하는 내용이다.<br>
-socket은 nginx가 upstream을 8000부터 찾으니 8000으로 설정했다.<br>
-log는 아까 만든 logs 폴더로 저장하도록 처리했다.<br>
-py-autoreload는 python파일이 변경될때마다 uwsgi를 재실행시켜주는 소중한 옵션이다.<br>
+chdir은 프로젝트 기본 경로고, log는 아까 만든 logs 폴더로 저장하도록 처리했다.<br>
+py-autoreload는 python파일이 변경될때마다 uwsgi를 재실행시켜주는 옵션이다.<br>
 <br>
 다음은 /etc/systemd/system/ 에 방금 만든 uwsgi 설정파일을 서비스로 만든다.<br>
 <br>
@@ -234,10 +247,9 @@ settings.py에서 설정한 static 폴더를 alias에서도 똑같이 잡아준�
 이제 사용하던 컨테이너를 없애고 커밋한 이미지로 새 컨테이너를 뽑아준다.<br>
 nginx는 컨테이너 실행시 켜지다보니 컨테이너를 다시 뽑아야 설정이 반영된다.<br>
 uwsgi를 재시작 해준다. <br>
-(컨테이너를 실행할때 매번 재시작 해줘야 하는게 큰 흠인데, 다른 방법을 찾아봐야겠다.)<br>
+(실행 순서 때문인지 컨테이너를 키고 uwsgi를 항상 재시작해줘야 하는 불편함이 있다. 다른 방법이 필요하다.)<br>
 <br>
 <div class="post-code">
-> systemctl daemon-reload<br>
 > systemctl restart uwsgi
 </div>
 <br>
@@ -247,7 +259,7 @@ nginx문제니 커밋 후 컨테이너를 다시 뽑아서 확인한다.<br>
 <br>
 <img src="{{ "/assets/img/project_00004_008.png" }}" style="width: 40rem;"/><br>
 <br>
-localhost:80번으로 접속했을 때 위와 같이 귀여운 django 화면이 표시되면 성공이다.<br>
+localhost:80번으로 접속했을 때 위와 같이 귀여운 django 화면이 표시되었으니 성공이다.<br>
 <br>
 <div class="post-chapter">3. volume mount</div><br>
 <br>
