@@ -1639,7 +1639,21 @@ blog-contents-center 클래스에는 컨텐츠를 중앙에 정렬하는 스타�
 </div>
 <br />
 Python 2.7에서 3으로 오면서 input과 readline간의 차이가 적어졌다는 것 같다.<br />
-<span class="post-overegg" style="color: blue; border: 0;">출처: https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwiOmq7mwvqAAxUNklYBHVTwAxMQFnoECAkQAQ&amp;url=https%3A%2F%2Fstackoverflow.com%2Fquestions%2F22623528%2Fsys-stdin-readline-and-input-which-one-is-faster-when-reading-lines-of-inpu&amp;usg=AOvVaw1wLpCxvHWwQYYsZh41ry32&amp;opi=89978449</span>
+<span class="post-overegg" style="color: blue; border: 0;">출처: https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwiOmq7mwvqAAxUNklYBHVTwAxMQFnoECAkQAQ&amp;url=https%3A%2F%2Fstackoverflow.com%2Fquestions%2F22623528%2Fsys-stdin-readline-and-input-which-one-is-faster-when-reading-lines-of-inpu&amp;usg=AOvVaw1wLpCxvHWwQYYsZh41ry32&amp;opi=89978449</span><br />
+<br />
+<div class="post-chapter">기타 중요한 내용</div>
+<br />
+🔸파이썬은 리스트에서 마이너스 인덱스를 지원하므로 좌표를 다룰때 주의<br />
+<br />
+🔸이차원 리스트 선언시 주의<br />
+<br />
+<div class="post-code">
+    &gt; <span style="color: blue;"># list = [[0] * x] * y 로 선언시</span><br />
+    &gt; <span style="color: blue;"># [0] * x 부분이 다 같은 오브젝트로 처리됨 (얇은 복사)</span><br />
+    <br />
+    &gt; <span style="color: blue;"># 다음과 같이 처리 필요</span><br />
+    &gt; list = [[0 for i in range(x)] for j in range(y)]<br />
+</div>
 </div>
         <div class="post-list-footer mt-2 py-1">
             <span class="post-list-category">python</span>
@@ -2461,7 +2475,7 @@ jekyll server 실행시 변경사항이 있으면 자동으로 build 되는데,<
             </div>
             <div class="sidebar-profile-item">
                 <span class="sidebar-profile-icon "><i class="fa fa-comment"></i></span>
-                파이썬 좋아😊
+                페이징은 포스트가 더 쌓이면..
             </div>
         </div>
     </div>
