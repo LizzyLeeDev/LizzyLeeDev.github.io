@@ -432,7 +432,7 @@ Python 2.7에서 3으로 오면서 input과 readline간의 차이가 적어졌�
 <br />
 <div class="post-chapter">기타 중요한 내용</div>
 <br />
-🔸파이썬은 리스트에서 마이너스 인덱스를 지원하므로 좌표를 다룰때 주의<br />
+🔸파이썬은 리스트에서 마이너스 인덱스를 지원하므로 좌표를 다룰때 주의 (대신 0 &lt;= i &lt; max 가능)<br />
 <br />
 🔸이차원 리스트 선언시 주의<br />
 <br />
@@ -443,6 +443,10 @@ Python 2.7에서 3으로 오면서 input과 readline간의 차이가 적어졌�
     &gt; <span style="color: blue;"># 다음과 같이 처리 필요</span><br />
     &gt; list = [[0 for i in range(x)] for j in range(y)]<br />
 </div>
+<br />
+🔸재귀 사용시 sys.setrecursionlimit(x)로 재귀한도 증가<br />
+<br />
+🔸방문 여부는 visited - not in으로 검사하지 말고 (메모리 충분하면) 리스트로 검사하자<br />
 </div>
         <div class="post-list-footer mt-2 py-1">
             <span class="post-list-category">python</span>
@@ -1180,7 +1184,7 @@ Python 2.7에서 3으로 오면서 input과 readline간의 차이가 적어졌�
         <div class="sidebar-category-item" data-category="all" style="color: black!important;">
             <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
             All
-            <span class="sidebar-category-size">( 14 )</span>
+            <span class="sidebar-category-size">( 15 )</span>
         </div>
         <hr class="sidebar-category-border-bold">
         
@@ -1199,7 +1203,7 @@ Python 2.7에서 3으로 오면서 input과 readline간의 차이가 적어졌�
                 algorithm
                 <span class="sidebar-category-size">
                     
-                    ( 1 )
+                    ( 2 )
                     
                 </span>
             </div>

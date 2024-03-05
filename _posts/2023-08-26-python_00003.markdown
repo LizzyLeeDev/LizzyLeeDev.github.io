@@ -57,7 +57,7 @@ Python 2.7에서 3으로 오면서 input과 readline간의 차이가 적어졌�
 <span class="post-overegg" style="color: blue; border: 0;">출처: https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiOmq7mwvqAAxUNklYBHVTwAxMQFnoECAkQAQ&url=https%3A%2F%2Fstackoverflow.com%2Fquestions%2F22623528%2Fsys-stdin-readline-and-input-which-one-is-faster-when-reading-lines-of-inpu&usg=AOvVaw1wLpCxvHWwQYYsZh41ry32&opi=89978449</span><br>
 <br>
 <div class="post-chapter">기타 중요한 내용</div><br>
-🔸파이썬은 리스트에서 마이너스 인덱스를 지원하므로 좌표를 다룰때 주의<br>
+🔸파이썬은 리스트에서 마이너스 인덱스를 지원하므로 좌표를 다룰때 주의 (대신 0 <= i < max 가능)<br>
 <br>
 🔸이차원 리스트 선언시 주의<br>
 <br>
@@ -68,3 +68,7 @@ Python 2.7에서 3으로 오면서 input과 readline간의 차이가 적어졌�
     > <span style="color: blue;"># 다음과 같이 처리 필요</span><br>
     > list = [[0 for i in range(x)] for j in range(y)]<br>
 </div>
+<br>
+🔸재귀 사용시 sys.setrecursionlimit(x)로 재귀한도 증가<br>
+<br>
+🔸방문 여부는 visited - not in으로 검사하지 말고 (메모리 충분하면) 리스트로 검사하자<br>
