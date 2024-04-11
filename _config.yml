@@ -20,7 +20,7 @@
 profile:
   mastername: Lizzy Lee (이지연)
   masteremail: leezy.lee.dev@gmail.com
-  mastercomment: 페이징은 포스트가 더 쌓이면..
+  mastercomment: 취직해야해 ̗̀(ꀬ⏖ꀬ∴)
 
 abountlink: /category/about
 
@@ -35,6 +35,11 @@ themecolor:
   sidebarcategoryicon: FF6FC4
 
 permalink: /:categories/:year:month:day/:title
+
+plugins:
+  - jekyll-paginate
+paginate: 5
+paginate_path: "/posts/page/:num"
 
 # Build settings
 # plugins:

@@ -178,6 +178,27 @@
     .post-list-uploadtime {
         justify-self: flex-end;
     }
+    /* 페이지 버튼에서 사용할 스타일 */
+    .page-container {
+        text-align: center;
+    }
+    .page-container .page-button {
+        border: 0;
+        background-color: white;
+        font-size: 1rem;
+        color: black;
+    }
+    .page-container .page-button i {
+        font-size: 0.7rem;
+    }
+    .page-container .page-button.curpage {
+        color: #{{ site.themecolor.postcategory }};
+        cursor: default;
+    }
+    .page-container .page-button.disabled {
+        color: #BBB;
+        cursor: default;
+    }
     /* 포스트에서 사용할 스타일 */
     #post .post-d-none {
         display: none;
@@ -290,7 +311,7 @@
     }
     .sidebar-profile-icon i {
         color: #{{ site.themecolor.sidebarprofileicon }};
-        font-size: 0.3rem;
+        font-size: 0.7rem;
     }
     /* 사이드바 카테고리에서 사용할 스타일 */
     .sidebar-category-border-bold {
