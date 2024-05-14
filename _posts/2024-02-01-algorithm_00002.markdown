@@ -5,7 +5,7 @@ date: 2024-02-01 17:19:00 +0900
 categories: algorithm
 ---
 알고리즘 문제를 풀던 중 정리해두면 좋을 것 같은 내용을 발견해<br>
-오랜만에 블로그에 작성했다 (\*´▽｀\*）<br>
+오랜만에 블로그에 작성했다 ^.^<br>
 <br>
 <div class="post-chapter">1. 중국인의 나머지 정리가 뭔가요</div><br>
 <img src="{{ "/assets/img/algorithm_00002_001.png" }}" style="width: 40rem;"/><br>
