@@ -2,7 +2,7 @@
 layout: post-current
 title: Project Nectarist [02] 메뉴와 화면기획
 date: 2023-08-28 18:58:00 +0900
-categories: project
+categories: nectarist
 ---
 저번에 정리했던 큰 메뉴는 다음과 같다.<br>
 <br>
@@ -49,30 +49,30 @@ categories: project
 <div class="post-chapter">2. 화면 설계</div><br>
 구체화된 화면을 화면기획서로 작성하면 다음과 같다.<br>
 똑같이 동작하는 화면은 중간중간 생략했다.<br>
-<img src="{{ "/assets/img/project_00002_001.JPG" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00002_001.JPG" }}" style="width: 40rem;"/><br>
 <span class="post-overegg">회색 대시로 된 박스는 중앙 컨텐츠 부분 구분용으로 임시추가한 것이다.</span>
-<img src="{{ "/assets/img/project_00002_002.JPG" }}" style="width: 40rem;"/><br>
-<img src="{{ "/assets/img/project_00002_003.JPG" }}" style="width: 40rem;"/><br>
-<img src="{{ "/assets/img/project_00002_004.JPG" }}" style="width: 40rem;"/><br>
-<img src="{{ "/assets/img/project_00002_005.JPG" }}" style="width: 40rem;"/><br>
-<img src="{{ "/assets/img/project_00002_006.JPG" }}" style="width: 40rem;"/><br>
-<img src="{{ "/assets/img/project_00002_007.JPG" }}" style="width: 40rem;"/><br>
-<img src="{{ "/assets/img/project_00002_008.JPG" }}" style="width: 40rem;"/><br>
-<img src="{{ "/assets/img/project_00002_009.JPG" }}" style="width: 40rem;"/><br>
-<img src="{{ "/assets/img/project_00002_010.JPG" }}" style="width: 40rem;"/><br>
-<img src="{{ "/assets/img/project_00002_011.JPG" }}" style="width: 40rem;"/><br>
-<img src="{{ "/assets/img/project_00002_012.JPG" }}" style="width: 40rem;"/><br>
-<img src="{{ "/assets/img/project_00002_013.JPG" }}" style="width: 40rem;"/><br>
-<img src="{{ "/assets/img/project_00002_014.JPG" }}" style="width: 40rem;"/><br>
-<img src="{{ "/assets/img/project_00002_015.JPG" }}" style="width: 40rem;"/><br>
-<img src="{{ "/assets/img/project_00002_016.JPG" }}" style="width: 40rem;"/><br>
-<img src="{{ "/assets/img/project_00002_017.JPG" }}" style="width: 40rem;"/><br>
-<img src="{{ "/assets/img/project_00002_018.JPG" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00002_002.JPG" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00002_003.JPG" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00002_004.JPG" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00002_005.JPG" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00002_006.JPG" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00002_007.JPG" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00002_008.JPG" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00002_009.JPG" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00002_010.JPG" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00002_011.JPG" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00002_012.JPG" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00002_013.JPG" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00002_014.JPG" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00002_015.JPG" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00002_016.JPG" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00002_017.JPG" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00002_018.JPG" }}" style="width: 40rem;"/><br>
 (4-2번 3-2와 같아 생략)<br>
-<img src="{{ "/assets/img/project_00002_019.JPG" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00002_019.JPG" }}" style="width: 40rem;"/><br>
 (5-2번 3-2와 같아 생략)<br>
-<img src="{{ "/assets/img/project_00002_020.JPG" }}" style="width: 40rem;"/><br>
-<img src="{{ "/assets/img/project_00002_021.JPG" }}" style="width: 40rem;"/><br>
-<img src="{{ "/assets/img/project_00002_022.JPG" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00002_020.JPG" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00002_021.JPG" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00002_022.JPG" }}" style="width: 40rem;"/><br>
 <br>
 <a href="/assets/file/230828_Nectarist_ui.pptx"><i class="fa fa-file"></i> 화면계획서 파일 </a>

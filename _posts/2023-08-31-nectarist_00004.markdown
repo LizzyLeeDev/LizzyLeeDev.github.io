@@ -2,7 +2,7 @@
 layout: post-current
 title: Project Nectarist [04] Docker를 이용한 개발환경
 date: 2023-08-31 01:44:00 +0900
-categories: project
+categories: nectarist
 ---
 이번 프로젝트의 환경은 Django-uWSGI-Nginx + MySQL로 정했다.<br>
 학부생때 썼던 추억이 있어서 선택했다.ദ്ദി*ˊᗜˋ*)<br>
@@ -13,7 +13,7 @@ categories: project
 노트북에 뭔가 까는걸 싫어하는 편이라 어떻게 할지 고민하다가,<br>
 이번 프로젝트에 Docker를 적용하기로 했다.<br>
 <br>
-<img src="{{ "/assets/img/project_00004_001.png" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00004_001.png" }}" style="width: 40rem;"/><br>
 <br>
 어차피 한 덩어리로 돌아갈 Django-uWSGI-Nginx를<br>
 하나의 컨테이너로 붙여서 돌리고,<br>
@@ -26,20 +26,20 @@ DB 데이터도 외부 볼륨을 마운트하면 괜찮게 사용할 수 있지 
 <br>
 <div class="post-chapter">1. Docker 설치하기</div><br>
 <br>
-<img src="{{ "/assets/img/project_00004_002.png" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00004_002.png" }}" style="width: 40rem;"/><br>
 <br>
-<img src="{{ "/assets/img/project_00004_003.png" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00004_003.png" }}" style="width: 40rem;"/><br>
 Docker 홈페이지에서 Docker를 다운받아서 설치해줬다.<br>
 <br>
-<img src="{{ "/assets/img/project_00004_004.png" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00004_004.png" }}" style="width: 40rem;"/><br>
 실행시키면 요상한 에러가 뜨는데, <br>
 WSL은 윈도우에서 리눅스 기능을 사용할 수 있게 해주는 거라고 한다.<br>
 윈10부터 기본 탑재되어있다는데, 최근에 윈11로 업데이트한게 영향이 있을지도 모르겠다.<br>
 <br>
-<img src="{{ "/assets/img/project_00004_005.png" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00004_005.png" }}" style="width: 40rem;"/><br>
 업데이트로 간단하게 해결했다.<br>
 <br>
-<img src="{{ "/assets/img/project_00004_006.png" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00004_006.png" }}" style="width: 40rem;"/><br>
 윈도우에서의 도커 데스크탑인데, ui도 귀엽고 상당히 편리하다.<br>
 터미널과 같이 쓰기에 딱 좋은 듯 하다.<br>
 <br>
@@ -83,7 +83,7 @@ pip로는 django와 uwsgi를 설치했다.<br>
 <br>
 웹서버답게 포트 80을 expose했다.<br>
 <br>
-<img src="{{ "/assets/img/project_00004_007.png" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00004_007.png" }}" style="width: 40rem;"/><br>
 <br>
 위와 같이 빌드를 마친 후, 해당 이미지를 살짝 수정하기 위해 컨테이너로 만들어 접속한다.<br>
 <br>
@@ -257,7 +257,7 @@ uwsgi를 재시작 해준다. <br>
 connect failed~connecting to upstream~같은 오류가 있다면 nginx가 uwsgi를 찾는 동작중이니,uswgi쪽을 수정 및 재시작하는게 필요하고, 해당 오류 없이 bind() failed등이 표시되면<br>
 nginx문제니 커밋 후 컨테이너를 다시 뽑아서 확인한다.<br>
 <br>
-<img src="{{ "/assets/img/project_00004_008.png" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00004_008.png" }}" style="width: 40rem;"/><br>
 <br>
 localhost:80번으로 접속했을 때 위와 같이 귀여운 django 화면이 표시되었으니 성공이다.<br>
 <br>

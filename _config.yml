@@ -24,15 +24,16 @@ profile:
 
 abountlink: /category/about
 
-sidebarcategory: [python, algorithm, jekyll, project]
-
 themecolor:
-  categoryname: FFA8DB
-  postsubject: FFA8DB
-  postcategory: FF6FC4
-  postchapter: FFA8DB
-  sidebarprofileicon: FF6FC4
-  sidebarcategoryicon: FF6FC4
+  categoryname: FF9AAF
+  postsubject: FF9AAF
+  postcategory: FF6F8D
+  postchapter: FF9AAF
+  sidebarprofileicon: FF6F8D
+  sidebarcategoryicon: FF6F8D
+
+# FFA8DB
+# FF6FC4
 
 permalink: /:categories/:year:month:day/:title
 

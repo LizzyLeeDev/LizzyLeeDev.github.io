@@ -27,6 +27,7 @@
         width: 1000px;
         margin: 0 auto;
         height: 100%;
+        position: relative;
     }
     @media (max-width:992px){ /* 화면너비 ~lg 기준 */
         .blog-contents-center {
@@ -45,9 +46,17 @@
     }
     /* 하단 컨텐츠 설정 */
     #container_contents {
-        margin-top: 3rem;
         width: 100vw;
         min-height: calc(100vh - 3rem);
+    }
+    #container_contents::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        background-image: url("/assets/img/background.jpg");
+        background-size: 100vw;
+        filter: grayscale(0.6) opacity(0.6);
     }
     /* 리스트 설정 */
     #container_list {
@@ -63,6 +72,7 @@
     #list {
         background-color: #FFFFFF;
         box-shadow: 1px 1px 20px 1px rgba(0,0,0,0.25);
+        border-radius: .25rem;
     }
     #list img {
         display: none;
@@ -81,12 +91,14 @@
     #post {
         background-color: #FFFFFF;
         box-shadow: 1px 1px 20px 1px rgba(0,0,0,0.25);
+        border-radius: .25rem;
     }
     /* 사이드바 설정 */
     #container_sidebar {
         background-color: #FFFFFF;
         box-shadow: 1px 1px 20px 1px rgba(0,0,0,0.25);
         height: fit-content;
+        border-radius: .25rem;
     }
     @media (max-width:992px){ /* 화면너비 ~lg 기준 */
         #container_sidebar {
@@ -352,7 +364,9 @@
     }
     .sidebar-category-icon i {
         color: #FF6FC4;
-        font-size: 0.3rem;
+        position: relative;
+        top: -4px;
+        font-size: 0.5rem;
     }
 </style>
 <link rel="shortcut icon" href="/assets/img/favicon.svg"/>
@@ -381,7 +395,7 @@
 </div>
             <!-- 컨텐츠 -->
             <div id="container_contents">
-                <div class="blog-contents-center">
+                <div class="blog-contents-center" style="padding-top: 3rem;">
                     <div class="row m-0">
                         <!-- 리스트 -->
                         <div id="container_list" class="col-12 col-lg-9 my-3">
@@ -640,56 +654,62 @@ String과 Search가 같지 않으면 String의 인덱스를 고정한 상태로 
             </div>
         </div>
     </div>
-    <!-- 카테고리 -->
+    <!-- 카테고리 리스트 -->
     <div class="mt-2">
         <hr class="sidebar-category-border-bold">
         <div class="sidebar-category-item" data-category="all" style="color: black!important;">
             <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
-            All
-            <span class="sidebar-category-size">( 18 )</span>
+            ALL
+            <span class="sidebar-category-size">( 19 )</span>
         </div>
         <hr class="sidebar-category-border-bold">
-        
+        <!-- 카테고리 : 블로그 -->
+            <div class="sidebar-category-item" data-category="blog">
+                <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
+                BLOG
+                <span class="sidebar-category-size">
+                    
+                    ( 4 )
+                    
+                </span>
+            </div>
+        <!-- 카테고리 : 파이선 -->
             <div class="sidebar-category-item" data-category="python">
                 <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
-                python
+                PYTHON
                 <span class="sidebar-category-size">
                     
                     ( 3 )
                     
                 </span>
             </div>
-        
+        <!-- 카테고리 : 알고리즘 -->
             <div class="sidebar-category-item" data-category="algorithm">
                 <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
-                algorithm
+                ALGORITHM
                 <span class="sidebar-category-size">
                     
                     ( 2 )
                     
                 </span>
             </div>
-        
-            <div class="sidebar-category-item" data-category="jekyll">
+        <!-- 카테고리 : 프로젝트 -->
+            <div class="sidebar-category-item" data-category="project" style="pointer-events: none;">
                 <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
-                jekyll
-                <span class="sidebar-category-size">
-                    
-                    ( 3 )
-                    
-                </span>
+                PROJECT
             </div>
-        
-            <div class="sidebar-category-item" data-category="project">
-                <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
-                project
+        <!-- 카테고리 : 넥타리스트(서브) -->
+            <div class="sidebar-category-item" data-category="nectarist">
+                &nbsp;&nbsp;
+                <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
+                Nectarist
                 <span class="sidebar-category-size">
                     
                     ( 10 )
                     
                 </span>
             </div>
-        
+        <!-- -->
         <hr class="sidebar-category-border-bold">
     </div>
 </div>
@@ -728,10 +748,12 @@ String과 Search가 같지 않으면 String의 인덱스를 고정한 상태로 
         switch(category){
             case "all":
                 location.href = "/";
-            break;
+                break;
+            case "project":
+                break;
             default:
                 location.href = "/category/" + category + ".html";
-            break;
+                break;
         }
     });
 </script>

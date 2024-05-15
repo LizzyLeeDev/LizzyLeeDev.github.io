@@ -2,7 +2,7 @@
 layout: post-current
 title: Project Nectarist [01] 프로젝트 계획,분석
 date: 2023-08-27 23:06:00 +0900
-categories: project
+categories: nectarist
 ---
 노트북을 바꾸면서 학부때부터 했던 모든 프로젝트를 잃어버린 나..<br>
 이번에 건강회복 겸 쉬는동안 간단하게 몇 가지 프로젝트를 진행해서<br>
@@ -17,7 +17,7 @@ categories: project
 <br>
 차라리 칵테일과 관련된 커뮤니티 사이트를 만들고,<br>
 거기에 위 기능을 "칵테일 계산기"라는 이름으로 집어넣으면 어떨까?<br>
-<img src="{{ "/assets/img/project_00001_001.png" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectarist_00001_001.png" }}" style="width: 40rem;"/><br>
 사용자별로 가지고있는 재료를 "내 냉장고"에 등록하면<br>
 해당 내용을 토대로 만들수 있는 칵테일을 계산하는 기능으로 만들면<br>
 매번 재료를 입력할 필요가 없을 것이다. <br>

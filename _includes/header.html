@@ -23,6 +23,7 @@
         width: 1000px;
         margin: 0 auto;
         height: 100%;
+        position: relative;
     }
     @media (max-width:992px){ /* 화면너비 ~lg 기준 */
         .blog-contents-center {
@@ -41,9 +42,17 @@
     }
     /* 하단 컨텐츠 설정 */
     #container_contents {
-        margin-top: 3rem;
         width: 100vw;
         min-height: calc(100vh - 3rem);
+    }
+    #container_contents::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        background-image: url("/assets/img/background.jpg");
+        background-size: 100vw;
+        filter: grayscale(0.6) opacity(0.6);
     }
     /* 리스트 설정 */
     #container_list {
@@ -59,6 +68,7 @@
     #list {
         background-color: #FFFFFF;
         box-shadow: 1px 1px 20px 1px rgba(0,0,0,0.25);
+        border-radius: .25rem;
     }
     #list img {
         display: none;
@@ -77,12 +87,14 @@
     #post {
         background-color: #FFFFFF;
         box-shadow: 1px 1px 20px 1px rgba(0,0,0,0.25);
+        border-radius: .25rem;
     }
     /* 사이드바 설정 */
     #container_sidebar {
         background-color: #FFFFFF;
         box-shadow: 1px 1px 20px 1px rgba(0,0,0,0.25);
         height: fit-content;
+        border-radius: .25rem;
     }
     @media (max-width:992px){ /* 화면너비 ~lg 기준 */
         #container_sidebar {
@@ -348,7 +360,9 @@
     }
     .sidebar-category-icon i {
         color: #{{ site.themecolor.sidebarcategoryicon }};
-        font-size: 0.3rem;
+        position: relative;
+        top: -4px;
+        font-size: 0.5rem;
     }
 </style>
 <link rel="shortcut icon" href="{{ "/assets/img/favicon.svg" }}"/>

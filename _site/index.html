@@ -27,6 +27,7 @@
         width: 1000px;
         margin: 0 auto;
         height: 100%;
+        position: relative;
     }
     @media (max-width:992px){ /* 화면너비 ~lg 기준 */
         .blog-contents-center {
@@ -45,9 +46,17 @@
     }
     /* 하단 컨텐츠 설정 */
     #container_contents {
-        margin-top: 3rem;
         width: 100vw;
         min-height: calc(100vh - 3rem);
+    }
+    #container_contents::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        background-image: url("/assets/img/background.jpg");
+        background-size: 100vw;
+        filter: grayscale(0.6) opacity(0.6);
     }
     /* 리스트 설정 */
     #container_list {
@@ -63,6 +72,7 @@
     #list {
         background-color: #FFFFFF;
         box-shadow: 1px 1px 20px 1px rgba(0,0,0,0.25);
+        border-radius: .25rem;
     }
     #list img {
         display: none;
@@ -81,12 +91,14 @@
     #post {
         background-color: #FFFFFF;
         box-shadow: 1px 1px 20px 1px rgba(0,0,0,0.25);
+        border-radius: .25rem;
     }
     /* 사이드바 설정 */
     #container_sidebar {
         background-color: #FFFFFF;
         box-shadow: 1px 1px 20px 1px rgba(0,0,0,0.25);
         height: fit-content;
+        border-radius: .25rem;
     }
     @media (max-width:992px){ /* 화면너비 ~lg 기준 */
         #container_sidebar {
@@ -352,7 +364,9 @@
     }
     .sidebar-category-icon i {
         color: #FF6FC4;
-        font-size: 0.3rem;
+        position: relative;
+        top: -4px;
+        font-size: 0.5rem;
     }
 </style>
 <link rel="shortcut icon" href="/assets/img/favicon.svg"/>
@@ -381,7 +395,7 @@
 </div>
             <!-- 컨텐츠 -->
             <div id="container_contents">
-                <div class="blog-contents-center">
+                <div class="blog-contents-center" style="padding-top: 3rem;">
                     <div class="row m-0">
                         <!-- 리스트 -->
                         <div id="container_list" class="col-12 col-lg-9 my-3">
@@ -390,12 +404,59 @@
     <!-- 포스트 카테고리명 -->
     <div class="category-name">
         All
-        <span class="category-list-size">총 18건</span>
+        <span class="category-list-size">총 19건</span>
     </div>
     <hr class="post-list-border">
     <!-- 포스트 리스트 -->
     
-    <div class="post-list-item px-2" onclick="location.href = '/project/20240514/project_00010';">
+    <div class="post-list-item px-2" onclick="location.href = '/blog/20240514/blog_00004';">
+        <div class="post-list-subject">2024-05-14 블로그 스킨 변경하기</div>
+        <div class="post-list-excerpt mt-1"><img src="/assets/img/blog_00004_001.png" style="width: 40rem;" /><br />
+블로그를 보다보니 왠지 너무 심플한 것 같은 느낌이 든다..<br />
+조금 바꿔보기로 했다.<br />
+<br />
+<img src="/assets/img/blog_00004_002.png" style="width: 40rem;" /><br />
+뒷배경에 저작권 프리 이미지를 집어넣고, 포스트와 사이드바의 테두리를 .25rem으로 깎았다.<br />
+뒷 배경 전체에 opacity를 적용하면 포스트까지 전부 투명해지기 때문에<br />
+배경에 추가 요소(::before)를 다음과 같이 달았다.<br />
+<br />
+<div class="post-code">
+#container_contents::before {<br />
+&nbsp;&nbsp;content: "";<br />
+&nbsp;&nbsp;width: 100%;<br />
+&nbsp;&nbsp;height: 100%;<br />
+&nbsp;&nbsp;position: fixed;<br />
+&nbsp;&nbsp;background-image: url("/assets/img/background.jpg");<br />
+&nbsp;&nbsp;background-size: 100vw;<br />
+&nbsp;&nbsp;filter: grayscale(0.6) opacity(0.6);<br />
+}<br />
+</div>
+너무 사진이 눈에 띄지 않도록 grayscale과 opacity를 적용했다.
+원래 이미지가 6000*4000사이즈라서 너비를 어떻게 할지 고민하다가 <br />
+어디에서 봐도 꽉 차는 모습으로 보였으면 해서 뷰포트 너비(vw) 100%로 잡았다. <br />
+<br />
+모바일로 보면 꽃이 좀 자잘해보이긴 하지만..<br />
+외곽에만 표시되기 때문에 그렇게 나쁘지 않아보인다.<br />
+<br />
+<img src="/assets/img/blog_00004_003.png" style="width: 40rem;" /><br />
+색상이 너무 분홍색인것 같아서 테마 색상도 조금 변경하기로 했다.<br />
+처음 개발할때부터 색상 변경을 염두에 두고 개발했기 때문에 <br />
+색상은 _config.yml에 변수로 저장되어있다.<br />
+<br />
+시스템의 어느 부분이 절대 변경되지 않는지/언젠가 변경할 예정인지 <br />
+미리 어느정도 파악하고 작업하는게 역시 중요한 것 같다.<br />
+<br />
+<img src="/assets/img/blog_00004_004.png" style="width: 40rem;" /><br />
+색상 조정은 위와 같이 마무리 하고, 시간 나면 로고도 변경해야겠다.<br />
+</div>
+        <div class="post-list-footer mt-2 py-1">
+            <span class="post-list-category">blog</span>
+            <span class="post-list-uploadtime">2024-05-14 16:57</span>
+        </div>
+    </div>
+    <hr class="post-list-border">
+    
+    <div class="post-list-item px-2" onclick="location.href = '/nectarist/20240514/nectarist_00010';">
         <div class="post-list-subject">Project Nectarist [10] view의 분리</div>
         <div class="post-list-excerpt mt-1">어떻게 하면 더 좋은 Django 프로젝트를 구성할 수 있을까?<br />
 Django의 구조인 MTV를 하나씩 다시 확인하며 고민해봤다.<br />
@@ -403,24 +464,24 @@ Django의 구조인 MTV를 하나씩 다시 확인하며 고민해봤다.<br />
 <div class="post-chapter">1. Django의 MTV 돌아보기</div>
 <br />
 <br />
-<img src="/assets/img/project_00010_001.png" style="width: 40rem;" /><br />
+<img src="/assets/img/nectarist_00010_001.png" style="width: 40rem;" /><br />
 우선 Nectarist의 models.py를 확인해보니<br />
 DB 테이블과 연동이 되어있어서 잘못 수정하면 다시 migrate가 필요할 것 같다.<br />
 현재 복잡한 구조가 아니라서 당장 추가적인 수정이 필요하지는 않아보인다.<br />
 <br />
-<img src="/assets/img/project_00010_002.png" style="width: 40rem;" /><br />
+<img src="/assets/img/nectarist_00010_002.png" style="width: 40rem;" /><br />
 다음은 urls.py를 확인했다.<br />
 단순히 페이지 내용을 요청하는 URI가 있고, ajax등으로 데이터를 요청하는 URI가 있다.<br />
 용도가 두가지로 정리가 되니, 좀더 내용을 보기쉽게 수정할 필요를 느꼈다.<br />
 <br />
-<img src="/assets/img/project_00010_003.png" style="width: 40rem;" /><br />
+<img src="/assets/img/nectarist_00010_003.png" style="width: 40rem;" /><br />
 views도 마찬가지로 단순히 페이지 내용을 요청하는 기능과<br />
 데이터를 주고받는 기능이 있으니 나누어 정리하는게 더 보기 좋을 것 같다.<br />
 <br />
 <div class="post-chapter">2. urls 정리</div>
 <br />
 <br />
-<img src="/assets/img/project_00010_004.png" style="width: 40rem;" /><br />
+<img src="/assets/img/nectarist_00010_004.png" style="width: 40rem;" /><br />
 주석으로 페이지 요청하는 URI / 데이터 요청하는 URI를 나누고,<br />
 각 내용 위에 상세 메뉴와 기능을 추가하니 가독성이 조금 더 괜찮아졌다.<br />
 <br />
@@ -433,24 +494,24 @@ view도 페이지/데이터의 두 종류로 분리할 수 있겠지만, <br />
 일단 views.py를 삭제하고 views 디렉토리를 만든 다음<br />
 main_views.py / func_views.py / page_views.py 를 안에 생성했다.<br />
 <br />
-<img src="/assets/img/project_00010_006.png" style="width: 40rem;" /><br />
+<img src="/assets/img/nectarist_00010_006.png" style="width: 40rem;" /><br />
 공통적으로 들어가는 부분은 views/main_views.py에 집어넣고<br />
 func_views.py와 page_views.py에서 main_views.py를 불러오도록 처리했다.<br />
 <br />
 urls.py 등에서 view를 import 하는 부분은 기존의 views.py에서 views/func_views.py등으로 변경했다.<br />
 <br />
-<img src="/assets/img/project_00010_007.png" style="width: 40rem;" /><br />
+<img src="/assets/img/nectarist_00010_007.png" style="width: 40rem;" /><br />
 내용은 메뉴와 기능에 따라 주석을 추가했다.<br />
 이제 views 파일이 용도별로 분리되었으니 수정 및 가독성이 좀 괜찮아진 느낌이 든다.<br />
 </div>
         <div class="post-list-footer mt-2 py-1">
-            <span class="post-list-category">project</span>
+            <span class="post-list-category">nectarist</span>
             <span class="post-list-uploadtime">2024-05-14 14:41</span>
         </div>
     </div>
     <hr class="post-list-border">
     
-    <div class="post-list-item px-2" onclick="location.href = '/project/20240411/project_00009';">
+    <div class="post-list-item px-2" onclick="location.href = '/nectarist/20240411/nectarist_00009';">
         <div class="post-list-subject">Project Nectarist [09] 메일발송 기능 추가</div>
         <div class="post-list-excerpt mt-1">비밀번호 변경시 임시 비밀번호를 메일로 보내주는 기능을 추가했다.<br />
 (작은 프로젝트다보니 별도로 app을 분리하진 않고 작업했다)<br />
@@ -466,7 +527,7 @@ Django에 자체적으로 smtp가 있어서 해당 기능을 이용했다.<br />
 먼저 gmail 접근을 위해 앱 비밀번호를 생성했다.<br />
 앱 비밀번호 생성 과정은 다음과 같다.<br />
 <br />
-<img src="/assets/img/project_00009_001.png" style="width: 40rem;" /><br />
+<img src="/assets/img/nectarist_00009_001.png" style="width: 40rem;" /><br />
 <br />
 ❗비밀번호는 생성했을때만 확인할 수 있으니 재빠르게 캡쳐해야 한다<br />
 <span class="post-overegg" style="color: blue; border: 0;">
@@ -478,7 +539,7 @@ Django에 자체적으로 smtp가 있어서 해당 기능을 이용했다.<br />
 이메일과 관련된 부분을 settings.py에 다음과 같이 추가하고<br />
 <br />
 settings.py<br />
-<img src="/assets/img/project_00009_002.png" style="width: 40rem;" /><br />
+<img src="/assets/img/nectarist_00009_002.png" style="width: 40rem;" /><br />
 <br />
 template에 메일로 보낼 내용을 간단하게 작성했다.<br />
 <br />
@@ -492,7 +553,7 @@ Nectarist 임시 비밀번호 안내 이메일입니다.<br />
 </div>
 <br />
 위에 작성한 메일 템플릿을 실제 send_mail에서는
-<img src="/assets/img/project_00009_003.png" style="width: 40rem;" /><br />
+<img src="/assets/img/nectarist_00009_003.png" style="width: 40rem;" /><br />
 템플릿 내부에 변수로 작성되어있던 new_temp_pass를 render_to_string에서 집어넣고,<br />
 send_mail에 들어가는 변수를 위와 같이 적용했다.<br />
 <br />
@@ -503,21 +564,21 @@ send_mail에 들어가는 변수를 위와 같이 적용했다.<br />
 <br />
 <div class="post-chapter">3. 발송하기</div>
 <br />
-<img src="/assets/img/project_00009_004.png" style="width: 40rem;" /><br />
+<img src="/assets/img/nectarist_00009_004.png" style="width: 40rem;" /><br />
 위와 같이 아이디/이메일을 입력하면 <br />
 <br />
-<img src="/assets/img/project_00009_005.png" style="width: 40rem;" /><br />
+<img src="/assets/img/nectarist_00009_005.png" style="width: 40rem;" /><br />
 임시 비밀번호가 (내 이메일로) 발송된다.<br />
 성공!<br />
 </div>
         <div class="post-list-footer mt-2 py-1">
-            <span class="post-list-category">project</span>
+            <span class="post-list-category">nectarist</span>
             <span class="post-list-uploadtime">2024-04-11 16:41</span>
         </div>
     </div>
     <hr class="post-list-border">
     
-    <div class="post-list-item px-2" onclick="location.href = '/jekyll/20240411/jekyll_00003';">
+    <div class="post-list-item px-2" onclick="location.href = '/blog/20240411/blog_00003';">
         <div class="post-list-subject">깃헙 블로그 시작하기 [03] 페이징과 마감</div>
         <div class="post-list-excerpt mt-1">메인화면 (전체 포스트 리스트)에 페이징을 추가했다.<br />
 플러그인은 jekyll-paginate를 사용했다.<br />
@@ -538,7 +599,7 @@ gem install jekyll-paginate
 <br />
 위와 같이 플러그인을 설치해주고<br />
 <br />
-<img src="/assets/img/jekyll_00003_001.png" style="width: 40rem;" /><br />
+<img src="/assets/img/blog_00003_001.png" style="width: 40rem;" /><br />
 <br />
 gemfile과 config에 적용했다.<br />
 <br />
@@ -546,7 +607,7 @@ gemfile과 config에 적용했다.<br />
 디자인 변경이 하고싶어지기 전까지 당분간은 개발 관련 글만 올릴 것 같다. ヾ(•ω•`)o<br />
 </div>
         <div class="post-list-footer mt-2 py-1">
-            <span class="post-list-category">jekyll</span>
+            <span class="post-list-category">blog</span>
             <span class="post-list-uploadtime">2024-04-11 15:35</span>
         </div>
     </div>
@@ -654,121 +715,6 @@ gemfile과 config에 적용했다.<br />
     </div>
     <hr class="post-list-border">
     
-    <div class="post-list-item px-2" onclick="location.href = '/algorithm/20230919/algorithm_00001';">
-        <div class="post-list-subject">KMP 알고리즘</div>
-        <div class="post-list-excerpt mt-1">한동안 알고리즘 책을 읽느랴 블로그에 글을 못 썼는데,<br />
-한쪽 손에 화상까지 입어서 공부가 더 늦어질 것 같다..<br />
-<br />
-문자열 검색에 쓰이는 알고리즘인 KMP 알고리즘에 대해 적어보려고 한다.<br />
-<br />
-<div class="post-chapter">1. 기본적인 문자열 검색 알고리즘</div>
-<br />
-문자열 “AABABABCCA”에서 “ABC”를 찾으려면 어떻게 해야할까?
-문자열의 가장 앞부분부터 ABC와 한글자씩 비교해서 찾는 방법이 있을것이다.
-<img src="/assets/img/algorithm_00001_004.gif" style="width: 40rem;" /><br />
-위와 같이 찾는 경우 두 문자열의 길이를 곱한 만큼의 시간이 걸린다.
-<img src="/assets/img/algorithm_00001_005.png" style="width: 40rem;" /><br />
-AB가 계속 반복되는 것 같은데, AB와 AB의 비교도 반복할거라면 <br />
-어차피 앞에 있을 AB는 건너뛰고 그 다음부터 비교하면 되지 않을까?<br />
-<br />
-..이렇게 검색하는 방법이 KMP 알고리즘이다.<br />
-<br />
-<div class="post-chapter">2. 접두사와 접미사</div>
-<br />
-접두사란 문자열을 0~N까지 자른 부분 문자열이다.<br />
-그림으로 나타내면 다음과 같다.<br />
-<img src="/assets/img/algorithm_00001_001.png" style="width: 40rem;" /><br />
-반대로 접미사는 문자열을 끝에서 N개 자른 부분 문자열이다.
-그림으로 나타내면 다음과 같다.
-<img src="/assets/img/algorithm_00001_002.png" style="width: 40rem;" /><br />
-<br />
-이 중에서 접두사와 접미사가 같은 경우가 오늘 알고리즘의 핵심이다.<br />
-문자열 “abacabc”에 대해 생각해보면,<br />
-<br />
-접두사 [“a”, “ab”, “aba”, “abac”, “abaca”, “abacab”] 등이 있다.<br />
-<br />
-이제 “길이가 2 이상인 접두사와 전체 문자열”에 대해 접미사를 구해보면<br />
-<br />
-부분문자열 “ab”에서는 [“b”] 접미사,<br />
-부분문자열 “aba”에서는 [“a”, “ba”] 접미사,<br />
-부분문자열 “abac”에서는 [“c”, “ac”, “bac”] 접미사,<br />
-부분문자열 “abaca”에서는  [“a”, “ca”, “aca”, “baca”] 접미사,<br />
-부분문자열 “abacab”에서는 [“b”, “ab”, “cab”, “acab”, “bacab”] 접미사,<br />
-부분문자열 “abacabc”에서는 [“c”, “bc”, “abc”, “cabc”, “acabc”, “bacabc”] 접미사<br />
-<br />
-이 모든 접미사 중, 접두사와 겹쳐지는 것은 [“a”, “ab”] 가 있다.<br />
-<img src="/assets/img/algorithm_00001_003.png" style="width: 40rem;" /><br />
-위와 같이 문자열에서 문자열의 중간에 접두사와 같은 패턴이 얼마나 반복되는지 표를 만들 수 있다.
-KMP 알고리즘은 해당 표를 이용해 동작한다.<br />
-<br />
-<div class="post-chapter">3. KMP 알고리즘</div>
-<br />
-실제로 KMP알고리즘이 동작하는 과정을 설명해봤다.<br />
-<img src="/assets/img/algorithm_00001_006.png" style="width: 40rem;" /><br />
-위와 같은 문자열 String에서 Search를 찾는다고 가정하자.<br />
-<img src="/assets/img/algorithm_00001_007.png" style="width: 40rem;" /><br />
-일단 검색할 문자열인 Search의 접두사 패턴 표를 만든다.<br />
-<img src="/assets/img/algorithm_00001_008.png" style="width: 40rem;" /><br />
-인덱스 0이 있다고 가정하고, Search의 인덱스를 1부터 넣는다.<br />
-(0부터 하는 방법도 있지만, 이쪽이 코드 짜기엔 더 쉬운 것 같다.)<br />
-<img src="/assets/img/algorithm_00001_009.png" style="width: 40rem;" /><br />
-String과 Search를 각각 인덱스 0을 기준으로 비교한다.<br />
-여기서, Search는 인덱스+1에 들어있는 문자와 비교한다.<br />
-즉, 기준은 빨간 화살표에 있지만 Search에서 실제 비교되는 문자는 파란 화살표이다.<br />
-둘다 A로 같으니 다음 인덱스로 진행한다.<br />
-<img src="/assets/img/algorithm_00001_010.png" style="width: 40rem;" /><br />
-둘다 B로 같으니 다음 인덱스로 진행한다.<br />
-<img src="/assets/img/algorithm_00001_011.png" style="width: 40rem;" /><br />
-둘다 A로 같으니 다음 인덱스로 진행한다.
-<img src="/assets/img/algorithm_00001_012.png" style="width: 40rem;" /><br />
-String은 C, Search는 B로 다른 문자를 만났다.<br />
-이때 Search의 인덱스인 3의 접두사 표 값(빨간 네모박스)이 1로 되어있으니 Search의 인덱스를 1로 옮긴다.<br />
-<br />
-위의 과정이 KMP 알고리즘의 제일 중요한 부분이다.<br />
-위 과정을 풀어서 설명하면 다음과 같다.<br />
-<img src="/assets/img/algorithm_00001_013.png" style="width: 40rem;" /><br />
-인덱스를 옮겼으니 다시 비교한다.
-<img src="/assets/img/algorithm_00001_014.png" style="width: 40rem;" /><br />
-String은 C, Search는 B로 다르다.<br />
-Search의 인덱스인 1의 접두사 표 값(빨간 네모박스)이 0으로 되어있으니 Search의 인덱스를 0으로 옮긴다.
-<img src="/assets/img/algorithm_00001_015.png" style="width: 40rem;" /><br />
-String은 C, Search는 A로 다르다.<br />
-Search의 인덱스가 0으로 더이상 옮길수 있는 방법이 없으니, String의 인덱스만 전진한다.
-<img src="/assets/img/algorithm_00001_016.png" style="width: 40rem;" /><br />
-둘다 A로 같으니 다음 인덱스로 진행한다.
-<img src="/assets/img/algorithm_00001_017.png" style="width: 40rem;" /><br />
-둘다 B로 같으니 다음 인덱스로 진행한다.
-<img src="/assets/img/algorithm_00001_018.png" style="width: 40rem;" /><br />
-둘다 A로 같으니 다음 인덱스로 진행한다.
-<img src="/assets/img/algorithm_00001_019.png" style="width: 40rem;" /><br />
-또 String은 C, Search는 로 다르다.<br />
-아까 진행했던 것처럼 Search의 인덱스를 1로 옮겨준다.
-<img src="/assets/img/algorithm_00001_020.png" style="width: 40rem;" /><br />
-String은 C, Search는 B로 다르다.<br />
-Search의 인덱스를 0으로 옮긴다.
-<img src="/assets/img/algorithm_00001_021.png" style="width: 40rem;" /><br />
-String은 C, Search는 A로 다르다.<br />
-Search의 인덱스가 0이므로 String의 인덱스만 전진한다.
-<img src="/assets/img/algorithm_00001_022.png" style="width: 40rem;" /><br />
-둘다 A로 같으니 다음 인덱스로 진행한다.
-<img src="/assets/img/algorithm_00001_022.png" style="width: 40rem;" /><br />
-String은 A, Search는 B로 다르다.<br />
-Search의 인덱스를 0으로 옮긴다.
-<img src="/assets/img/algorithm_00001_023.png" style="width: 40rem;" /><br />
-둘다 A로 같으니 다음 인덱스로 진행한다.
-<img src="/assets/img/algorithm_00001_024.png" style="width: 40rem;" /><br />
-뒷부분을 진행하면 ABABC로 같을것이므로 생략한다.<br />
-<br />
-접두사 표를 통해 Search의 인덱스를 앞부분으로 옮기는 행위가 중복 부분을 뛰어넘는 역할을 하는 것을 알 수 있다.<br />
-String과 Search가 같지 않으면 String의 인덱스를 고정한 상태로 중복을 뛰어넘으면서 1~2번정도 비교하기 때문에 수행 시간은 String의 길이에 가까울 것이다.<br />
-</div>
-        <div class="post-list-footer mt-2 py-1">
-            <span class="post-list-category">algorithm</span>
-            <span class="post-list-uploadtime">2023-09-19 19:32</span>
-        </div>
-    </div>
-    <hr class="post-list-border">
-    
     <!-- 페이징 디자인 -->
     <div class="my-3">
         
@@ -834,56 +780,62 @@ String과 Search가 같지 않으면 String의 인덱스를 고정한 상태로 
             </div>
         </div>
     </div>
-    <!-- 카테고리 -->
+    <!-- 카테고리 리스트 -->
     <div class="mt-2">
         <hr class="sidebar-category-border-bold">
         <div class="sidebar-category-item" data-category="all" style="color: black!important;">
             <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
-            All
-            <span class="sidebar-category-size">( 18 )</span>
+            ALL
+            <span class="sidebar-category-size">( 19 )</span>
         </div>
         <hr class="sidebar-category-border-bold">
-        
+        <!-- 카테고리 : 블로그 -->
+            <div class="sidebar-category-item" data-category="blog">
+                <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
+                BLOG
+                <span class="sidebar-category-size">
+                    
+                    ( 4 )
+                    
+                </span>
+            </div>
+        <!-- 카테고리 : 파이선 -->
             <div class="sidebar-category-item" data-category="python">
                 <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
-                python
+                PYTHON
                 <span class="sidebar-category-size">
                     
                     ( 3 )
                     
                 </span>
             </div>
-        
+        <!-- 카테고리 : 알고리즘 -->
             <div class="sidebar-category-item" data-category="algorithm">
                 <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
-                algorithm
+                ALGORITHM
                 <span class="sidebar-category-size">
                     
                     ( 2 )
                     
                 </span>
             </div>
-        
-            <div class="sidebar-category-item" data-category="jekyll">
+        <!-- 카테고리 : 프로젝트 -->
+            <div class="sidebar-category-item" data-category="project" style="pointer-events: none;">
                 <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
-                jekyll
-                <span class="sidebar-category-size">
-                    
-                    ( 3 )
-                    
-                </span>
+                PROJECT
             </div>
-        
-            <div class="sidebar-category-item" data-category="project">
-                <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
-                project
+        <!-- 카테고리 : 넥타리스트(서브) -->
+            <div class="sidebar-category-item" data-category="nectarist">
+                &nbsp;&nbsp;
+                <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
+                Nectarist
                 <span class="sidebar-category-size">
                     
                     ( 10 )
                     
                 </span>
             </div>
-        
+        <!-- -->
         <hr class="sidebar-category-border-bold">
     </div>
 </div>
@@ -922,10 +874,12 @@ String과 Search가 같지 않으면 String의 인덱스를 고정한 상태로 
         switch(category){
             case "all":
                 location.href = "/";
-            break;
+                break;
+            case "project":
+                break;
             default:
                 location.href = "/category/" + category + ".html";
-            break;
+                break;
         }
     });
 </script>

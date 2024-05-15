@@ -2,7 +2,7 @@
 layout: post-current
 title: 깃헙 블로그 시작하기 [03] 페이징과 마감
 date: 2024-04-11 15:35:00 +0900
-categories: jekyll
+categories: blog
 ---
 메인화면 (전체 포스트 리스트)에 페이징을 추가했다.<br>
 플러그인은 jekyll-paginate를 사용했다.<br>
@@ -23,7 +23,7 @@ gem install jekyll-paginate
 <br>
 위와 같이 플러그인을 설치해주고<br>
 <br>
-<img src="{{ "/assets/img/jekyll_00003_001.png" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/blog_00003_001.png" }}" style="width: 40rem;"/><br>
 <br>
 gemfile과 config에 적용했다.<br>
 <br>
