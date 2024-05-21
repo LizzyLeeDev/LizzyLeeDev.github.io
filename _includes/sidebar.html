@@ -86,6 +86,19 @@
                     {% endif %}
                 </span>
             </div>
+        <!-- 카테고리 : 코예(서브) -->
+            <div class="sidebar-category-item" data-category="comaid">
+                &nbsp;&nbsp;
+                <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
+                CoMaid
+                <span class="sidebar-category-size">
+                    {% if site.categories['comaid'].size %}
+                    ( {{ site.categories['comaid'].size }} )
+                    {% else %}
+                    ( 0 )
+                    {% endif %}
+                </span>
+            </div>
         <!-- -->
         <hr class="sidebar-category-border-bold">
     </div>
