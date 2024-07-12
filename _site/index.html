@@ -404,10 +404,91 @@
     <!-- 포스트 카테고리명 -->
     <div class="category-name">
         All
-        <span class="category-list-size">총 19건</span>
+        <span class="category-list-size">총 20건</span>
     </div>
     <hr class="post-list-border">
     <!-- 포스트 리스트 -->
+    
+    <div class="post-list-item px-2" onclick="location.href = '/react/20240712/react_00001';">
+        <div class="post-list-subject">React.js 클래스vs함수 그리고 hook</div>
+        <div class="post-list-excerpt mt-1">지금으로부터 딱 5년전에 리액트를 사용했었다.<br />
+그렇게 깊게+오래 사용한게 아니라서 큰 추억은 없고 약간의 “이거 좋네..”라는 느낌만 남았다.<br />
+이제는 업무용으로 쓰고 있는데, 5년 전과 비교하면 지금은 엄청나게 매끄럽게 쓰고있는 중이다.<br />
+<br />
+그런데 문법이 꽤 다른 것 같다. 예전엔 분명 class 어쩌고.. render.. 같은게 있었는데<br />
+지금은 function부터 시작하잖아..? (゜▽゜;)<br />
+<br />
+<div class="post-chapter">1. 클래스형과 함수형 코드 비교</div>
+<br />
+다음 내용은 class형으로 작성된 컴포넌트이다. (공식 가이드 참고)
+<div class="post-code" style="font-size: 0.8rem;">
+class Test extends React.Component {<br />
+&nbsp;&nbsp;state = {name: "react"}<br />
+&nbsp;&nbsp;onBtnClick = () =&gt; { console.log("button clicked"); };<br />
+&nbsp;&nbsp;render() {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;return (<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button onClick={this.onBtnClick}&gt;{this.state.name}&lt;/button&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;);<br />
+&nbsp;&nbsp;}<br />
+}<br />
+</div>
+<br />
+<br />
+위 내용을 함수형으로 바꿔보면 다음과 같이 쓸 수 있다.
+<div class="post-code" style="font-size: 0.8rem;">
+function Test(){<br />
+&nbsp;&nbsp;const [name, setName] = useState("react")<br />
+&nbsp;&nbsp;const onBtnClick = () =&gt; { console.log("button clicked") }<br />
+&nbsp;&nbsp;return (<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;button onClick={onBtnClick}&gt;{name}&lt;/button&gt;<br />
+&nbsp;&nbsp;)<br />
+}<br />
+</div>
+<br />
+<br />
+<div class="post-chapter">2. 공통점: 그래도 배치는 비슷하다</div>
+<br />
+코드 모양만 보면 거의 비슷하다는 느낌이 든다.<br />
+클래스형의 경우 무조건 “class”이고 “component”를 extends 해야하고 render도 있어야하지만<br />
+그걸 제외하고 전체적인 모양만 보면<br />
+<br />
+<img src="/assets/img/react_00001_001.png" style="width: 40rem;" /><br />
+state를 정의하는 부분, 사용할 메소드를 정의하는 부분, 결과를 그려내는 부분으로 나눠지고<br />
+<br />
+약간의 코드 길이의 차이를 제외하면<br /> 
+정의한다-&gt;가져온다-&gt;집어넣는다 라는 행위는<br />
+크게 달라짐이 없어 보인다.<br />
+<br />
+<div class="post-chapter">3. 차이점: 생명주기 관리가 심플해졌다</div>
+<br />
+props의 사용법도 차이점이 있으나,<br />
+부모에서 자식으로 값을 넘긴다 / props로 접근한다 라는 큰 틀은<br />
+같다고 생각해서 제외했다.<br />
+<br />
+개발 시 가장 큰 차이점은 생명주기 관리의 차이점인 것 같다.<br />
+<br />
+기존 클래스형에서는 mount / update / unmount 로 상태변경을 관리했는데<br />
+함수형에서는 Hook 으로 일종의 병합이 되어버려서 <br />
+(개인적으로는) 기존의 생명주기보다 더 까다로운 접근법을 가지게 되었다는 생각이 든다.<br />
+<br />
+나는 내가 만드는 대부분의 프로그램이 “처음 로딩될 때” 그리고 “조작했을 때 일부” 변경되기를 바라는데,<br />
+Hook은 “날 쳐다봤어? 난 트리거될거야..” 이런 느낌으로 처리가 되어버려서<br />
+적응하는데에 시간이 조금 더 필요할 것 같다.<br />
+<br />
+<div class="post-chapter">4. 근데 결국 함수형으로 가는 수밖에 없다</div>
+<br />
+그런데 어쩔수없이 함수형으로 가는 수밖에 없을 것 같다.<br />
+유용한 대부분의 라이브러리가 Hook을 쓰고 있다고 하니, Hook을 쓰지 않는<br />
+class형 컴포넌트로는 대응이 쉽지가 않다고 한다. ⁎′̥̥̥ ㅅ ‵̥̥̥<br />
+<br />
+리액트 팀은 선택권을 주고싶었겠지만 현실은 늘 차갑다…….
+</div>
+        <div class="post-list-footer mt-2 py-1">
+            <span class="post-list-category">react</span>
+            <span class="post-list-uploadtime">2024-07-12 13:17</span>
+        </div>
+    </div>
+    <hr class="post-list-border">
     
     <div class="post-list-item px-2" onclick="location.href = '/blog/20240514/blog_00004';">
         <div class="post-list-subject">2024-05-14 블로그 스킨 변경하기</div>
@@ -613,108 +694,6 @@ gemfile과 config에 적용했다.<br />
     </div>
     <hr class="post-list-border">
     
-    <div class="post-list-item px-2" onclick="location.href = '/algorithm/20240201/algorithm_00002';">
-        <div class="post-list-subject">중국인의 나머지 정리</div>
-        <div class="post-list-excerpt mt-1">알고리즘 문제를 풀던 중 정리해두면 좋을 것 같은 내용을 발견해<br />
-오랜만에 블로그에 작성했다 ^.^<br />
-<br />
-<div class="post-chapter">1. 중국인의 나머지 정리가 뭔가요</div>
-<br />
-<img src="/assets/img/algorithm_00002_001.png" style="width: 40rem;" /><br />
-<br />
-위 내용을 요약하면,<br />
-<br />
-<div style="margin-left: 20%">
-    <span style="font-weight: bold; font-size: 1.1rem;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x ≡ 2 (mod 3)</span><span class="post-overegg" style="color: gray; border: 0;">→ x는 3으로 나누면 나머지가 2</span><br />
-    <span style="font-weight: bold; font-size: 1.1rem;">and x ≡ 3 (mod 5)</span><span class="post-overegg" style="color: gray; border: 0;">→ x는 5로 나누면 나머지가 3</span><br />
-    <span style="font-weight: bold; font-size: 1.1rem;">and x ≡ 2 (mod 7)</span><span class="post-overegg" style="color: gray; border: 0;">→ x는 7로 나누면 나머지가 2</span><br />
-</div>
-<br />
-를 만족하는 x를 찾는 문제에 관한 내용이다.<br />
-<br />
-중국인의 나머지 정리는 위와 같은 연립 합동식의 유일한 해가 존재함을 증명하는 정리이다.<br />
-(단, x ≡ a (mod m) 에서 모든 m은 쌍마다 서로소 - 위의 경우에는 3,5,7이 서로소일 것)<br />
-<br />
-<div class="post-chapter">2. 정리를 이용해서 문제 풀기</div>
-<br />
-<div style="margin-left: 20%">
-    <span style="font-weight: bold; font-size: 1.1rem;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x ≡ 2 (mod 3)</span><br />
-    <span style="font-weight: bold; font-size: 1.1rem;">and x ≡ 3 (mod 5)</span><br />
-    <span style="font-weight: bold; font-size: 1.1rem;">and x ≡ 2 (mod 7)</span><br />
-</div>
-<br />
-위 내용을 x ≡ a (mod m) 모양으로 정리하면,<br />
-<br />
-<div style="margin-left: 20%">
-<span style="font-weight: bold; font-size: 1.1rem;">a₁ = 2, m₁ = 3</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">a₂ = 3, m₂ = 5</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">a₃ = 2, m₃ = 7</span><br />
-</div>
-<br />
-로 정리할 수 있을 것이다.<br />
-그리고 m₁ + m₂ + m₃ + … 을 모두 더한 값을 M으로 정의한다.<br />
-<br />
-<div style="margin-left: 20%">
-<span style="font-weight: bold; font-size: 1.1rem;">M = 3 * 5 * 7 = 105</span><br />
-</div>
-<br />
-다음으로 각 식마다 n = M / m 값을 구한다.<br />
-<br />
-<div style="margin-left: 20%">
-<span style="font-weight: bold; font-size: 1.1rem;">n₁ = M / m₁ = 105 / 3 = 35</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">n₂ = M / m₂ = 105 / 5 = 21</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">n₃ = M / m₃ = 105 / 7 = 15</span><br />
-</div>
-<br />
-다음으로 각 식마다 c = n^-1 값을 구한다.<br />
-..즉, nc ≡ 1 (mod m)을 만족하는 c의 최소값을 구한다. (모듈러 역원 구하기 참고)<br />
-<br />
-<div style="margin-left: 20%">
-(식 1)<br />
-<span style="font-weight: bold; font-size: 1.1rem;">n₁c₁ ≡ 1 (mod m₁)</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">35c₁ ≡ 1 (mod 3)</span><span class="post-overegg" style="color: gray; border: 0;">→ 양변에 mod 3을 취한다.</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">2c₁ ≡ 1 (mod 3)</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">c₁ ≡ 2</span><br />
-<br />
-(식 2)<br />
-<span style="font-weight: bold; font-size: 1.1rem;">n₂c₂ ≡ 1 (mod m₁)</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">21c₂ ≡ 1 (mod 5)</span><span class="post-overegg" style="color: gray; border: 0;">→ 양변에 mod 5을 취한다.</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">1c₂ ≡ 1 (mod 5)</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">c₂ ≡ 1</span><br />
-<br />
-(식 3)<br />
-<span style="font-weight: bold; font-size: 1.1rem;">n₃c₃ ≡ 1 (mod m₃)</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">15c₃ ≡ 1 (mod 7)</span><span class="post-overegg" style="color: gray; border: 0;">→ 양변에 mod 7을 취한다.</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">1c₃ ≡ 1 (mod 7)</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">c₃ ≡ 1</span><br />
-</div>
-<br />
-<br />
-이제 다음 식을 통해 x를 구할 수 있다.<br />
-<br />
-<div style="margin-left: 20%">
-<span style="font-weight: bold; font-size: 1.1rem;">x = (a₁n₁c₁ + a₂n₂c₂.. ) mod M</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">x = (2*35*2 + 3*21*1 + 2*15*1) mod 105</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">x = (140 + 63 + 30) mod 105</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">x = 233 mod 105</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">x = 23</span><br />
-</div>
-<br />
-<div class="post-chapter">참고 및 출처</div>
-<br />
-<span class="post-overegg" style="color: blue; border: 0;">https://ko.wikipedia.org/wiki/%EC%A4%91%EA%B5%AD%EC%9D%B8%EC%9D%98<em>%EB%82%98%EB%A8%B8%EC%A7%80</em>%EC%A0%95%EB%A6%AC</span><br />
-<br />
-<span class="post-overegg" style="color: blue; border: 0;">https://namu.wiki/w/%EC%A4%91%EA%B5%AD%EC%9D%B8%EC%9D%98%20%EB%82%98%EB%A8%B8%EC%A7%80%20%EC%A0%95%EB%A6%AC</span><br />
-<br />
-<span class="post-overegg" style="color: blue; border: 0;">https://www.youtube.com/watch?v=zOSS3fCiKzI</span><br />
-</div>
-        <div class="post-list-footer mt-2 py-1">
-            <span class="post-list-category">algorithm</span>
-            <span class="post-list-uploadtime">2024-02-01 17:19</span>
-        </div>
-    </div>
-    <hr class="post-list-border">
-    
     <!-- 페이징 디자인 -->
     <div class="my-3">
         
@@ -776,7 +755,7 @@ gemfile과 config에 적용했다.<br />
             </div>
             <div class="sidebar-profile-item">
                 <span class="sidebar-profile-icon "><i class="fa fa-comment"></i></span>
-                취직해야해 ̗̀(ꀬ⏖ꀬ∴)
+                스프링 고수가 될 거야 _〆(´Д⊂
             </div>
         </div>
     </div>
@@ -786,7 +765,7 @@ gemfile과 config에 적용했다.<br />
         <div class="sidebar-category-item" data-category="all" style="color: black!important;">
             <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
             ALL
-            <span class="sidebar-category-size">( 19 )</span>
+            <span class="sidebar-category-size">( 20 )</span>
         </div>
         <hr class="sidebar-category-border-bold">
         <!-- 카테고리 : 블로그 -->
@@ -804,7 +783,7 @@ gemfile과 config에 적용했다.<br />
                 <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
                 STUDY
             </div>
-        <!-- 카테고리 : 알고리즘 -->
+        <!-- 카테고리 : 알고리즘(서브) -->
             <div class="sidebar-category-item" data-category="algorithm">
                 &nbsp;&nbsp;
                 <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
@@ -815,7 +794,7 @@ gemfile과 config에 적용했다.<br />
                     
                 </span>
             </div>
-        <!-- 카테고리 : 파이선 -->
+        <!-- 카테고리 : 파이선(서브) -->
             <div class="sidebar-category-item" data-category="python">
                 &nbsp;&nbsp;
                 <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
@@ -834,6 +813,17 @@ gemfile과 config에 적용했다.<br />
                 <span class="sidebar-category-size">
                     
                     ( 0 )
+                    
+                </span>
+            </div>
+        <!-- 카테고리 : 리액트(서브) -->
+            <div class="sidebar-category-item" data-category="react">
+                &nbsp;&nbsp;
+                <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
+                React.js
+                <span class="sidebar-category-size">
+                    
+                    ( 1 )
                     
                 </span>
             </div>
