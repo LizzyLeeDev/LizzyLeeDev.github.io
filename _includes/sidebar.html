@@ -49,6 +49,19 @@
                 <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
                 STUDY
             </div>
+        <!-- 카테고리 : 시큐리티(서브) -->
+            <div class="sidebar-category-item" data-category="security">
+                &nbsp;&nbsp;
+                <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
+                Security
+                <span class="sidebar-category-size">
+                    {% if site.categories['security'].size %}
+                    ( {{ site.categories['security'].size }} )
+                    {% else %}
+                    ( 0 )
+                    {% endif %}
+                </span>
+            </div>
         <!-- 카테고리 : 알고리즘(서브) -->
             <div class="sidebar-category-item" data-category="algorithm">
                 &nbsp;&nbsp;

@@ -1,0 +1,150 @@
+---
+layout: post-current
+title: x86-64 Assembly
+date: 2024-09-30 09:27:00 +0900
+categories: security
+---
+취미삼아 보안 공부를 다시 시작했는데,<br>
+이번 시즌에는 전보다 더 발전된 무언가를 꼭 이뤄냈으면 좋겠다.( ⁎ ᵕᴗᵕ ⁎ )<br>
+<br>
+<div class="post-chapter">0. 개요</div><br>
+어셈블리 언어의 기본 개념과 x86-64 ISA의 어셈블리 언어에 대해 정리했다.<br>
+<br>
+<div class="post-chapter">1. 개요</div><br>
+* 어셈블리 언어는 기계어와 1:1 대응이 되는 저수준 언어이다.<br>
+* 사용자가 기계어를 쉽게 읽을수 있게 하기 위해 만들어졌다.<br>
+* 레지스터나 메모리에 직접 접근하기 쉽다.<br>
+* CPU의 명령어 집합(ISA)에 따라 여러 종류가 존재한다: (IA-32, x86-64, ARM, MIPS)<br>
+* CPU 성능이 낮을수록, RAM이 작을수록, 컴파일러보다 인간이 더 최적화를 잘 할수록 유리하다.<br>
+<br>
+<div class="post-chapter">2. 개요</div><br>
+* 2020년 기준 절반 이상의 CPU가 x86-64 아키텍처를 채택하고 있다.
+* 두가지 문법을 가지고 있다: Intel, AT&T
+* Intel 문법은 주로 Windows에서, AT&T문법은 주로 Unix에서 사용된다.
+<table style="min-width: 443px;" class="post-table">
+    <tbody>
+        <tr>
+            <th></th>
+            <th>Intel</th>
+            <th>AT&amp;T</th>
+        </tr>
+        <tr>
+            <td>피연산자 순서</td>
+            <td>instr dest, src <br>(dest를 좌측, src를 우측에 표기)</td>
+            <td>instr src, dest <br>(src를 좌측, dest를 우측에 표기)</td>
+        </tr>
+        <tr>
+            <td>접두사</td>
+            <td>instr reg, 1 <br>(자동으로 파라미터 타입 파악) </td>
+            <td>instr $1, %reg <br>(값은 $, 레지스터는 %를 앞에 표시)</td>
+        </tr>
+        <tr>
+            <td>피연산자 크기</td>
+            <td>instr reg, 1234 <br>(레지스터를 통해 자동으로 결정)</td>
+            <td>instrl $1234, %reg <br>(명령어에 크기를 나타내는 접미사 표시)</td>
+        </tr>
+        <tr>
+            <td>메모리 주소 표기</td>
+            <td>instr reg1, [reg2+3] <br>([]로 구분)</td>
+            <td>instr 3(%reg2), %reg1 </td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<div class="post-chapter">3. x86-64 어셈블리 명령어</div><br>
+<table style="min-width: 75px;" class="post-table">
+    <tbody>
+        <tr>
+            <th>명령어</th>
+            <th>의미</th>
+            <th>Intel</th>
+        </tr>
+        <tr>
+            <td>mov</td>
+            <td>src에 들어있는 값을 dest에 대입</td>
+            <td>mov dest, src</td>
+        </tr>
+        <tr>
+            <td>lea</td>
+            <td>src에 들어있는 값(주소)을 dest에 대입<br>(*mov와 다르게 lea는 주소에 대한 연산이 가능)</td>
+            <td>lea dest, src</td>
+        </tr>
+        <tr>
+            <td>add</td>
+            <td>dest에 src의 값을 더함</td>
+            <td>add dest, 3</td>
+        </tr>
+        <tr>
+            <td>sub</td>
+            <td>dest에 src의 값을 뺌</td>
+            <td>sub dest, 3</td>
+        </tr>
+        <tr>
+            <td>inc</td>
+            <td>dest의 값을 1 증가시킴</td>
+            <td>inc dest</td>
+        </tr>
+        <tr>
+            <td>dec</td>
+            <td>dest의 값을 1 감소시킴</td>
+            <td>dec dest</td>
+        </tr>
+        <tr>
+            <td>and</td>
+            <td>dest와 src의 각 비트를 AND 연산해서 dest에 저장</td>
+            <td>and dest, src</td>
+        </tr>
+        <tr>
+            <td>or</td>
+            <td>dest와 src의 각 비트를 OR 연산해서 dest에 저장</td>
+            <td>or dest, src</td>
+        </tr>
+        <tr>
+            <td>xor</td>
+            <td>dest와 src의 각 비트를 XOR 연산해서 dest에 저장</td>
+            <td>xor dest, src</td>
+        </tr>
+        <tr>
+            <td>not</td>
+            <td>dest의 각 비트를 반전</td>
+            <td>not dest</td>
+        </tr>
+        <tr>
+            <td>cmp</td>
+            <td>dest와 src를 비교하고 플래그를 설정, 결과값 대입안함<br>(*dest와 src 비교에 주로 사용)</td>
+            <td>cmp dest, src</td>
+        </tr>
+        <tr>
+            <td>test</td>
+            <td>dest와 src를 AND연산하고 플래그를 설정, 결과값 대입안함<br>(*dest와 src가 0인지 확인하는데 주로 사용)</td>
+            <td>test dest, src</td>
+        </tr>
+        <tr>
+            <td>jmp</td>
+            <td>dest를 rip에 대입 <br>(*즉 addr의 명령어를 실행)</td>
+            <td>jmp dest</td>
+        </tr>
+        <tr>
+            <td>je</td>
+            <td>직전에 비교한 두 피연산자가 같으면 점프 <br>(*jump if equal)</td>
+            <td>cmp dest, src; <br>je addr; <br>// if dest == src , <br>// jump to addr</td>
+        </tr>
+        <tr>
+            <td>jg</td>
+            <td>직전에 비교한 두 연산자 중 전자가 더 크면 점프 <br>(*jump if greater)</td>
+            <td>cmp dest, src; <br>jg addr; <br>// if dest &gt; src , <br>// jump to addr</td>
+        </tr>
+    </tbody>
+</table>
+*AT&T 문법의 경우는 dest - src 위치 변경
+<br>
+<div class="post-chapter">출처</div><br>
+<span class="post-overegg" style="color: blue; border: 0;">
+    https://ko.wikipedia.org/wiki/%EC%96%B4%EC%85%88%EB%B8%94%EB%A6%AC%EC%96%B4
+</span><br>
+<span class="post-overegg" style="color: blue; border: 0;">
+    https://namu.wiki/w/%EC%96%B4%EC%85%88%EB%B8%94%EB%A6%AC%EC%96%B4
+</span><br>
+<span class="post-overegg" style="color: blue; border: 0;">
+    https://namu.wiki/w/x86/%EB%AA%85%EB%A0%B9%EC%96%B4%20%EB%AA%A9%EB%A1%9D
+</span><br>
