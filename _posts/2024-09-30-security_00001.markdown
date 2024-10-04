@@ -18,9 +18,9 @@ categories: security
 * CPU 성능이 낮을수록, RAM이 작을수록, 컴파일러보다 인간이 더 최적화를 잘 할수록 유리하다.<br>
 <br>
 <div class="post-chapter">2. 개요</div><br>
-* 2020년 기준 절반 이상의 CPU가 x86-64 아키텍처를 채택하고 있다.
-* 두가지 문법을 가지고 있다: Intel, AT&T
-* Intel 문법은 주로 Windows에서, AT&T문법은 주로 Unix에서 사용된다.
+* 2020년 기준 절반 이상의 CPU가 x86-64 아키텍처를 채택하고 있다.<br>
+* 두가지 문법을 가지고 있다: Intel, AT&T<br>
+* Intel 문법은 주로 Windows에서, AT&T문법은 주로 Unix에서 사용된다.<br>
 <table style="min-width: 443px;" class="post-table">
     <tbody>
         <tr>
@@ -134,10 +134,53 @@ categories: security
             <td>직전에 비교한 두 연산자 중 전자가 더 크면 점프 <br>(*jump if greater)</td>
             <td>cmp dest, src; <br>jg addr; <br>// if dest &gt; src , <br>// jump to addr</td>
         </tr>
+        <tr>
+            <td>push</td>
+            <td>스택 끝부분에 값(val) 추가 <br>(*스택이 변경되므로 스택 끝을 가리키는 rsp의 값 변경됨)</td>
+            <td>push val</td>
+        </tr>
+        <tr>
+            <td>pop</td>
+            <td>스택 끝부분의 값을 꺼내서 dest에 저장 <br>(*스택이 변경되므로 스택 끝을 가리키는 rsp의 값 변경됨)</td>
+            <td>pop dest</td>
+        </tr>
     </tbody>
 </table>
 *AT&T 문법의 경우는 dest - src 위치 변경
 <br>
+<div class="post-chapter">4. x86-64 어셈블리 프로시저</div><br>
+* 프로시저는 특정 기능을 수행하는 코드 조각이다.<br>
+* 프로시저 호출 - 프로시저 실행 - 프로시저에서 반환(원래 실행하던 명령어로 복귀) 순으로 실행된다.<br>
+* 스택에 원래 실행하려던 명령어 주소를 저장한 다음 프로시저를 호출하고, 반환 시 스택에 저장해둔 명령어 주소를 이용해 복귀한다.<br>
+<br>
+<table style="min-width: 75px;" class="post-table">
+    <tbody>
+        <tr>
+            <th>명령어</th>
+            <th>의미</th>
+            <th>문법</th>
+            <th>실제 동작</th>
+        </tr>
+        <tr>
+            <td>call</td>
+            <td>특정 주소의 명령어 호출</td>
+            <td>call addr</td>
+            <td>push addr; <br>jmp addr;</td>
+        </tr>
+        <tr>
+            <td>leave</td>
+            <td>사용중인 스택 프레임 정리</td>
+            <td>leave</td>
+            <td>mov rsp, rbp;<br>// 스택의 시작점(RBP 레지스터가 가리키는 값) 으로 <br>// 스택의 끝점(RSP 레지스터가 가리키는 값)을 옮긴다.<br>pop rbp; <br>// 스택에 저장해둔 값을 <br>// 스택의 시작점으로 설정한다.</td>
+        </tr>
+        <tr>
+            <td>ret</td>
+            <td>원래 실행하던 명령어로 복귀</td>
+            <td>ret</td>
+            <td>pop rip; <br>// 스택에 저장해둔 값을 <br>// 다음 명령어(RIP 레지스터가 가리키는 값)로 설정한다.</td>
+        </tr>
+    </tbody>
+</table>
 <div class="post-chapter">출처</div><br>
 <span class="post-overegg" style="color: blue; border: 0;">
     https://ko.wikipedia.org/wiki/%EC%96%B4%EC%85%88%EB%B8%94%EB%A6%AC%EC%96%B4
