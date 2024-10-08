@@ -146,7 +146,7 @@ categories: security
         </tr>
     </tbody>
 </table>
-*AT&T 문법의 경우는 dest - src 위치 변경
+*AT&T 문법의 경우는 dest - src 위치 변경<br>
 <br>
 <div class="post-chapter">4. x86-64 어셈블리 프로시저</div><br>
 * 프로시저는 특정 기능을 수행하는 코드 조각이다.<br>
@@ -181,6 +181,7 @@ categories: security
         </tr>
     </tbody>
 </table>
+<br>
 <div class="post-chapter">출처</div><br>
 <span class="post-overegg" style="color: blue; border: 0;">
     https://ko.wikipedia.org/wiki/%EC%96%B4%EC%85%88%EB%B8%94%EB%A6%AC%EC%96%B4
