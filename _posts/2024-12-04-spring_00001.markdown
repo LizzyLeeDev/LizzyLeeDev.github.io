@@ -1,0 +1,148 @@
+---
+layout: post-current
+title: DTO, VO, Entity in Layered Architecture
+date: 2024-12-04 11:07:00 +0900
+categories: spring
+---
+스프링을 사용하기 위해 프로젝트를 만들고 가장 먼저 고민하던 것이 "뭐부터 만들어서 어디에 집어넣어야 하지?.." 였다.<br>
+Django에서는 Model-Template-View 였고 스프링은 Model-View-Controller니까 하나씩 만들면 되나?<br>
+라고 생각하며 예제를 보는데, Controller는 뭐고 DTO는 또 뭐지 싶었다.<br>
+<br>
+이제 Controller,Repository,Entity는 잘 쓰겠고 DTO도 알겠는데 VO는 굳이 왜 있어야 하나 싶어서 알아봤다.<br>
+<br>
+<div class="post-chapter">1. DTO, VO, Entity</div><br>
+<br>
+<table class="post-table">
+    <tbody>
+        <tr>
+            <th></th>
+            <th>DTO</th>
+            <th>VO</th>
+            <th>Entity</th>
+        </tr>
+        <tr>
+            <td>의미</td>
+            <td>Data Transfer Object</td>
+            <td>Value Object</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>역할</td>
+            <td>계층 간 데이터 전달</td>
+            <td>도메인 내에서 특정 값의 무결성과 의미를 표현</td>
+            <td>데이터베이스와 매핑, 영속성 관리</td>
+        </tr>
+        <tr>
+            <td>사용처</td>
+            <td>Controller ↔ Service ↔ Repository 간 데이터 교환</td>
+            <td>Service 계층 및 도메인 로직 처리</td>
+            <td>Repository 계층 및 DB 연동</td>
+        </tr>
+        <tr>
+            <td>목적</td>
+            <td>외부 입력/출력 데이터를 캡슐화 (Request/Response)</td>
+            <td>비즈니스 로직에서 값 검증 및 불변성 보장</td>
+            <td>데이터 저장 및 영속성 관리, DB 테이블과 매핑</td>
+        </tr>
+        <tr>
+            <td>불변성</td>
+            <td>일반적으로 가변적 (Setter를 통해 변경 가능)</td>
+            <td>불변 객체로 설계</td>
+            <td>가변적 (JPA가 상태를 관리)</td>
+        </tr>
+        <tr>
+            <td>검증 책임</td>
+            <td>데이터의 기본적인 형식 검증</td>
+            <td>값의 고유성과 비즈니스 규칙 검증</td>
+            <td>검증 책임 없음 (최대한 단순화)</td>
+        </tr>
+        <tr>
+            <td>비교</td>
+            <td>참조로 비교 (equals/hashCode 구현 잘 안 함)</td>
+            <td>값 자체를 기준으로 비교 (equals/hashCode 구현)</td>
+            <td>참조 및 값 비교 둘다 (주로 식별자 기반 비교)</td>
+        </tr>
+        <tr>
+            <td>테스트</td>
+            <td>외부 데이터와의 통신을 테스트하기에 적합</td>
+            <td>도메인 로직의 독립적인 테스트 가능</td>
+            <td>DB와 연동된 테스트에 적합</td>
+        </tr>
+        <tr>
+            <td>주 내용</td>
+            <td>클라이언트 요청/응답에 필요한 최소한의 데이터</td>
+            <td>특정 의미를 갖는 단일 값 또는 관련 값들의 묶음</td>
+            <td>전체 엔티티 데이터 및 상태 관리</td>
+        </tr>
+    </tbody>
+</table><br>
+<br>
+<div class="post-chapter">2. 이메일 등록 예제</div><br>
+<div class="post-code" style="font-size: 0.8rem;">
+// DTO<br>
+public class UserRequestDTO {<br>
+&nbsp;&nbsp;private String email;<br>
+&nbsp;&nbsp;private String name;<br>
+<br>
+&nbsp;&nbsp;// Getter, Setter<br>
+}<br>
+<br>
+// VO<br>
+public class Email {<br>
+&nbsp;&nbsp;private final String value;<br>
+<br>
+&nbsp;&nbsp;public Email(String value) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (!value.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw new IllegalArgumentException("Invalid email format");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;this.value = value;<br>
+&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;public String getValue() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return value;<br>
+&nbsp;&nbsp;}<br>
+}<br>
+<br>
+// Entity<br>
+@Entity<br>
+public class UserEntity {<br>
+&nbsp;&nbsp;@Id<br>
+&nbsp;&nbsp;@GeneratedValue<br>
+&nbsp;&nbsp;private Long id;<br>
+&nbsp;&nbsp;private String email;<br>
+&nbsp;&nbsp;private String name;<br>
+<br>
+&nbsp;&nbsp;// Constructor for JPA<br>
+&nbsp;&nbsp;public UserEntity() {}<br>
+<br>
+&nbsp;&nbsp;public UserEntity(String email, String name) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;this.email = email;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;this.name = name;<br>
+&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;// Getter<br>
+}<br>
+<br>
+// Service<br>
+@Service<br>
+public class UserService {<br>
+&nbsp;&nbsp;public void registerUser(UserRequestDTO dto) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// DTO → VO<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Email email = new Email(dto.getEmail());<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// VO → Entity<br>
+&nbsp;&nbsp;&nbsp;&nbsp;UserEntity entity = new UserEntity(email.getValue(), dto.getName());<br>
+&nbsp;&nbsp;&nbsp;&nbsp;userRepository.save(entity);<br>
+&nbsp;&nbsp;}<br>
+}<br>
+</div><br>
+<br>
+<div class="post-chapter">3. 정리</div><br>
+* DTO → VO → Entity 흐름은 도메인 로직이 있는 경우 적용<br>
+&nbsp;&nbsp;- VO로 데이터의 무결성을 검증하고 비즈니스 로직을 처리<br>
+&nbsp;&nbsp;- Entity는 단순히 데이터를 저장하고 관리<br>
+* DTO → Entity는 단순 CRUD 작업처럼 도메인 로직이 필요하지 않은 경우에 적용<br>
+&nbsp;&nbsp;- 항상 VO가 필요하진 않은 듯<br>
+<br>
+<div class="post-chapter">출처</div><br>
+<span class="post-overegg" style="color: blue; border: 0;">출처는 챗GPT</span><br>

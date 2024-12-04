@@ -5,8 +5,8 @@
     </div>
     <!-- 로고와 프로필 -->
     <div id="sidebar_profile" class="mt-2 p-2" onclick="location.href = '{{ site.abountlink }}';">
-        <div class="sidebar-profile-logo text-center" style="background-color: white;">
-            <img src="{{ "/assets/img/full_logo.jpg" }}" style="width: 3rem;"/>
+        <div class="sidebar-profile-logo text-center" style="background-color: white; border: 0;">
+            <img src="{{ "/assets/img/sidebar_profile.jpg" }}" style="width: 100%;"/>
         </div>
         <div class="mt-2">
             <div class="sidebar-profile-item">
@@ -44,10 +44,10 @@
                     {% endif %}
                 </span>
             </div>
-        <!-- 카테고리 : 스터디 -->
-            <div class="sidebar-category-item" data-category="project" style="pointer-events: none;">
+        <!-- 카테고리 : 개념 및 이론 -->
+            <div class="sidebar-category-item" data-category="concepts" style="pointer-events: none;">
                 <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
-                STUDY
+                CONCEPTS
             </div>
         <!-- 카테고리 : 시큐리티(서브) -->
             <div class="sidebar-category-item" data-category="security">
@@ -75,6 +75,11 @@
                     {% endif %}
                 </span>
             </div>
+        <!-- 카테고리 : 프로그래밍 언어 -->
+            <div class="sidebar-category-item" data-category="language" style="pointer-events: none;">
+                <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
+                LANGUAGE
+            </div>
         <!-- 카테고리 : 파이선(서브) -->
             <div class="sidebar-category-item" data-category="python">
                 &nbsp;&nbsp;
@@ -88,14 +93,19 @@
                     {% endif %}
                 </span>
             </div>
-        <!-- 카테고리 : 자바(서브) -->
-            <div class="sidebar-category-item" data-category="java">
+        <!-- 카테고리 : 프레임워크 -->
+            <div class="sidebar-category-item" data-category="framework" style="pointer-events: none;">
+                <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
+                FRAMEWORK
+            </div>
+        <!-- 카테고리 : 스프링(서브) -->
+            <div class="sidebar-category-item" data-category="spring">
                 &nbsp;&nbsp;
                 <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
-                Java
+                Spring
                 <span class="sidebar-category-size">
-                    {% if site.categories['java'].size %}
-                    ( {{ site.categories['java'].size }} )
+                    {% if site.categories['spring'].size %}
+                    ( {{ site.categories['spring'].size }} )
                     {% else %}
                     ( 0 )
                     {% endif %}
@@ -105,7 +115,7 @@
             <div class="sidebar-category-item" data-category="react">
                 &nbsp;&nbsp;
                 <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
-                React.js
+                React
                 <span class="sidebar-category-size">
                     {% if site.categories['react'].size %}
                     ( {{ site.categories['react'].size }} )

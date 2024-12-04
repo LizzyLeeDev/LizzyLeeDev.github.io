@@ -56,7 +56,7 @@
         position: fixed;
         background-image: url("/assets/img/background.jpg");
         background-size: 100vw;
-        filter: grayscale(0.6) opacity(0.6);
+        filter: opacity(0.8);
     }
     /* 리스트 설정 */
     #container_list {
@@ -119,7 +119,7 @@
         font-size: 1.4rem;
         font-family: 'Orbit', sans-serif;
         font-weight: bold;
-        color: #FF9AAF;
+        color: #85C1E9;
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
@@ -189,7 +189,7 @@
         line-height: 1;
     }
     .post-list-category {
-        color: #FF6F8D;
+        color: #3498DB;
     }
     .post-list-uploadtime {
         justify-self: flex-end;
@@ -208,7 +208,7 @@
         font-size: 0.7rem;
     }
     .page-container .page-button.curpage {
-        color: #FF6F8D;
+        color: #3498DB;
         cursor: default;
     }
     .page-container .page-button.disabled {
@@ -226,7 +226,7 @@
         font-size: 1.2rem;
         font-family: 'Orbit', sans-serif;
         font-weight: bold;
-        color: #FF9AAF;
+        color: #85C1E9;
     }
     .post-border {
         border: 1px dashed #BBB;
@@ -243,7 +243,7 @@
         line-height: 1;
     }
     .post-category {
-        color: #FF6F8D;
+        color: #3498DB;
     }
     .post-uploadtime {
         justify-self: flex-end;
@@ -259,7 +259,7 @@
     }
     /* 포스트 게시글 내 문서 스타일 */
     .post-chapter {
-        background-color: #FF9AAF;
+        background-color: #85C1E9;
         font-size: 1rem;
         font-weight: bold;
         padding: 0.25rem 0.5rem;
@@ -270,7 +270,7 @@
         border: 0;  
     }
     .post-chapter-collapse:hover {
-        background-color: #FF6F8D;
+        background-color: #3498DB;
         cursor: pointer;
         color: white;
     }
@@ -326,7 +326,7 @@
         line-height: 0.6;
     }
     .sidebar-profile-icon i {
-        color: #FF6F8D;
+        color: #3498DB;
         font-size: 0.7rem;
     }
     /* 사이드바 카테고리에서 사용할 스타일 */
@@ -354,7 +354,7 @@
     .sidebar-category-size {
         font-family: 'Orbit', sans-serif;
         font-size: 0.7rem;
-        color: #FF6F8D;
+        color: #3498DB;
     }
     .sidebar-category-icon {
         min-width: 10px;
@@ -363,7 +363,7 @@
         line-height: 0.6;
     }
     .sidebar-category-icon i {
-        color: #FF6F8D;
+        color: #3498DB;
         position: relative;
         top: -4px;
         font-size: 0.5rem;
@@ -636,8 +636,8 @@ String과 Search가 같지 않으면 String의 인덱스를 고정한 상태로 
     </div>
     <!-- 로고와 프로필 -->
     <div id="sidebar_profile" class="mt-2 p-2" onclick="location.href = '/category/about';">
-        <div class="sidebar-profile-logo text-center" style="background-color: white;">
-            <img src="/assets/img/full_logo.jpg" style="width: 3rem;"/>
+        <div class="sidebar-profile-logo text-center" style="background-color: white; border: 0;">
+            <img src="/assets/img/sidebar_profile.jpg" style="width: 100%;"/>
         </div>
         <div class="mt-2">
             <div class="sidebar-profile-item">
@@ -660,7 +660,7 @@ String과 Search가 같지 않으면 String의 인덱스를 고정한 상태로 
         <div class="sidebar-category-item" data-category="all" style="color: black!important;">
             <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
             ALL
-            <span class="sidebar-category-size">( 21 )</span>
+            <span class="sidebar-category-size">( 24 )</span>
         </div>
         <hr class="sidebar-category-border-bold">
         <!-- 카테고리 : 블로그 -->
@@ -669,14 +669,14 @@ String과 Search가 같지 않으면 String의 인덱스를 고정한 상태로 
                 BLOG
                 <span class="sidebar-category-size">
                     
-                    ( 4 )
+                    ( 5 )
                     
                 </span>
             </div>
-        <!-- 카테고리 : 스터디 -->
-            <div class="sidebar-category-item" data-category="project" style="pointer-events: none;">
+        <!-- 카테고리 : 개념 및 이론 -->
+            <div class="sidebar-category-item" data-category="concepts" style="pointer-events: none;">
                 <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
-                STUDY
+                CONCEPTS
             </div>
         <!-- 카테고리 : 시큐리티(서브) -->
             <div class="sidebar-category-item" data-category="security">
@@ -685,7 +685,7 @@ String과 Search가 같지 않으면 String의 인덱스를 고정한 상태로 
                 Security
                 <span class="sidebar-category-size">
                     
-                    ( 1 )
+                    ( 2 )
                     
                 </span>
             </div>
@@ -700,6 +700,11 @@ String과 Search가 같지 않으면 String의 인덱스를 고정한 상태로 
                     
                 </span>
             </div>
+        <!-- 카테고리 : 프로그래밍 언어 -->
+            <div class="sidebar-category-item" data-category="language" style="pointer-events: none;">
+                <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
+                LANGUAGE
+            </div>
         <!-- 카테고리 : 파이선(서브) -->
             <div class="sidebar-category-item" data-category="python">
                 &nbsp;&nbsp;
@@ -711,14 +716,19 @@ String과 Search가 같지 않으면 String의 인덱스를 고정한 상태로 
                     
                 </span>
             </div>
-        <!-- 카테고리 : 자바(서브) -->
-            <div class="sidebar-category-item" data-category="java">
+        <!-- 카테고리 : 프레임워크 -->
+            <div class="sidebar-category-item" data-category="framework" style="pointer-events: none;">
+                <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
+                FRAMEWORK
+            </div>
+        <!-- 카테고리 : 스프링(서브) -->
+            <div class="sidebar-category-item" data-category="spring">
                 &nbsp;&nbsp;
                 <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
-                Java
+                Spring
                 <span class="sidebar-category-size">
                     
-                    ( 0 )
+                    ( 1 )
                     
                 </span>
             </div>
@@ -726,7 +736,7 @@ String과 Search가 같지 않으면 String의 인덱스를 고정한 상태로 
             <div class="sidebar-category-item" data-category="react">
                 &nbsp;&nbsp;
                 <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
-                React.js
+                React
                 <span class="sidebar-category-size">
                     
                     ( 1 )
