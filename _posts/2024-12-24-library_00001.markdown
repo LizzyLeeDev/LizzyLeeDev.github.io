@@ -1,0 +1,29 @@
+---
+layout: post-current
+title: pdf.js initialization timing
+date: 2024-12-24 14:14:00 +0900
+categories: library
+---
+pdf.js 라이브러리를 사용하고 있는데, 뷰어의 페이지 변경 이벤트가 필요하다.<br>
+PDFViewerApplication의 eventBus를 통해 page change 이벤트를 걸면 된다는데<br>
+eventBus가 null 이잖아....?<br>
+<br>
+아마 pdf viewer가 완전하게 초기화되지 않아서 발생하는 문제 같은데,<br>
+stackoverflow에도 마음에 드는 답변이 없어서 꽤 헤맨 김에 내용을 저장해두기로 했다.<br>
+<br>
+<div class="post-chapter">1. 환경</div><br>
+<br>
+* pdf.js 버전 : 3.19.3<br>
+* &lt;iframe&gt;의 src에 pdf.js의 기본 viewer.html을 주고 사용<br>
+<br>
+<div class="post-chapter">2. 초기화 시점 잡기</div><br>
+<br>
+<div class="post-code my-1"><br>
+    > $("#iframe_id").on("load", async function () {<br>
+    >   var viewer = $("#iframe_id")[0].contentWindow.PDFViewerApplication;<br>
+    ><br>
+    >   await viewer._initializedCapability.promise;<br>
+    ><br>
+    >   // 초기화 완료를 await 했으므로 eventBus 사용 가능<br>
+    > });<br>
+<div><br>

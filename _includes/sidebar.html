@@ -125,6 +125,18 @@
                         {% endif %}
                     </span>
                 </div>
+            <!-- 카테고리 : 라이브러리 -->
+                <div class="sidebar-category-item" data-category="library" style="pointer-events: none;">
+                    <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
+                    LIBRARY
+                    <span class="sidebar-category-size">
+                        {% if site.categories['library'].size %}
+                        ( {{ site.categories['library'].size }} )
+                        {% else %}
+                        ( 0 )
+                        {% endif %}
+                    </span>
+                </div>
             <!-- 카테고리 : 프로젝트 -->
                 <div class="sidebar-category-item" data-category="project" style="pointer-events: none;">
                     <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
