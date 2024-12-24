@@ -18,7 +18,7 @@ stackoverflow에도 마음에 드는 답변이 없어서 꽤 헤맨 김에 내�
 <br>
 <div class="post-chapter">2. 초기화 시점 잡기</div><br>
 <br>
-<div class="post-code my-1"><br>
+<div class="post-code my-1" style="font-size: 0.7rem;"><br>
     > $("#iframe_id").on("load", async function () {<br>
     >   var viewer = $("#iframe_id")[0].contentWindow.PDFViewerApplication;<br>
     ><br>
