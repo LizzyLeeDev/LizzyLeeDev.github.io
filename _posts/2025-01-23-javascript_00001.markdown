@@ -1,0 +1,145 @@
+---
+layout: post-current
+title: Arrow Function
+date: 2025-01-23 09:10:00 +0900
+categories: javascript
+---
+arrow function이 편해서 막 쓰다 문득 무슨 차이가 있는지 궁금해서 알아본 내용인데,<br>
+this를 잘 안 써서 망정이지 큰일날 뻔 했다.<br>
+<br>
+<div class="post-chapter">0. 개요</div><br>
+이 문서는 ES6에서 추가된 Javascript Arrow Function에 대해 공유하기 위해 작성된 문서이다.<br>
+<br>
+<div class="post-chapter">1. Arrow Function 이란</div><br>
+ES6(ECMAScript 2015)에서 새로 표준으로 도입된 함수의 표현식으로, <br>
+함수를 다음과 같이 사용할 수 있다.<br>
+<div class="post-code my-1" style="font-size: 0.7rem;">
+> const add = (a, b) => a + b;<br>
+</div><br>
+function 키워드를 생략할 수 있어서 코드를 간결하게 작성 가능하다는 장점이 있으나,<br>
+this와 arguments 활용에 있어서 기존 함수 선언 방식과의 차이가 있어 주의가 필요하다.<br>
+<br>
+<div class="post-chapter">2. Arrow Function 사용법</div><br>
+<div class="post-code my-1" style="font-size: 0.7rem;">
+> // 매개변수가 없는 경우<br>
+> var artest1 = () => { console.log("^ㅅ^"); }<br>
+> <br>
+> // 매개변수가 하나인 경우 : 소괄호 생략 가능<br>
+> var artest2 = x => { console.log(x); }<br>
+> <br>
+> // 매개변수가 여러개인 경우<br>
+> var artest3 = (a, b) => { console.log(a); }<br>
+> <br>
+> // 내용이 간단한 경우 : 중괄호와 return 생략 가능<br>
+> var artest4 = x => x;<br>
+> <br>
+> // {}를 사용하면 return을 사용해야 한다.<br>
+> // 여러 줄 작성하는 경우 반드시 {}를 사용해야 한다.<br>
+</div><br>
+<br>
+<div class="post-chapter">3. 기존 Function 과의 차이점</div><br>
+① this와 lexical this<br>
+기존의 this는 함수가 호출되는 상황에 따라 다음과 같은 차이를 갖는다.<br>
+<div class="post-code my-1" style="font-size: 0.7rem;">
+> // 일반 함수 호출: this는 전역 객체를 참조 (브라우저는 window, Node.js에선 global)<br>
+> function sample () {<br>
+> &nbsp;&nbsp;console.log(this); // 이 this는 window<br>
+> }<br>
+> <br>
+> // 메소드 호출: this는 메소드를 호출한 객체를 참조<br>
+> const computer = {<br>
+> &nbsp;&nbsp;gpu: "gtx 970",<br>
+> &nbsp;&nbsp;check: function () {<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;console.log(this.gpu); // 이 this는 "gtx 970"<br>
+> &nbsp;&nbsp;}<br>
+> }<br>
+> <br>
+> // 생성자 호출: this는 새로 생성된 객체를 참조<br>
+> function Person (name) {<br>
+> &nbsp;&nbsp;this.name = name;<br>
+> }<br>
+> const lizzy = new Person("Lizzy");<br>
+> console.log(lizzy.name); // 이 this는 "Lizzy"<br>
+</div><br>
+그래서 다음과 같은 문제가 발생한다.<br>
+<div class="post-code my-1" style="font-size: 0.7rem;">
+> function Counter () {<br>
+> &nbsp;&nbsp;this.count = 0;<br>
+>   <br>
+> &nbsp;&nbsp;setInterval(function () { // setInterval의 인자 function이 일반 함수로 호출<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;this.count++; // 일반 함수로 호출되었기 때문에 this는 window<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;console.log(this.count); // window의 count를 찾는다<br>
+> &nbsp;&nbsp;}, 1000);<br>
+> }<br>
+> var obj1 = new Counter(); // obj1.count는 0이고 NaN만 잔뜩 출력된다<br>
+</div><br>
+하지만 Arrow Function은 lexical this를 쓰기 때문에 상위 스코프의 this를 가져온다.<br>
+<div class="post-code my-1" style="font-size: 0.7rem;">
+> function Counter () {<br>
+> &nbsp;&nbsp;this.count = 0;<br>
+>   <br>
+> &nbsp;&nbsp;setInterval(() => { <br>
+> &nbsp;&nbsp;&nbsp;&nbsp;this.count++;<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;console.log(this.count); <br>
+> &nbsp;&nbsp;}, 1000);<br>
+> }<br>
+> var obj1 = new Counter(); // 1, 2, 3 ...<br>
+</div><br>
+위와 같은 특성으로 인해 Arrow Function은 생성자로 사용할 수 없다.<br>
+<div class="post-code my-1" style="font-size: 0.7rem;">
+> function Person(name, age) {<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;this.name = name;<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;this.age = age;<br>
+> }<br>
+> <br>
+> const person1 = new Person("Alice", 30);<br>
+> console.log(person1.name); // Alice<br>
+> console.log(person1.age);  // 30<br>
+</div><br>
+<div class="post-code my-1" style="font-size: 0.7rem;">
+> const Person = (name, age) => {<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;this.name = name;<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;this.age = age;<br>
+> };<br>
+> <br>
+> const person2 = new Person("Bob", 25); // TypeError: Person is not a constructor<br>
+> // new Person(...)을 호출해도 this가 새 객체를 가리키지 않기 때문에 TypeError가 발생<br>
+</div><br>
+② arguments<br>
+일반 function에서 arguments 사용시 다음과 같이 동작한다.<br>
+<div class="post-code my-1" style="font-size: 0.7rem;">
+> function test (a, b) {<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;console.log(arguments); <br>
+> }<br>
+> test(1, 2, 3); // Arguments (3) [1, 2, 3]<br>
+> // 선언된 매개변수와 전달된 인수는 별도로 관리됨<br>
+> // arguments는 배열이 아닌 유사 배열 객체<br>
+</div><br>
+Arrow function은 arguments가 없다.<br>
+<div class="post-code my-1" style="font-size: 0.7rem;">
+> const artest = () => {<br>
+> console.log(arguments); <br>
+> }<br>
+> artest(); // arguments is not defined<br>
+> // 대신 Arrow function은 상위 객체가 있는경우 상위 객체의 arguments를 참조한다.<br>
+</div><br>
+<br>
+<div class="post-chapter">4. Arrow Function 도입 시 장점</div><br>
+<div class="post-code my-1" style="font-size: 0.7rem;">
+> const totalScores = students<br>
+> &nbsp;&nbsp;.map(function (student) {<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;return student.scores.reduce(function (acc, score) {<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return acc + score;<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;}, 0);<br>
+> &nbsp;&nbsp;})<br>
+> &nbsp;&nbsp;.reduce(function (acc, total) {<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;return acc + total;<br>
+> &nbsp;&nbsp;}, 0);<br>
+</div><br>
+위와 같이 사용하던 코드를<br>
+<div class="post-code my-1" style="font-size: 0.7rem;">
+> const totalScores = students<br>
+> &nbsp;&nbsp;.map(student => student.scores.reduce((acc, score) => acc + score, 0))<br>
+> &nbsp;&nbsp;.reduce((acc, total) => acc + total, 0);<br>
+</div><br>
+이렇게 간소화 시킬 수 있어 가독성이 좋다.<br>

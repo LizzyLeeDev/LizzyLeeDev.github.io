@@ -94,6 +94,19 @@
                         {% endif %}
                     </span>
                 </div>
+            <!-- 카테고리 : 자바스크립트(서브) -->
+                <div class="sidebar-category-item" data-category="javascript">
+                    &nbsp;&nbsp;
+                    <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
+                    Javascript
+                    <span class="sidebar-category-size">
+                        {% if site.categories['javascript'].size %}
+                        ( {{ site.categories['javascript'].size }} )
+                        {% else %}
+                        ( 0 )
+                        {% endif %}
+                    </span>
+                </div>
             <!-- 카테고리 : 프레임워크 -->
                 <div class="sidebar-category-item" data-category="framework" style="pointer-events: none;">
                     <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
