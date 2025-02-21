@@ -1,0 +1,101 @@
+---
+layout: post-current
+title: 크롬과 Javascript를 활용한 DOM 이벤트 분석
+date: 2025-01-21 12:20:00 +0900
+categories: javascript
+---
+유용했던 내용들을 요새 글로 남기는 중인데,<br>
+Git 설정을 삐끗해서 몇달간 잔디를 못 심었다.<br>
+<br>
+<div class="post-chapter">0. 개요</div><br>
+이 문서는 JavaScript의 monitorEvents()와 [크롬]-[개발자 도구]-[성능] 탭을 활용해 DOM Element에서 어떤 이벤트가 발생하는지,<br>
+그리고 이벤트가 어디로 버블링되는지를 쉽게 추적하는 방법을 공유하기 위해 작성된 문서이다.<br>
+<br>
+<div class="post-chapter">1. 낯선 UI의 동작을 분석해야 할 때 - 사례 1: Custom Select</div><br>
+<br>
+< 상황 ><br>
+검색 조건에서 다음과 같은 형태의 custom-select를 사용하고 있다.<br>
+<img src="{{ "/assets/img/javascript_00002_001.png" }}" style="width: 40rem;"/><br>
+코드를 살펴보니, select 태그가 아닌 div 태그로 외형이 구성되어있다.<br>
+선택된 항목의 이름은 .select-selected 에, 선택된 값은 #selected-value 에 저장하고,<br>
+선택 항목은 .select-items에서 선택하는 구조였다.<br>
+<br>
+< 문제 발생 ><br>
+값이 변경될 때 검색 조건을 적용하기 위해서, 선택된 값을 저장하는 #selected-value에 change 이벤트 핸들러를 추가했다.<br>
+<img src="{{ "/assets/img/javascript_00002_002.png" }}" style="width: 40rem;"/><br>
+custom-select를 동작시키면 #selected-value의 값이 변하고 있는데 change 이벤트가 발생하지 않는다.<br>
+custom-select의 동작 방식에 대해 분석해볼 필요가 있었다.<br>
+<br>
+<div class="post-chapter">2. 크롬 개발자 도구의 [성능] 탭 활용하기</div><br>
+<br>
+< 이벤트 확인 ><br>
+[크롬]-[개발자 도구]-[성능]탭을 열고 녹화버튼을 누른다.<br>
+<img src="{{ "/assets/img/javascript_00002_003.png" }}" style="width: 40rem;"/><br>
+custom-select를 동작(항목을 변경)시킨 다음 녹화를 중지했다.<br>
+<img src="{{ "/assets/img/javascript_00002_004.png" }}" style="width: 40rem;"/><br>
+녹화 결과 화면에서 발생한 이벤트가 타임라인 형태로 개발자 도구에 표시되는데, 각 부분의 용도는 다음과 같다.<br>
+<br>
+① 녹화된 화면의 캡쳐본 (빨간색으로 표시된 부분)<br>
+&nbsp;&nbsp;- 마우스를 올린다음 움직이면 해당 시간대의 화면이 표시된다. <br>
+&nbsp;&nbsp;- 해당 타임라인에서 드래그 처리하면 아래의 밑의 프레임/상호작용/기본 부분의 해당 시간대 동작이 확대된다.<br>
+② 프레임, 상호 작용, 기본 (노란색으로 표시된 부분 전체 - 각 부분의 제목은 주황색으로 별도 표시하였음)<br>
+&nbsp;&nbsp;- 프레임: 화면이 변경된 시점을 나타낸다.<br>
+&nbsp;&nbsp;- 상호작용: Pointer/Keyboard/Other 등 화면에서의 상호작용이 발생한 내역이 표시된다.<br>
+&nbsp;&nbsp;- 기본: 이벤트 처리 내역 및 호출된 함수 정보를 확인할 수 있다.<br>
+<img src="{{ "/assets/img/javascript_00002_005.png" }}" style="width: 40rem;"/><br>
+화면 캡쳐본을 확인해보니 1100ms 부근에서 custom-select의 선택 및 값 변경이 일어난 것을 확인할 수 있다.<br>
+해당 부분의 상호작용 및 이벤트 내역을 확대하면 더 자세하게 분석할 수 있다.<br>
+<img src="{{ "/assets/img/javascript_00002_006.png" }}" style="width: 40rem;"/><br>
+녹화된 이벤트 내역을 보니 click 이벤트 발생시 이벤트 핸들러가 어떤 익명 함수(민트색)를 호출하고,<br>
+해당 익명함수가 .text와 .val을 호출하는 것으로 보인다.<br>
+<img src="{{ "/assets/img/javascript_00002_007.png" }}" style="width: 40rem;"/><br>
+이제 하단의 event log 탭을 보면 위에서 표시된 호출 함수와 파일 위치를 확인할 수 있다.<br>
+익명 함수가 03.html 파일에서 호출된 것으로 보인다. 파일 명을 클릭한다.<br>
+<img src="{{ "/assets/img/javascript_00002_008.png" }}" style="width: 40rem;"/><br>
+해당 파일의 어느 함수가 이 click 이벤트에서 발생했는지 간편하게 추적할 수 있다.<br>
+해당 함수를 통해 .text()로 .select-selected를 변경시키고, <br>
+.val()로 #selected-value 를 변경시키는 것을확인할 수 있었다.<br>
+<br>
+< 왜 change 이벤트가 발생하지 않았는지 ><br>
+.val()을 통해 값을 변경하는 경우에는 change 이벤트가 발생하지 않는다.<br>
+이런 경우 위와 같은 방법으로 라이브러리 동작을 파악 후, <br>
+수동으로 이벤트를 추가하는 식으로 대응할 수 있다.<br>
+<br>
+<div class="post-chapter">3. 낯선 UI의 동작을 분석해야 할 때 - 사례 2: input type=”checkbox”</div><br>
+<br>
+< 상황 ><br>
+<img src="{{ "/assets/img/javascript_00002_009.png" }}" style="width: 40rem;"/><br>
+이번에는 checkbox와 연결된 label의 event를 분석했다.<br>
+[전문 용어]라고 쓰여진 label을 클릭하면 checkbox가 변경되면서 change 이벤트가 발생할 것으로 생각된다.<br>
+<img src="{{ "/assets/img/javascript_00002_010.png" }}" style="width: 40rem;"/><br>
+위의 (2)번에서 사용한 방법을 통해 동작 방식을 분석해보니,<br>
+click이 또다른 click을 호출하고, 두번째 click이 input과 change 이벤트를 호출하는 것을 확인할 수 있었다.<br>
+click-change를 기대했는데, 왜 click이 두번이고 + 어디에 click이 발생한걸까?<br>
+<br>
+(2)번처럼 이벤트에서 특정 함수가 호출되는 경우 해당 함수의 내용을 읽어보면 대상과 동작을 파악할 수 있는데,<br>
+이번 상황과 같이 DOM element의 기본 동작으로 다른 이벤트가 호출될 때는 어느 element에서 해당 이벤트가 발생하는지 파악하기가 어렵다는 문제가 있다.<br>
+<br>
+<div class="post-chapter">4. monitorEvents로 이벤트의 target 추적하기</div><br>
+<br>
+< 이벤트 확인 ><br>
+어느 element에서 어떤 이벤트가 발생했는지 추적하기 위해 monitorEvents() 를 사용했다.<br>
+구체적인 추적 과정은 다음과 같다.<br>
+<br>
+① [개발자 도구]-[요소]에서 현재 분석하려는 checkbox 상위의 Element를 선택한다.<br>
+<img src="{{ "/assets/img/javascript_00002_011.png" }}" style="width: 40rem;"/><br>
+선택한 Element는 [콘솔]에서 $0으로 접근이 가능하다.<br>
+② 콘솔에서 monitorEvents($0);을 입력해 위 ul 요소에 이벤트 모니터링을 추가했다.<br>
+③ 다시 label을 클릭해서 발생한 이벤트를 확인한다.<br>
+<br>
+< 추적 결과 ><br>
+<img src="{{ "/assets/img/javascript_00002_012.png" }}" style="width: 40rem;"/><br>
+콘솔에서 아까와 같은 이벤트 내역[click-click-input-change]을 확인할 수 있다.<br>
+<img src="{{ "/assets/img/javascript_00002_013.png" }}" style="width: 40rem;"/><br>
+click 이벤트를 열면 어디에서 해당 이벤트가 발생했는지 확인할 수 있다.<br>
+<br>
+위와 같이 monitorEvents() 를 통해 input checkbox와 연결된 label을 클릭 시<br>
+label click → input click → input input → input change 순으로 이벤트가 발생한다는 것을 추적할 수 있었다.<br>
+<br>
+<div class="post-chapter">5. 결론</div><br>
+크롬 개발자 도구의 [성능] 탭과 monitorEvents()를 활용하면 화면에서 발생하는 DOM 이벤트와 이벤트 대상을 빠르게 특정할 수 있다. <br>
+이를 통해 예상치 못한 이벤트 흐름 문제를 효율적으로 해결할 수 있다.<br>
