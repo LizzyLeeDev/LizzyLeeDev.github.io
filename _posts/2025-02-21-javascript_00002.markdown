@@ -1,7 +1,7 @@
 ---
 layout: post-current
 title: 크롬과 Javascript를 활용한 DOM 이벤트 분석
-date: 2025-01-21 12:20:00 +0900
+date: 2025-02-21 12:20:00 +0900
 categories: javascript
 ---
 유용했던 내용들을 요새 글로 남기는 중인데,<br>
