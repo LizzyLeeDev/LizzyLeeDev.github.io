@@ -56,7 +56,7 @@
         position: fixed;
         background-image: url("/assets/img/background.jpg");
         background-size: 100vw;
-        filter: grayscale(0.6) opacity(0.6);
+        filter: opacity(0.8);
     }
     /* 리스트 설정 */
     #container_list {
@@ -119,7 +119,7 @@
         font-size: 1.4rem;
         font-family: 'Orbit', sans-serif;
         font-weight: bold;
-        color: #FF9AAF;
+        color: #85C1E9;
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
@@ -189,7 +189,7 @@
         line-height: 1;
     }
     .post-list-category {
-        color: #FF6F8D;
+        color: #3498DB;
     }
     .post-list-uploadtime {
         justify-self: flex-end;
@@ -208,7 +208,7 @@
         font-size: 0.7rem;
     }
     .page-container .page-button.curpage {
-        color: #FF6F8D;
+        color: #3498DB;
         cursor: default;
     }
     .page-container .page-button.disabled {
@@ -226,7 +226,7 @@
         font-size: 1.2rem;
         font-family: 'Orbit', sans-serif;
         font-weight: bold;
-        color: #FF9AAF;
+        color: #85C1E9;
     }
     .post-border {
         border: 1px dashed #BBB;
@@ -243,7 +243,7 @@
         line-height: 1;
     }
     .post-category {
-        color: #FF6F8D;
+        color: #3498DB;
     }
     .post-uploadtime {
         justify-self: flex-end;
@@ -259,7 +259,7 @@
     }
     /* 포스트 게시글 내 문서 스타일 */
     .post-chapter {
-        background-color: #FF9AAF;
+        background-color: #85C1E9;
         font-size: 1rem;
         font-weight: bold;
         padding: 0.25rem 0.5rem;
@@ -270,7 +270,7 @@
         border: 0;  
     }
     .post-chapter-collapse:hover {
-        background-color: #FF6F8D;
+        background-color: #3498DB;
         cursor: pointer;
         color: white;
     }
@@ -326,7 +326,7 @@
         line-height: 0.6;
     }
     .sidebar-profile-icon i {
-        color: #FF6F8D;
+        color: #3498DB;
         font-size: 0.7rem;
     }
     /* 사이드바 카테고리에서 사용할 스타일 */
@@ -354,7 +354,7 @@
     .sidebar-category-size {
         font-family: 'Orbit', sans-serif;
         font-size: 0.7rem;
-        color: #FF6F8D;
+        color: #3498DB;
     }
     .sidebar-category-icon {
         min-width: 10px;
@@ -363,7 +363,7 @@
         line-height: 0.6;
     }
     .sidebar-category-icon i {
-        color: #FF6F8D;
+        color: #3498DB;
         position: relative;
         top: -4px;
         font-size: 0.5rem;
@@ -404,313 +404,735 @@
     <!-- 포스트 카테고리명 -->
     <div class="category-name">
         All
-        <span class="category-list-size">총 19건</span>
+        <span class="category-list-size">총 24건</span>
     </div>
     <hr class="post-list-border">
     <!-- 포스트 리스트 -->
     
-    <div class="post-list-item px-2" onclick="location.href = '/blog/20240514/blog_00004';">
-        <div class="post-list-subject">2024-05-14 블로그 스킨 변경하기</div>
-        <div class="post-list-excerpt mt-1"><img src="/assets/img/blog_00004_001.png" style="width: 40rem;" /><br />
-블로그를 보다보니 왠지 너무 심플한 것 같은 느낌이 든다..<br />
-조금 바꿔보기로 했다.<br />
+    <div class="post-list-item px-2" onclick="location.href = '/blog/20241204/blog_00005';">
+        <div class="post-list-subject">2024-12-04 블로그 스킨 변경하기</div>
+        <div class="post-list-excerpt mt-1"><img src="/assets/img/blog_00005_001.png" style="width: 40rem;" /><br />
+봄에 분홍색 테마로 만들었던 것 같은데, 1년을 썼더니 눈이 너무 익숙해졌다.<br />
+겨울을 맞이해서 좀 파랗게 바꿔보기로 했다..<br />
 <br />
-<img src="/assets/img/blog_00004_002.png" style="width: 40rem;" /><br />
-뒷배경에 저작권 프리 이미지를 집어넣고, 포스트와 사이드바의 테두리를 .25rem으로 깎았다.<br />
-뒷 배경 전체에 opacity를 적용하면 포스트까지 전부 투명해지기 때문에<br />
-배경에 추가 요소(::before)를 다음과 같이 달았다.<br />
+<img src="/assets/img/blog_00005_002.png" style="width: 40rem;" /><br />
+뒷배경과 전체적인 테마 컬러를 파란색으로 변경하고<br />
+심심한 사이드바에 AI 그림을 추가했다.<br />
+예쁘고 레트로한 그림을 단순히 블로그 꾸미기의 일환으로 집어넣은건데..<br />
+꼭 프로필 처럼 보인다..<br />
 <br />
-<div class="post-code">
-#container_contents::before {<br />
-&nbsp;&nbsp;content: "";<br />
-&nbsp;&nbsp;width: 100%;<br />
-&nbsp;&nbsp;height: 100%;<br />
-&nbsp;&nbsp;position: fixed;<br />
-&nbsp;&nbsp;background-image: url("/assets/img/background.jpg");<br />
-&nbsp;&nbsp;background-size: 100vw;<br />
-&nbsp;&nbsp;filter: grayscale(0.6) opacity(0.6);<br />
+써놓은 글이 꽤 있는데 업로드를 못하고 있다.<br />
+좀 부지런하게 살아야지 ..<br />
+</div>
+        <div class="post-list-footer mt-2 py-1">
+            <span class="post-list-category">blog</span>
+            <span class="post-list-uploadtime">2024-12-04 17:22</span>
+        </div>
+    </div>
+    <hr class="post-list-border">
+    
+    <div class="post-list-item px-2" onclick="location.href = '/spring/20241204/spring_00001';">
+        <div class="post-list-subject">DTO, VO, Entity in Layered Architecture</div>
+        <div class="post-list-excerpt mt-1">스프링을 사용하기 위해 프로젝트를 만들고 가장 먼저 고민하던 것이 “뭐부터 만들어서 어디에 집어넣어야 하지?..” 였다.<br />
+Django에서는 Model-Template-View 였고 스프링은 Model-View-Controller니까 하나씩 만들면 되나?<br />
+라고 생각하며 예제를 보는데, Controller는 뭐고 DTO는 또 뭐지 싶었다.<br />
+<br />
+이제 Controller,Repository,Entity는 잘 쓰겠고 DTO도 알겠는데 VO는 굳이 왜 있어야 하나 싶어서 알아봤다.<br />
+<br />
+<div class="post-chapter">1. DTO, VO, Entity</div>
+<br />
+<br />
+<table class="post-table">
+    <tbody>
+        <tr>
+            <th></th>
+            <th>DTO</th>
+            <th>VO</th>
+            <th>Entity</th>
+        </tr>
+        <tr>
+            <td>의미</td>
+            <td>Data Transfer Object</td>
+            <td>Value Object</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>역할</td>
+            <td>계층 간 데이터 전달</td>
+            <td>도메인 내에서 특정 값의 무결성과 의미를 표현</td>
+            <td>데이터베이스와 매핑, 영속성 관리</td>
+        </tr>
+        <tr>
+            <td>사용처</td>
+            <td>Controller ↔ Service ↔ Repository 간 데이터 교환</td>
+            <td>Service 계층 및 도메인 로직 처리</td>
+            <td>Repository 계층 및 DB 연동</td>
+        </tr>
+        <tr>
+            <td>목적</td>
+            <td>외부 입력/출력 데이터를 캡슐화 (Request/Response)</td>
+            <td>비즈니스 로직에서 값 검증 및 불변성 보장</td>
+            <td>데이터 저장 및 영속성 관리, DB 테이블과 매핑</td>
+        </tr>
+        <tr>
+            <td>불변성</td>
+            <td>일반적으로 가변적 (Setter를 통해 변경 가능)</td>
+            <td>불변 객체로 설계</td>
+            <td>가변적 (JPA가 상태를 관리)</td>
+        </tr>
+        <tr>
+            <td>검증 책임</td>
+            <td>데이터의 기본적인 형식 검증</td>
+            <td>값의 고유성과 비즈니스 규칙 검증</td>
+            <td>검증 책임 없음 (최대한 단순화)</td>
+        </tr>
+        <tr>
+            <td>비교</td>
+            <td>참조로 비교 (equals/hashCode 구현 잘 안 함)</td>
+            <td>값 자체를 기준으로 비교 (equals/hashCode 구현)</td>
+            <td>참조 및 값 비교 둘다 (주로 식별자 기반 비교)</td>
+        </tr>
+        <tr>
+            <td>테스트</td>
+            <td>외부 데이터와의 통신을 테스트하기에 적합</td>
+            <td>도메인 로직의 독립적인 테스트 가능</td>
+            <td>DB와 연동된 테스트에 적합</td>
+        </tr>
+        <tr>
+            <td>주 내용</td>
+            <td>클라이언트 요청/응답에 필요한 최소한의 데이터</td>
+            <td>특정 의미를 갖는 단일 값 또는 관련 값들의 묶음</td>
+            <td>전체 엔티티 데이터 및 상태 관리</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<br />
+<div class="post-chapter">2. 이메일 등록 예제</div>
+<br />
+<div class="post-code" style="font-size: 0.8rem;">
+// DTO<br />
+public class UserRequestDTO {<br />
+&nbsp;&nbsp;private String email;<br />
+&nbsp;&nbsp;private String name;<br />
+<br />
+&nbsp;&nbsp;// Getter, Setter<br />
+}<br />
+<br />
+// VO<br />
+public class Email {<br />
+&nbsp;&nbsp;private final String value;<br />
+<br />
+&nbsp;&nbsp;public Email(String value) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;if (!value.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw new IllegalArgumentException("Invalid email format");<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;this.value = value;<br />
+&nbsp;&nbsp;}<br />
+<br />
+&nbsp;&nbsp;public String getValue() {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;return value;<br />
+&nbsp;&nbsp;}<br />
+}<br />
+<br />
+// Entity<br />
+@Entity<br />
+public class UserEntity {<br />
+&nbsp;&nbsp;@Id<br />
+&nbsp;&nbsp;@GeneratedValue<br />
+&nbsp;&nbsp;private Long id;<br />
+&nbsp;&nbsp;private String email;<br />
+&nbsp;&nbsp;private String name;<br />
+<br />
+&nbsp;&nbsp;// Constructor for JPA<br />
+&nbsp;&nbsp;public UserEntity() {}<br />
+<br />
+&nbsp;&nbsp;public UserEntity(String email, String name) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;this.email = email;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;this.name = name;<br />
+&nbsp;&nbsp;}<br />
+<br />
+&nbsp;&nbsp;// Getter<br />
+}<br />
+<br />
+// Service<br />
+@Service<br />
+public class UserService {<br />
+&nbsp;&nbsp;public void registerUser(UserRequestDTO dto) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;// DTO → VO<br />
+&nbsp;&nbsp;&nbsp;&nbsp;Email email = new Email(dto.getEmail());<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;// VO → Entity<br />
+&nbsp;&nbsp;&nbsp;&nbsp;UserEntity entity = new UserEntity(email.getValue(), dto.getName());<br />
+&nbsp;&nbsp;&nbsp;&nbsp;userRepository.save(entity);<br />
+&nbsp;&nbsp;}<br />
 }<br />
 </div>
-너무 사진이 눈에 띄지 않도록 grayscale과 opacity를 적용했다.
-원래 이미지가 6000*4000사이즈라서 너비를 어떻게 할지 고민하다가 <br />
-어디에서 봐도 꽉 차는 모습으로 보였으면 해서 뷰포트 너비(vw) 100%로 잡았다. <br />
 <br />
-모바일로 보면 꽃이 좀 자잘해보이긴 하지만..<br />
-외곽에만 표시되기 때문에 그렇게 나쁘지 않아보인다.<br />
 <br />
-<img src="/assets/img/blog_00004_003.png" style="width: 40rem;" /><br />
-색상이 너무 분홍색인것 같아서 테마 색상도 조금 변경하기로 했다.<br />
-처음 개발할때부터 색상 변경을 염두에 두고 개발했기 때문에 <br />
-색상은 _config.yml에 변수로 저장되어있다.<br />
+<div class="post-chapter">3. 정리</div>
 <br />
-시스템의 어느 부분이 절대 변경되지 않는지/언젠가 변경할 예정인지 <br />
-미리 어느정도 파악하고 작업하는게 역시 중요한 것 같다.<br />
+<ul>
+  <li>DTO → VO → Entity 흐름은 도메인 로직이 있는 경우 적용<br />
+  - VO로 데이터의 무결성을 검증하고 비즈니스 로직을 처리<br />
+  - Entity는 단순히 데이터를 저장하고 관리<br /></li>
+  <li>DTO → Entity는 단순 CRUD 작업처럼 도메인 로직이 필요하지 않은 경우에 적용<br />
+  - 항상 VO가 필요하진 않은 듯<br />
+<br /></li>
+</ul>
+<div class="post-chapter">출처</div>
 <br />
-<img src="/assets/img/blog_00004_004.png" style="width: 40rem;" /><br />
-색상 조정은 위와 같이 마무리 하고, 시간 나면 로고도 변경해야겠다.<br />
+<span class="post-overegg" style="color: blue; border: 0;">출처는 챗GPT</span><br />
 </div>
         <div class="post-list-footer mt-2 py-1">
-            <span class="post-list-category">blog</span>
-            <span class="post-list-uploadtime">2024-05-14 16:57</span>
+            <span class="post-list-category">spring</span>
+            <span class="post-list-uploadtime">2024-12-04 11:07</span>
         </div>
     </div>
     <hr class="post-list-border">
     
-    <div class="post-list-item px-2" onclick="location.href = '/nectarist/20240514/nectarist_00010';">
-        <div class="post-list-subject">Project Nectarist [10] view의 분리</div>
-        <div class="post-list-excerpt mt-1">어떻게 하면 더 좋은 Django 프로젝트를 구성할 수 있을까?<br />
-Django의 구조인 MTV를 하나씩 다시 확인하며 고민해봤다.<br />
+    <div class="post-list-item px-2" onclick="location.href = '/security/20241014/security_00002';">
+        <div class="post-list-subject">x86-64 Register</div>
+        <div class="post-list-excerpt mt-1">예전에는 어떤 순서로 공부하면 좋을지 잘 몰랐는데<br />
+요새는 좋은 공부 사이트들이 많아서 공부에 더 의욕이 생긴다!<br />
 <br />
-<div class="post-chapter">1. Django의 MTV 돌아보기</div>
+<div class="post-chapter">0. 개요</div>
 <br />
+x86-64 CPU 아키텍쳐의 레지스터에 대해 정리한 내용이다.<br />
 <br />
-<img src="/assets/img/nectarist_00010_001.png" style="width: 40rem;" /><br />
-우선 Nectarist의 models.py를 확인해보니<br />
-DB 테이블과 연동이 되어있어서 잘못 수정하면 다시 migrate가 필요할 것 같다.<br />
-현재 복잡한 구조가 아니라서 당장 추가적인 수정이 필요하지는 않아보인다.<br />
+<div class="post-chapter">1. 레지스터</div>
 <br />
-<img src="/assets/img/nectarist_00010_002.png" style="width: 40rem;" /><br />
-다음은 urls.py를 확인했다.<br />
-단순히 페이지 내용을 요청하는 URI가 있고, ajax등으로 데이터를 요청하는 URI가 있다.<br />
-용도가 두가지로 정리가 되니, 좀더 내용을 보기쉽게 수정할 필요를 느꼈다.<br />
+<ul>
+  <li>레지스터는 프로세서 내에서 자료를 보관하는 기억 장소이다.<br /></li>
+  <li>현재 계산 수행중인 값을 저장하는 데 사용된다.<br /></li>
+  <li>범용 레지스터, 인덱스 레지스터, 포인터 레지스터, 세그먼트 레지스터, 플래그 레지스터 등으로 분류할 수 있다.<br />
+<br /></li>
+</ul>
+<div class="post-chapter">2. 범용 레지스터</div>
 <br />
-<img src="/assets/img/nectarist_00010_003.png" style="width: 40rem;" /><br />
-views도 마찬가지로 단순히 페이지 내용을 요청하는 기능과<br />
-데이터를 주고받는 기능이 있으니 나누어 정리하는게 더 보기 좋을 것 같다.<br />
-<br />
-<div class="post-chapter">2. urls 정리</div>
-<br />
-<br />
-<img src="/assets/img/nectarist_00010_004.png" style="width: 40rem;" /><br />
-주석으로 페이지 요청하는 URI / 데이터 요청하는 URI를 나누고,<br />
-각 내용 위에 상세 메뉴와 기능을 추가하니 가독성이 조금 더 괜찮아졌다.<br />
-<br />
-<div class="post-chapter">3. view 정리</div>
-<br />
-<br />
-view도 페이지/데이터의 두 종류로 분리할 수 있겠지만, <br />
-각 내용이 너무 길어서 아예 파일을 분리하기로 했다.<br />
-<br />
-일단 views.py를 삭제하고 views 디렉토리를 만든 다음<br />
-main_views.py / func_views.py / page_views.py 를 안에 생성했다.<br />
-<br />
-<img src="/assets/img/nectarist_00010_006.png" style="width: 40rem;" /><br />
-공통적으로 들어가는 부분은 views/main_views.py에 집어넣고<br />
-func_views.py와 page_views.py에서 main_views.py를 불러오도록 처리했다.<br />
-<br />
-urls.py 등에서 view를 import 하는 부분은 기존의 views.py에서 views/func_views.py등으로 변경했다.<br />
-<br />
-<img src="/assets/img/nectarist_00010_007.png" style="width: 40rem;" /><br />
-내용은 메뉴와 기능에 따라 주석을 추가했다.<br />
-이제 views 파일이 용도별로 분리되었으니 수정 및 가독성이 좀 괜찮아진 느낌이 든다.<br />
-</div>
-        <div class="post-list-footer mt-2 py-1">
-            <span class="post-list-category">nectarist</span>
-            <span class="post-list-uploadtime">2024-05-14 14:41</span>
-        </div>
-    </div>
-    <hr class="post-list-border">
-    
-    <div class="post-list-item px-2" onclick="location.href = '/nectarist/20240411/nectarist_00009';">
-        <div class="post-list-subject">Project Nectarist [09] 메일발송 기능 추가</div>
-        <div class="post-list-excerpt mt-1">비밀번호 변경시 임시 비밀번호를 메일로 보내주는 기능을 추가했다.<br />
-(작은 프로젝트다보니 별도로 app을 분리하진 않고 작업했다)<br />
-<br />
-예전에는 linux의 sendmail만 사용해 봤는데,<br />
-Django에 자체적으로 smtp가 있어서 해당 기능을 이용했다.<br />
-<br />
-따로 인증된 메일서버가 없는 상황이다보니 개인 Gmail을 이용했다.<br />
-<br />
-<div class="post-chapter">1. 구글 앱 비밀번호 생성</div>
+<ul>
+  <li>범용 레지스터는 다목적 레지스터로, 관례적으로 사용되는 용도는 있으나 개발자의 의도나 규약(시스템 콜 등)에 따라 다르게 사용할 수 있다.<br /></li>
+</ul>
+<table class="post-table">
+    <tbody>
+        <tr>
+            <th>이름</th>
+            <th>의미</th>
+            <th>용도</th>
+            <th>비고</th>
+        </tr>
+        <tr>
+            <td>EAX</td>
+            <td>Accumulator Register</td>
+            <td>산술,논리 연산을 담당하는 레지스터로, 함수의 반환값을 저장한다.</td>
+            <td>RAX(64bit): 확장된 EAX로, 64bit 아키텍처에서 사용된다.&lt;/br&gt;EAX(32bit): 32bit 아키텍처에서 사용된다.&lt;/br&gt;AX(16bit): EAX의 하위 16bit를 가리킨다.&lt;/br&gt;AH(8bit): AX의 상위(High) 8bit를 가리킨다.&lt;/br&gt;AL(8bit): AX의 하위(Low) 8bit를 가리킨다.</td>
+        </tr>
+        <tr>
+            <td>EBX</td>
+            <td>Base Register</td>
+            <td>메모리 주소 저장 또는 배열 접근을 위한 기준 포인터로 사용된다.</td>
+            <td>RBX(64bit): 확장된 EBX로, 64bit 아키텍처에서 사용된다.&lt;/br&gt;EBX(32bit): 32bit 아키텍처에서 사용된다.&lt;/br&gt;BX(16bit): EBX의 하위 16bit를 가리킨다.&lt;/br&gt;BH(8bit): BX의 상위(High) 8bit를 가리킨다.&lt;/br&gt;BL(8bit): BX의 하위(Low) 8bit를 가리킨다.</td>
+        </tr>
+        <tr>
+            <td>ECX</td>
+            <td>Count Register</td>
+            <td>반복 작업에서 카운트 역할을 위해 사용된다.</td>
+            <td>RCX(64bit): 확장된 ECX로, 64bit 아키텍처에서 사용된다.&lt;/br&gt;ECX(32bit): 32bit 아키텍처에서 사용된다.&lt;/br&gt;CX(16bit): ECX의 하위 16bit를 가리킨다.&lt;/br&gt;CH(8bit): CX의 상위(High) 8bit를 가리킨다.&lt;/br&gt;CL(8bit): CX의 하위(Low) 8bit를 가리킨다.</td>
+        </tr>
+        <tr>
+            <td>EDX</td>
+            <td>Data Register</td>
+            <td>큰 수를 연산할때 사용된다. </td>
+            <td>RDX(64bit): 확장된 EDX로, 64bit 아키텍처에서 사용된다.&lt;/br&gt;EDX(32bit): 32bit 아키텍처에서 사용된다.&lt;/br&gt;DX(16bit): EDX의 하위 16bit를 가리킨다.&lt;/br&gt;DH(8bit): DX의 상위(High) 8bit를 가리킨다.&lt;/br&gt;DL(8bit): DX의 하위(Low) 8bit를 가리킨다.</td>
+        </tr>
+    </tbody>
+</table>
 <br />
 <br />
-먼저 gmail 접근을 위해 앱 비밀번호를 생성했다.<br />
-앱 비밀번호 생성 과정은 다음과 같다.<br />
+<div class="post-chapter">3. 인덱스 레지스터</div>
 <br />
-<img src="/assets/img/nectarist_00009_001.png" style="width: 40rem;" /><br />
+<ul>
+  <li>인덱스 레지스터는 메모리의 데이터 접근 및 조작을 위한 레지스터이다.<br /></li>
+</ul>
+<table class="post-table">
+    <tbody>
+        <tr>
+            <th>이름</th>
+            <th>의미</th>
+            <th>용도</th>
+            <th>비고</th>
+        </tr>
+        <tr>
+            <td>ESI</td>
+            <td>Source Index</td>
+            <td>데이터 복사, 문자열 연산, 입출력 등 작업에서 소스 데이터의 주소를 가리키는 데 사용된다. </td>
+            <td>RSI(64bit): 확장된 ESI로, 64bit 아키텍처에서 사용된다.&lt;/br&gt;ESI(32bit): 32bit 아키텍처에서 사용된다.&lt;/br&gt;SI(16bit): ESI의 하위 16bit를 가리킨다.</td>
+        </tr>
+        <tr>
+            <td>EDI</td>
+            <td>Destination Index</td>
+            <td>데이터 복사, 문자열 연산, 입출력 등 작업에서 목적지 데이터의 주소를 가리키는 데 사용된다.</td>
+            <td>RDI(64bit): 확장된 EDI로, 64bit 아키텍처에서 사용된다.&lt;/br&gt;EDI(32bit): 32bit 아키텍처에서 사용된다.&lt;/br&gt;DI(16bit): EDI의 하위 16bit를 가리킨다.</td>
+        </tr>
+    </tbody>
+</table>
 <br />
-❗비밀번호는 생성했을때만 확인할 수 있으니 재빠르게 캡쳐해야 한다<br />
+<br />
+<div class="post-chapter">4. 포인터 레지스터</div>
+<br />
+<ul>
+  <li>포인터 레지스터는 스택 및 프로그램의 실행 흐름 관리를 위한 레지스터로, 메모리 주소를 저장한다.<br /></li>
+</ul>
+<table class="post-table">
+    <tbody>
+        <tr>
+            <th>이름</th>
+            <th>의미</th>
+            <th>용도</th>
+            <th>비고</th>
+        </tr>
+        <tr>
+            <td>ESP</td>
+            <td>Stack Pointer</td>
+            <td>현재 스택의 최상단 주소를 저장하는 데 사용된다.</td>
+            <td>RSP(64bit): 확장된 ESP로, 64bit 아키텍처에서 사용된다.&lt;/br&gt;ESP(32bit): 32bit 아키텍처에서 사용된다.&lt;/br&gt;SP(16bit): ESP의 하위 16bit를 가리킨다.</td>
+        </tr>
+        <tr>
+            <td>EBP</td>
+            <td>Base Pointer</td>
+            <td>현재 스택의 하단 주소를 저장하는 데 사용된다.</td>
+            <td>RBP(64bit): 확장된 EBP로, 64bit 아키텍처에서 사용된다.&lt;/br&gt;EBP(32bit): 32bit 아키텍처에서 사용된다.&lt;/br&gt;BP(16bit): ESP의 하위 16bit를 가리킨다.</td>
+        </tr>
+        <tr>
+            <td>EIP</td>
+            <td>Instruction Pointer</td>
+            <td>다음에 실행할 명령의 메모리 주소를 저장하는 데 사용된다.</td>
+            <td>RIP(64bit): 확장된 EIP로, 64bit 아키텍처에서 사용된다.&lt;/br&gt;EIP(32bit): 32bit 아키텍처에서 사용된다.</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<br />
+<div class="post-chapter">5. 세그먼트 레지스터</div>
+<br />
+<ul>
+  <li>메모리의 각 세그먼트에 대한 기준 주소를 저장하기 위한 레지스터이다.<br /></li>
+</ul>
+<table class="post-table">
+    <tbody>
+        <tr>
+            <th>이름</th>
+            <th>의미</th>
+            <th>용도</th>
+        </tr>
+        <tr>
+            <td>CS</td>
+            <td>Code Segment</td>
+            <td>코드 세그먼트의 주소를 저장하는 데 사용된다.</td>
+        </tr>
+        <tr>
+            <td>DS</td>
+            <td>Data Segment</td>
+            <td>데이터 세그먼트의 주소를 저장하는 데 사용된다.</td>
+        </tr>
+        <tr>
+            <td>SS</td>
+            <td>Stack Segment</td>
+            <td>스택 세그먼트의 주소를 저장하는 데 사용된다.</td>
+        </tr>
+        <tr>
+            <td>ES</td>
+            <td></td>
+            <td>추가적인 데이터 세그먼트 레지스터로 EDI 레지스터와 함께 문자열 연산에서 사용된다. </td>
+        </tr>
+        <tr>
+            <td>FS</td>
+            <td></td>
+            <td>여분의 데이터 세그먼트 레지스터이다.</td>
+        </tr>
+        <tr>
+            <td>GS</td>
+            <td></td>
+            <td>여분의 데이터 세그먼트 레지스터이다.</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<br />
+<div class="post-chapter">6. 플래그 레지스터</div>
+<br />
+<ul>
+  <li>각 비트가 연산의 결과를 나타내는 플래그로 사용되는 레지스터이다. 상태 플래그, 컨트롤 플래그 등으로 분류된다.<br /></li>
+</ul>
+<table class="post-table">
+    <tbody>
+        <tr>
+            <th>분류</th>
+            <th>이름</th>
+            <th>의미</th>
+            <th>용도</th>
+        </tr>
+        <tr>
+            <td>상태 플래그</td>
+            <td>ZF</td>
+            <td>Zero Flag</td>
+            <td>연산 결과가 0일 경우 1로 설정된다. &lt;/br&gt;(*JZ 또는 JNZ 명령어에서 사용)</td>
+        </tr>
+        <tr>
+            <td>상태 플래그</td>
+            <td>SF</td>
+            <td>Sign Flag</td>
+            <td>연산 결과가 음수일 경우 1로 설정된다.</td>
+        </tr>
+        <tr>
+            <td>상태 플래그</td>
+            <td>CF</td>
+            <td>Carry Flag</td>
+            <td>부호 없는 수의 오버플로우가 발생한 경우 1로 설정된다.</td>
+        </tr>
+        <tr>
+            <td>상태 플래그</td>
+            <td>OF</td>
+            <td>Overflow Flag</td>
+            <td>부호 있는 수의 오버플로우가 발생한 경우 1로 설정된다.</td>
+        </tr>
+        <tr>
+            <td>상태 플래그</td>
+            <td>PF</td>
+            <td>Parity Flag</td>
+            <td>연산 결과에 1인 bit가 짝수개이면 1로 설정된다.</td>
+        </tr>
+        <tr>
+            <td>상태 플래그</td>
+            <td>AF</td>
+            <td>Auxiliary Flag</td>
+            <td>연산 결과 하위 4bit에 부호 없는 오버플로우가 발생한 경우 1로 설정된다.</td>
+        </tr>
+        <tr>
+            <td>컨트롤 플래그</td>
+            <td>TF</td>
+            <td>Trap Flag</td>
+            <td>1로 설정하면 디버거의 attach가 가능한 상태가 된다.</td>
+        </tr>
+        <tr>
+            <td>컨트롤 플래그</td>
+            <td>IF</td>
+            <td>Interrupt Flag</td>
+            <td>1로 설정하면 외부 인터럽트 요구를 무시한다.</td>
+        </tr>
+        <tr>
+            <td>컨트롤 플래그</td>
+            <td>DF</td>
+            <td>Direction Flag</td>
+            <td>문자열 등 작업에서 처리 방향을 제어하기 위해 사용된다.</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<br />
+<div class="post-chapter">출처</div>
+<br />
 <span class="post-overegg" style="color: blue; border: 0;">
-    출처: https://support.google.com/accounts/answer/185833?hl=ko
+    https://ko.wikipedia.org/wiki/%ED%94%84%EB%A1%9C%EC%84%B8%EC%84%9C_%EB%A0%88%EC%A7%80%EC%8A%A4%ED%84%B0
 </span><br />
-<br />
-<div class="post-chapter">2. django 세팅</div>
-<br />
-이메일과 관련된 부분을 settings.py에 다음과 같이 추가하고<br />
-<br />
-settings.py<br />
-<img src="/assets/img/nectarist_00009_002.png" style="width: 40rem;" /><br />
-<br />
-template에 메일로 보낼 내용을 간단하게 작성했다.<br />
-<br />
-templates/pw_email.html<br />
-<div class="post-code">
-
-Nectarist 임시 비밀번호 안내 이메일입니다.<br />
-회원님의 임시 비밀번호는 {{ new_temp_pass }}입니다.<br />
-로그인 후 비밀번호 변경 바랍니다.
-
-</div>
-<br />
-위에 작성한 메일 템플릿을 실제 send_mail에서는
-<img src="/assets/img/nectarist_00009_003.png" style="width: 40rem;" /><br />
-템플릿 내부에 변수로 작성되어있던 new_temp_pass를 render_to_string에서 집어넣고,<br />
-send_mail에 들어가는 변수를 위와 같이 적용했다.<br />
-<br />
-(* 실제 메일이 발송되기 때문에.. 수신자는 내 이메일로 고정했다)<br />
 <span class="post-overegg" style="color: blue; border: 0;">
-    참고: https://stackoverflow.com/questions/67083938/django-html-email-gmail-not-rendering
+    https://haekt-log.tistory.com/93
 </span><br />
-<br />
-<div class="post-chapter">3. 발송하기</div>
-<br />
-<img src="/assets/img/nectarist_00009_004.png" style="width: 40rem;" /><br />
-위와 같이 아이디/이메일을 입력하면 <br />
-<br />
-<img src="/assets/img/nectarist_00009_005.png" style="width: 40rem;" /><br />
-임시 비밀번호가 (내 이메일로) 발송된다.<br />
-성공!<br />
 </div>
         <div class="post-list-footer mt-2 py-1">
-            <span class="post-list-category">nectarist</span>
-            <span class="post-list-uploadtime">2024-04-11 16:41</span>
+            <span class="post-list-category">security</span>
+            <span class="post-list-uploadtime">2024-10-14 11:14</span>
         </div>
     </div>
     <hr class="post-list-border">
     
-    <div class="post-list-item px-2" onclick="location.href = '/blog/20240411/blog_00003';">
-        <div class="post-list-subject">깃헙 블로그 시작하기 [03] 페이징과 마감</div>
-        <div class="post-list-excerpt mt-1">메인화면 (전체 포스트 리스트)에 페이징을 추가했다.<br />
-플러그인은 jekyll-paginate를 사용했다.<br />
+    <div class="post-list-item px-2" onclick="location.href = '/security/20240930/security_00001';">
+        <div class="post-list-subject">x86-64 Assembly</div>
+        <div class="post-list-excerpt mt-1">취미삼아 보안 공부를 다시 시작했는데,<br />
+이번 시즌에는 전보다 더 발전된 무언가를 꼭 이뤄냈으면 좋겠다.( ⁎ ᵕᴗᵕ ⁎ )<br />
 <br />
-❗<br />
-내 블로그는 카테고리별로 나눠져 있기 때문에 카테고리 별로 페이지를 적용하고 싶었지만<br />
+<div class="post-chapter">0. 개요</div>
 <br />
-jekyll-paginate -&gt; 카테고리별 페이지 지원 안 함<br />
-jekyll-paginate-v2 -&gt; 깃헙 페이지에서 지원 안 함<br />
+어셈블리 언어의 기본 개념과 x86-64 ISA의 어셈블리 언어에 대해 정리했다.<br />
 <br />
-위와 같은 문제로 전체 포스트 리스트밖에 적용하지 못했다. (；′⌒`)<br />
+<div class="post-chapter">1. 어셈블리 언어</div>
 <br />
-코드는 jekyll 공식 문서를 참고했다.<br />
+<ul>
+  <li>어셈블리 언어는 기계어와 1:1 대응이 되는 저수준 언어이다.<br /></li>
+  <li>사용자가 기계어를 쉽게 읽을수 있게 하기 위해 만들어졌다.<br /></li>
+  <li>레지스터나 메모리에 직접 접근하기 쉽다.<br /></li>
+  <li>CPU의 명령어 집합(ISA)에 따라 여러 종류가 존재한다: (IA-32, x86-64, ARM, MIPS)<br /></li>
+  <li>CPU 성능이 낮을수록, RAM이 작을수록, 컴파일러보다 인간이 더 최적화를 잘 할수록 유리하다.<br />
+<br /></li>
+</ul>
+<div class="post-chapter">2. x86-64 어셈블리 언어와 문법</div>
 <br />
-<div class="post-code">
-gem install jekyll-paginate
-</div>
+<ul>
+  <li>2020년 기준 절반 이상의 CPU가 x86-64 아키텍처를 채택하고 있다.<br /></li>
+  <li>두가지 문법을 가지고 있다: Intel, AT&amp;T<br /></li>
+  <li>Intel 문법은 주로 Windows에서, AT&amp;T문법은 주로 Unix에서 사용된다.<br /></li>
+</ul>
+<table class="post-table">
+    <tbody>
+        <tr>
+            <th></th>
+            <th>Intel</th>
+            <th>AT&amp;T</th>
+        </tr>
+        <tr>
+            <td>피연산자 순서</td>
+            <td>instr dest, src <br />(dest를 좌측, src를 우측에 표기)</td>
+            <td>instr src, dest <br />(src를 좌측, dest를 우측에 표기)</td>
+        </tr>
+        <tr>
+            <td>접두사</td>
+            <td>instr reg, 1 <br />(자동으로 파라미터 타입 파악) </td>
+            <td>instr $1, %reg <br />(값은 $, 레지스터는 %를 앞에 표시)</td>
+        </tr>
+        <tr>
+            <td>피연산자 크기</td>
+            <td>instr reg, 1234 <br />(레지스터를 통해 자동으로 결정)</td>
+            <td>instrl $1234, %reg <br />(명령어에 크기를 나타내는 접미사 표시)</td>
+        </tr>
+        <tr>
+            <td>메모리 주소 표기</td>
+            <td>instr reg1, [reg2+3] <br />([]로 구분)</td>
+            <td>instr 3(%reg2), %reg1 </td>
+        </tr>
+    </tbody>
+</table>
 <br />
-위와 같이 플러그인을 설치해주고<br />
+<div class="post-chapter">3. x86-64 어셈블리 명령어</div>
 <br />
-<img src="/assets/img/blog_00003_001.png" style="width: 40rem;" /><br />
+<table class="post-table">
+    <tbody>
+        <tr>
+            <th>명령어</th>
+            <th>의미</th>
+            <th>Intel</th>
+        </tr>
+        <tr>
+            <td>mov</td>
+            <td>src에 들어있는 값을 dest에 대입</td>
+            <td>mov dest, src</td>
+        </tr>
+        <tr>
+            <td>lea</td>
+            <td>src에 들어있는 값(주소)을 dest에 대입<br />(*mov와 다르게 lea는 주소에 대한 연산이 가능)</td>
+            <td>lea dest, src</td>
+        </tr>
+        <tr>
+            <td>add</td>
+            <td>dest에 src의 값을 더함</td>
+            <td>add dest, 3</td>
+        </tr>
+        <tr>
+            <td>sub</td>
+            <td>dest에 src의 값을 뺌</td>
+            <td>sub dest, 3</td>
+        </tr>
+        <tr>
+            <td>inc</td>
+            <td>dest의 값을 1 증가시킴</td>
+            <td>inc dest</td>
+        </tr>
+        <tr>
+            <td>dec</td>
+            <td>dest의 값을 1 감소시킴</td>
+            <td>dec dest</td>
+        </tr>
+        <tr>
+            <td>and</td>
+            <td>dest와 src의 각 비트를 AND 연산해서 dest에 저장</td>
+            <td>and dest, src</td>
+        </tr>
+        <tr>
+            <td>or</td>
+            <td>dest와 src의 각 비트를 OR 연산해서 dest에 저장</td>
+            <td>or dest, src</td>
+        </tr>
+        <tr>
+            <td>xor</td>
+            <td>dest와 src의 각 비트를 XOR 연산해서 dest에 저장</td>
+            <td>xor dest, src</td>
+        </tr>
+        <tr>
+            <td>not</td>
+            <td>dest의 각 비트를 반전</td>
+            <td>not dest</td>
+        </tr>
+        <tr>
+            <td>cmp</td>
+            <td>dest와 src를 비교하고 플래그를 설정, 결과값 대입안함<br />(*dest와 src 비교에 주로 사용)</td>
+            <td>cmp dest, src</td>
+        </tr>
+        <tr>
+            <td>test</td>
+            <td>dest와 src를 AND연산하고 플래그를 설정, 결과값 대입안함<br />(*dest와 src가 0인지 확인하는데 주로 사용)</td>
+            <td>test dest, src</td>
+        </tr>
+        <tr>
+            <td>jmp</td>
+            <td>dest를 rip에 대입 <br />(*즉 addr의 명령어를 실행)</td>
+            <td>jmp dest</td>
+        </tr>
+        <tr>
+            <td>je</td>
+            <td>직전에 비교한 두 피연산자가 같으면 점프 <br />(*jump if equal)</td>
+            <td>cmp dest, src; <br />je addr; <br />// if dest == src , <br />// jump to addr</td>
+        </tr>
+        <tr>
+            <td>jg</td>
+            <td>직전에 비교한 두 연산자 중 전자가 더 크면 점프 <br />(*jump if greater)</td>
+            <td>cmp dest, src; <br />jg addr; <br />// if dest &gt; src , <br />// jump to addr</td>
+        </tr>
+        <tr>
+            <td>push</td>
+            <td>스택 끝부분에 값(val) 추가 <br />(*스택이 변경되므로 스택 끝을 가리키는 rsp의 값 변경됨)</td>
+            <td>push val</td>
+        </tr>
+        <tr>
+            <td>pop</td>
+            <td>스택 끝부분의 값을 꺼내서 dest에 저장 <br />(*스택이 변경되므로 스택 끝을 가리키는 rsp의 값 변경됨)</td>
+            <td>pop dest</td>
+        </tr>
+    </tbody>
+</table>
+*AT&amp;T 문법의 경우는 dest - src 위치 변경<br />
 <br />
-gemfile과 config에 적용했다.<br />
+<div class="post-chapter">4. x86-64 어셈블리 프로시저</div>
 <br />
-생각하던 블로그의 기능은 대략 갖췄으니, <br />
-디자인 변경이 하고싶어지기 전까지 당분간은 개발 관련 글만 올릴 것 같다. ヾ(•ω•`)o<br />
+<ul>
+  <li>프로시저는 특정 기능을 수행하는 코드 조각이다.<br /></li>
+  <li>프로시저 호출 - 프로시저 실행 - 프로시저에서 반환(원래 실행하던 명령어로 복귀) 순으로 실행된다.<br /></li>
+  <li>스택에 원래 실행하려던 명령어 주소를 저장한 다음 프로시저를 호출하고, 반환 시 스택에 저장해둔 명령어 주소를 이용해 복귀한다.<br />
+<br /></li>
+</ul>
+<table class="post-table">
+    <tbody>
+        <tr>
+            <th>명령어</th>
+            <th>의미</th>
+            <th>문법</th>
+            <th>실제 동작</th>
+        </tr>
+        <tr>
+            <td>call</td>
+            <td>특정 주소의 명령어 호출</td>
+            <td>call addr</td>
+            <td>push addr; <br />jmp addr;</td>
+        </tr>
+        <tr>
+            <td>leave</td>
+            <td>사용중인 스택 프레임 정리</td>
+            <td>leave</td>
+            <td>mov rsp, rbp;<br />// 스택의 시작점(RBP 레지스터가 가리키는 값) 으로 <br />// 스택의 끝점(RSP 레지스터가 가리키는 값)을 옮긴다.<br />pop rbp; <br />// 스택에 저장해둔 값을 <br />// 스택의 시작점으로 설정한다.</td>
+        </tr>
+        <tr>
+            <td>ret</td>
+            <td>원래 실행하던 명령어로 복귀</td>
+            <td>ret</td>
+            <td>pop rip; <br />// 스택에 저장해둔 값을 <br />// 다음 명령어(RIP 레지스터가 가리키는 값)로 설정한다.</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<div class="post-chapter">출처</div>
+<br />
+<span class="post-overegg" style="color: blue; border: 0;">
+    https://ko.wikipedia.org/wiki/%EC%96%B4%EC%85%88%EB%B8%94%EB%A6%AC%EC%96%B4
+</span><br />
+<span class="post-overegg" style="color: blue; border: 0;">
+    https://namu.wiki/w/%EC%96%B4%EC%85%88%EB%B8%94%EB%A6%AC%EC%96%B4
+</span><br />
+<span class="post-overegg" style="color: blue; border: 0;">
+    https://namu.wiki/w/x86/%EB%AA%85%EB%A0%B9%EC%96%B4%20%EB%AA%A9%EB%A1%9D
+</span><br />
 </div>
         <div class="post-list-footer mt-2 py-1">
-            <span class="post-list-category">blog</span>
-            <span class="post-list-uploadtime">2024-04-11 15:35</span>
+            <span class="post-list-category">security</span>
+            <span class="post-list-uploadtime">2024-09-30 09:27</span>
         </div>
     </div>
     <hr class="post-list-border">
     
-    <div class="post-list-item px-2" onclick="location.href = '/algorithm/20240201/algorithm_00002';">
-        <div class="post-list-subject">중국인의 나머지 정리</div>
-        <div class="post-list-excerpt mt-1">알고리즘 문제를 풀던 중 정리해두면 좋을 것 같은 내용을 발견해<br />
-오랜만에 블로그에 작성했다 ^.^<br />
+    <div class="post-list-item px-2" onclick="location.href = '/react/20240712/react_00001';">
+        <div class="post-list-subject">React.js 클래스vs함수 그리고 hook</div>
+        <div class="post-list-excerpt mt-1">지금으로부터 딱 5년전에 리액트를 사용했었다.<br />
+그렇게 깊게+오래 사용한게 아니라서 큰 추억은 없고 약간의 “이거 좋네..”라는 느낌만 남았다.<br />
+이제는 업무용으로 쓰고 있는데, 5년 전과 비교하면 지금은 엄청나게 매끄럽게 쓰고있는 중이다.<br />
 <br />
-<div class="post-chapter">1. 중국인의 나머지 정리가 뭔가요</div>
+그런데 문법이 꽤 다른 것 같다. 예전엔 분명 class 어쩌고.. render.. 같은게 있었는데<br />
+지금은 function부터 시작하잖아..? (゜▽゜;)<br />
 <br />
-<img src="/assets/img/algorithm_00002_001.png" style="width: 40rem;" /><br />
+<div class="post-chapter">1. 클래스형과 함수형 코드 비교</div>
 <br />
-위 내용을 요약하면,<br />
-<br />
-<div style="margin-left: 20%">
-    <span style="font-weight: bold; font-size: 1.1rem;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x ≡ 2 (mod 3)</span><span class="post-overegg" style="color: gray; border: 0;">→ x는 3으로 나누면 나머지가 2</span><br />
-    <span style="font-weight: bold; font-size: 1.1rem;">and x ≡ 3 (mod 5)</span><span class="post-overegg" style="color: gray; border: 0;">→ x는 5로 나누면 나머지가 3</span><br />
-    <span style="font-weight: bold; font-size: 1.1rem;">and x ≡ 2 (mod 7)</span><span class="post-overegg" style="color: gray; border: 0;">→ x는 7로 나누면 나머지가 2</span><br />
-</div>
-<br />
-를 만족하는 x를 찾는 문제에 관한 내용이다.<br />
-<br />
-중국인의 나머지 정리는 위와 같은 연립 합동식의 유일한 해가 존재함을 증명하는 정리이다.<br />
-(단, x ≡ a (mod m) 에서 모든 m은 쌍마다 서로소 - 위의 경우에는 3,5,7이 서로소일 것)<br />
-<br />
-<div class="post-chapter">2. 정리를 이용해서 문제 풀기</div>
-<br />
-<div style="margin-left: 20%">
-    <span style="font-weight: bold; font-size: 1.1rem;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x ≡ 2 (mod 3)</span><br />
-    <span style="font-weight: bold; font-size: 1.1rem;">and x ≡ 3 (mod 5)</span><br />
-    <span style="font-weight: bold; font-size: 1.1rem;">and x ≡ 2 (mod 7)</span><br />
-</div>
-<br />
-위 내용을 x ≡ a (mod m) 모양으로 정리하면,<br />
-<br />
-<div style="margin-left: 20%">
-<span style="font-weight: bold; font-size: 1.1rem;">a₁ = 2, m₁ = 3</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">a₂ = 3, m₂ = 5</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">a₃ = 2, m₃ = 7</span><br />
-</div>
-<br />
-로 정리할 수 있을 것이다.<br />
-그리고 m₁ + m₂ + m₃ + … 을 모두 더한 값을 M으로 정의한다.<br />
-<br />
-<div style="margin-left: 20%">
-<span style="font-weight: bold; font-size: 1.1rem;">M = 3 * 5 * 7 = 105</span><br />
-</div>
-<br />
-다음으로 각 식마다 n = M / m 값을 구한다.<br />
-<br />
-<div style="margin-left: 20%">
-<span style="font-weight: bold; font-size: 1.1rem;">n₁ = M / m₁ = 105 / 3 = 35</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">n₂ = M / m₂ = 105 / 5 = 21</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">n₃ = M / m₃ = 105 / 7 = 15</span><br />
-</div>
-<br />
-다음으로 각 식마다 c = n^-1 값을 구한다.<br />
-..즉, nc ≡ 1 (mod m)을 만족하는 c의 최소값을 구한다. (모듈러 역원 구하기 참고)<br />
-<br />
-<div style="margin-left: 20%">
-(식 1)<br />
-<span style="font-weight: bold; font-size: 1.1rem;">n₁c₁ ≡ 1 (mod m₁)</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">35c₁ ≡ 1 (mod 3)</span><span class="post-overegg" style="color: gray; border: 0;">→ 양변에 mod 3을 취한다.</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">2c₁ ≡ 1 (mod 3)</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">c₁ ≡ 2</span><br />
-<br />
-(식 2)<br />
-<span style="font-weight: bold; font-size: 1.1rem;">n₂c₂ ≡ 1 (mod m₁)</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">21c₂ ≡ 1 (mod 5)</span><span class="post-overegg" style="color: gray; border: 0;">→ 양변에 mod 5을 취한다.</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">1c₂ ≡ 1 (mod 5)</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">c₂ ≡ 1</span><br />
-<br />
-(식 3)<br />
-<span style="font-weight: bold; font-size: 1.1rem;">n₃c₃ ≡ 1 (mod m₃)</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">15c₃ ≡ 1 (mod 7)</span><span class="post-overegg" style="color: gray; border: 0;">→ 양변에 mod 7을 취한다.</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">1c₃ ≡ 1 (mod 7)</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">c₃ ≡ 1</span><br />
+다음 내용은 class형으로 작성된 컴포넌트이다. (공식 가이드 참고)
+<div class="post-code" style="font-size: 0.8rem;">
+class Test extends React.Component {<br />
+&nbsp;&nbsp;state = {name: "react"}<br />
+&nbsp;&nbsp;onBtnClick = () =&gt; { console.log("button clicked"); };<br />
+&nbsp;&nbsp;render() {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;return (<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button onClick={this.onBtnClick}&gt;{this.state.name}&lt;/button&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;);<br />
+&nbsp;&nbsp;}<br />
+}<br />
 </div>
 <br />
 <br />
-이제 다음 식을 통해 x를 구할 수 있다.<br />
-<br />
-<div style="margin-left: 20%">
-<span style="font-weight: bold; font-size: 1.1rem;">x = (a₁n₁c₁ + a₂n₂c₂.. ) mod M</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">x = (2*35*2 + 3*21*1 + 2*15*1) mod 105</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">x = (140 + 63 + 30) mod 105</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">x = 233 mod 105</span><br />
-<span style="font-weight: bold; font-size: 1.1rem;">x = 23</span><br />
+위 내용을 함수형으로 바꿔보면 다음과 같이 쓸 수 있다.
+<div class="post-code" style="font-size: 0.8rem;">
+function Test(){<br />
+&nbsp;&nbsp;const [name, setName] = useState("react")<br />
+&nbsp;&nbsp;const onBtnClick = () =&gt; { console.log("button clicked") }<br />
+&nbsp;&nbsp;return (<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;button onClick={onBtnClick}&gt;{name}&lt;/button&gt;<br />
+&nbsp;&nbsp;)<br />
+}<br />
 </div>
 <br />
-<div class="post-chapter">참고 및 출처</div>
 <br />
-<span class="post-overegg" style="color: blue; border: 0;">https://ko.wikipedia.org/wiki/%EC%A4%91%EA%B5%AD%EC%9D%B8%EC%9D%98<em>%EB%82%98%EB%A8%B8%EC%A7%80</em>%EC%A0%95%EB%A6%AC</span><br />
+<div class="post-chapter">2. 공통점: 그래도 배치는 비슷하다</div>
 <br />
-<span class="post-overegg" style="color: blue; border: 0;">https://namu.wiki/w/%EC%A4%91%EA%B5%AD%EC%9D%B8%EC%9D%98%20%EB%82%98%EB%A8%B8%EC%A7%80%20%EC%A0%95%EB%A6%AC</span><br />
+코드 모양만 보면 거의 비슷하다는 느낌이 든다.<br />
+클래스형의 경우 무조건 “class”이고 “component”를 extends 해야하고 render도 있어야하지만<br />
+그걸 제외하고 전체적인 모양만 보면<br />
 <br />
-<span class="post-overegg" style="color: blue; border: 0;">https://www.youtube.com/watch?v=zOSS3fCiKzI</span><br />
+<img src="/assets/img/react_00001_001.png" style="width: 40rem;" /><br />
+state를 정의하는 부분, 사용할 메소드를 정의하는 부분, 결과를 그려내는 부분으로 나눠지고<br />
+<br />
+약간의 코드 길이의 차이를 제외하면<br /> 
+정의한다-&gt;가져온다-&gt;집어넣는다 라는 행위는<br />
+크게 달라짐이 없어 보인다.<br />
+<br />
+<div class="post-chapter">3. 차이점: 생명주기 관리가 심플해졌다</div>
+<br />
+props의 사용법도 차이점이 있으나,<br />
+부모에서 자식으로 값을 넘긴다 / props로 접근한다 라는 큰 틀은<br />
+같다고 생각해서 제외했다.<br />
+<br />
+개발 시 가장 큰 차이점은 생명주기 관리의 차이점인 것 같다.<br />
+<br />
+기존 클래스형에서는 mount / update / unmount 로 상태변경을 관리했는데<br />
+함수형에서는 Hook 으로 일종의 병합이 되어버려서 <br />
+(개인적으로는) 기존의 생명주기보다 더 까다로운 접근법을 가지게 되었다는 생각이 든다.<br />
+<br />
+나는 내가 만드는 대부분의 프로그램이 “처음 로딩될 때” 그리고 “조작했을 때 일부” 변경되기를 바라는데,<br />
+Hook은 “날 쳐다봤어? 난 트리거될거야..” 이런 느낌으로 처리가 되어버려서<br />
+적응하는데에 시간이 조금 더 필요할 것 같다.<br />
+<br />
+<div class="post-chapter">4. 근데 결국 함수형으로 가는 수밖에 없다</div>
+<br />
+그런데 어쩔수없이 함수형으로 가는 수밖에 없을 것 같다.<br />
+유용한 대부분의 라이브러리가 Hook을 쓰고 있다고 하니, Hook을 쓰지 않는<br />
+class형 컴포넌트로는 대응이 쉽지가 않다고 한다. ⁎′̥̥̥ ㅅ ‵̥̥̥<br />
+<br />
+리액트 팀은 선택권을 주고싶었겠지만 현실은 늘 차갑다…….
 </div>
         <div class="post-list-footer mt-2 py-1">
-            <span class="post-list-category">algorithm</span>
-            <span class="post-list-uploadtime">2024-02-01 17:19</span>
+            <span class="post-list-category">react</span>
+            <span class="post-list-uploadtime">2024-07-12 13:17</span>
         </div>
     </div>
     <hr class="post-list-border">
@@ -743,6 +1165,10 @@ gemfile과 config에 적용했다.<br />
                 <button class="page-button" onclick="location.href = '/posts/page/4';">4</button>
                 
             
+                
+                <button class="page-button" onclick="location.href = '/posts/page/5';">5</button>
+                
+            
             <!-- 다음 -->
             
             <button class="page-button" onclick="location.href = '/posts/page/2';">
@@ -762,8 +1188,8 @@ gemfile과 config에 적용했다.<br />
     </div>
     <!-- 로고와 프로필 -->
     <div id="sidebar_profile" class="mt-2 p-2" onclick="location.href = '/category/about';">
-        <div class="sidebar-profile-logo text-center" style="background-color: white;">
-            <img src="/assets/img/full_logo.jpg" style="width: 3rem;"/>
+        <div class="sidebar-profile-logo text-center" style="background-color: white; border: 0;">
+            <img src="/assets/img/sidebar_profile.jpg" style="width: 100%;"/>
         </div>
         <div class="mt-2">
             <div class="sidebar-profile-item">
@@ -776,7 +1202,7 @@ gemfile과 config에 적용했다.<br />
             </div>
             <div class="sidebar-profile-item">
                 <span class="sidebar-profile-icon "><i class="fa fa-comment"></i></span>
-                취직해야해 ̗̀(ꀬ⏖ꀬ∴)
+                스프링 고수가 될 거야 _〆(´Д⊂
             </div>
         </div>
     </div>
@@ -786,7 +1212,7 @@ gemfile과 config에 적용했다.<br />
         <div class="sidebar-category-item" data-category="all" style="color: black!important;">
             <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
             ALL
-            <span class="sidebar-category-size">( 19 )</span>
+            <span class="sidebar-category-size">( 24 )</span>
         </div>
         <hr class="sidebar-category-border-bold">
         <!-- 카테고리 : 블로그 -->
@@ -795,16 +1221,27 @@ gemfile과 config에 적용했다.<br />
                 BLOG
                 <span class="sidebar-category-size">
                     
-                    ( 4 )
+                    ( 5 )
                     
                 </span>
             </div>
-        <!-- 카테고리 : 스터디 -->
-            <div class="sidebar-category-item" data-category="project" style="pointer-events: none;">
+        <!-- 카테고리 : 개념 및 이론 -->
+            <div class="sidebar-category-item" data-category="concepts" style="pointer-events: none;">
                 <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
-                STUDY
+                CONCEPTS
             </div>
-        <!-- 카테고리 : 알고리즘 -->
+        <!-- 카테고리 : 시큐리티(서브) -->
+            <div class="sidebar-category-item" data-category="security">
+                &nbsp;&nbsp;
+                <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
+                Security
+                <span class="sidebar-category-size">
+                    
+                    ( 2 )
+                    
+                </span>
+            </div>
+        <!-- 카테고리 : 알고리즘(서브) -->
             <div class="sidebar-category-item" data-category="algorithm">
                 &nbsp;&nbsp;
                 <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
@@ -815,7 +1252,12 @@ gemfile과 config에 적용했다.<br />
                     
                 </span>
             </div>
-        <!-- 카테고리 : 파이선 -->
+        <!-- 카테고리 : 프로그래밍 언어 -->
+            <div class="sidebar-category-item" data-category="language" style="pointer-events: none;">
+                <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
+                LANGUAGE
+            </div>
+        <!-- 카테고리 : 파이선(서브) -->
             <div class="sidebar-category-item" data-category="python">
                 &nbsp;&nbsp;
                 <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
@@ -826,14 +1268,30 @@ gemfile과 config에 적용했다.<br />
                     
                 </span>
             </div>
-        <!-- 카테고리 : 자바(서브) -->
-            <div class="sidebar-category-item" data-category="java">
+        <!-- 카테고리 : 프레임워크 -->
+            <div class="sidebar-category-item" data-category="framework" style="pointer-events: none;">
+                <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
+                FRAMEWORK
+            </div>
+        <!-- 카테고리 : 스프링(서브) -->
+            <div class="sidebar-category-item" data-category="spring">
                 &nbsp;&nbsp;
                 <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
-                Java
+                Spring
                 <span class="sidebar-category-size">
                     
-                    ( 0 )
+                    ( 1 )
+                    
+                </span>
+            </div>
+        <!-- 카테고리 : 리액트(서브) -->
+            <div class="sidebar-category-item" data-category="react">
+                &nbsp;&nbsp;
+                <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
+                React
+                <span class="sidebar-category-size">
+                    
+                    ( 1 )
                     
                 </span>
             </div>

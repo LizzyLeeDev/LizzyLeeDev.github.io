@@ -17,20 +17,23 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
+
+timezone: Asia/Seoul
+
 profile:
   mastername: Lizzy Lee (이지연)
-  masteremail: leezy.lee.dev@gmail.com
+  masteremail: lizzy.lee.dev@gmail.com
   mastercomment: 스프링 고수가 될 거야 _〆(´Д⊂
 
 abountlink: /category/about
 
 themecolor:
-  categoryname: FF9AAF
-  postsubject: FF9AAF
-  postcategory: FF6F8D
-  postchapter: FF9AAF
-  sidebarprofileicon: FF6F8D
-  sidebarcategoryicon: FF6F8D
+  categoryname: 85C1E9 
+  postsubject: 85C1E9 
+  postcategory: 3498DB 
+  postchapter: 85C1E9 
+  sidebarprofileicon: 3498DB 
+  sidebarcategoryicon: 3498DB 
 
 # FFA8DB
 # FF6FC4
