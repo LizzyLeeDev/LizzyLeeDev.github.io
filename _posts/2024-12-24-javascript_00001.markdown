@@ -2,7 +2,7 @@
 layout: post-current
 title: pdf.js initialization timing
 date: 2024-12-24 14:14:00 +0900
-categories: library
+categories: javascript
 ---
 pdf.js 라이브러리를 사용하고 있는데, 뷰어의 페이지 변경 이벤트가 필요하다.<br>
 PDFViewerApplication의 eventBus를 통해 page change 이벤트를 걸면 된다는데<br>
