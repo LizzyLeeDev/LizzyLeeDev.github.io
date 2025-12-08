@@ -2,7 +2,7 @@
 layout: post-current
 title: Project Nectarist [05] django와 디렉토리 구조
 date: 2023-08-31 15:00:00 +0900
-categories: nectarist
+categories: nectar
 ---
 python 파일을 수정할때마다 자동으로 새로고침이 되고<br>
 디렉토리도 밖으로 뺐으니 외부에 있는 nectarist_web을 이용해서<br>

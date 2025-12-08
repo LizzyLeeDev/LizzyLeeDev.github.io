@@ -2,7 +2,7 @@
 layout: post-current
 title: Project Nectarist [07] 구글 클라우드에 올리기
 date: 2023-09-06 16:42:00 +0900
-categories: nectarist
+categories: nectar
 ---
 구글 클라우드에 작은 인스턴스는 무료로 사용할수 있게 해주는 정책이 있다.<br>
 <br>

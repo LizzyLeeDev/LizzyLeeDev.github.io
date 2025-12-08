@@ -2,7 +2,7 @@
 layout: post-current
 title: Project Nectarist [09] 메일발송 기능 추가
 date: 2024-04-11 16:41:00 +0900
-categories: nectarist
+categories: nectar
 ---
 비밀번호 변경시 임시 비밀번호를 메일로 보내주는 기능을 추가했다.<br>
 (작은 프로젝트다보니 별도로 app을 분리하진 않고 작업했다)<br>

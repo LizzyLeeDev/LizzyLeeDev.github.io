@@ -2,7 +2,7 @@
 layout: post-current
 title: Project Nectarist [10] view의 분리 
 date: 2024-05-14 14:41:00 +0900
-categories: nectarist
+categories: nectar
 ---
 어떻게 하면 더 좋은 Django 프로젝트를 구성할 수 있을까?<br>
 Django의 구조인 MTV를 하나씩 다시 확인하며 고민해봤다.<br>

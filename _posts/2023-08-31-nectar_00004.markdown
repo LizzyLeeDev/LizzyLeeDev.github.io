@@ -2,7 +2,7 @@
 layout: post-current
 title: Project Nectarist [04] Docker를 이용한 개발환경
 date: 2023-08-31 01:44:00 +0900
-categories: nectarist
+categories: nectar
 ---
 이번 프로젝트의 환경은 Django-uWSGI-Nginx + MySQL로 정했다.<br>
 학부생때 썼던 추억이 있어서 선택했다.ദ്ദി*ˊᗜˋ*)<br>

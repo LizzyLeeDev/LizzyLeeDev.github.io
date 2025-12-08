@@ -2,7 +2,7 @@
 layout: post-current
 title: Project Nectarist [06] DB 연동과 models.py
 date: 2023-09-02 17:04:00 +0900
-categories: nectarist
+categories: nectar
 ---
 <div class="post-d-none"><br><br><br></div>
 <br>

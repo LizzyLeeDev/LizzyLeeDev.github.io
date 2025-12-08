@@ -2,7 +2,7 @@
 layout: post-current
 title: Project Nectarist [08] 중간 결과
 date: 2023-09-06 16:42:00 +0900
-categories: nectarist
+categories: nectar
 ---
 8월 28일부터 부랴부랴 개발을 시작한 Nectarist..<br>
 지금 끝까지 작업하기가 힘들 것 같아 중간 과정을 정리해봤다.<br>

@@ -2,7 +2,7 @@
 layout: post-current
 title: Project Nectarist [01] 프로젝트 계획,분석
 date: 2023-08-27 23:06:00 +0900
-categories: nectarist
+categories: nectar
 ---
 노트북을 바꾸면서 학부때부터 했던 모든 프로젝트를 잃어버린 나..<br>
 이번에 건강회복 겸 쉬는동안 간단하게 몇 가지 프로젝트를 진행해서<br>
