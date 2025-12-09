@@ -1,5 +1,5 @@
 ---
-layout: post-current
+layout: layout-post
 title: Project Nectarist [07] 구글 클라우드에 올리기
 date: 2023-09-06 16:42:00 +0900
 categories: nectar

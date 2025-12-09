@@ -1,5 +1,5 @@
 ---
-layout: post-current
+layout: layout-post
 title: Calling Convention
 date: 2024-12-27 09:52:00 +0900
 categories: security

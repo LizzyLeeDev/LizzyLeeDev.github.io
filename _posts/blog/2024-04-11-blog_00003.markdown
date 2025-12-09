@@ -1,5 +1,5 @@
 ---
-layout: post-current
+layout: layout-post
 title: 깃헙 블로그 시작하기 [03] 페이징과 마감
 date: 2024-04-11 15:35:00 +0900
 categories: blog

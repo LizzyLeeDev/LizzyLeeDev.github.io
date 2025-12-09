@@ -1,6 +1,6 @@
 ---
-layout: list-current
+layout: layout-list
 title: "All"
 ---
 {% assign list = site.posts %}
-{% include list_paginated.html %}
+{% include {{ site.theme_version }}/{{ site.theme_version }}-pagelist.html %}

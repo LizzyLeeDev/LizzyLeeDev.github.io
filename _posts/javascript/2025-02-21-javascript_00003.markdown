@@ -1,5 +1,5 @@
 ---
-layout: post-current
+layout: layout-post
 title: 크롬과 Javascript를 활용한 DOM 이벤트 분석
 date: 2025-02-21 12:20:00 +0900
 categories: javascript
@@ -15,14 +15,14 @@ Git 설정을 삐끗해서 몇달간 잔디를 못 심었다.<br>
 <br>
 < 상황 ><br>
 검색 조건에서 다음과 같은 형태의 custom-select를 사용하고 있다.<br>
-<img src="{{ "/assets/img/javascript/00003/javascript/00003/javascript_00003_001.png" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/javascript/00003/javascript_00003_001.png" }}" style="width: 40rem;"/><br>
 코드를 살펴보니, select 태그가 아닌 div 태그로 외형이 구성되어있다.<br>
 선택된 항목의 이름은 .select-selected 에, 선택된 값은 #selected-value 에 저장하고,<br>
 선택 항목은 .select-items에서 선택하는 구조였다.<br>
 <br>
 < 문제 발생 ><br>
 값이 변경될 때 검색 조건을 적용하기 위해서, 선택된 값을 저장하는 #selected-value에 change 이벤트 핸들러를 추가했다.<br>
-<img src="{{ "/assets/img/javascript/00003/javascript/00003/javascript_00003_002.png" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/javascript/00003/javascript_00003_002.png" }}" style="width: 40rem;"/><br>
 custom-select를 동작시키면 #selected-value의 값이 변하고 있는데 change 이벤트가 발생하지 않는다.<br>
 custom-select의 동작 방식에 대해 분석해볼 필요가 있었다.<br>
 <br>

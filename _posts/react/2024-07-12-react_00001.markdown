@@ -1,5 +1,5 @@
 ---
-layout: post-current
+layout: layout-post
 title: React.js 클래스vs함수 그리고 hook
 date: 2024-07-12 13:17:00 +0900
 categories: react

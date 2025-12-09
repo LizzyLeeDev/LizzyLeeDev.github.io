@@ -1,5 +1,5 @@
 ---
-layout: post-current
+layout: layout-post
 title: Python OJ Start Kit
 date: 2023-08-26 22:40:00 +0900
 categories: python

@@ -1,7 +1,7 @@
 ---
-layout: list-current
+layout: layout-list
 title: "Javascript"
 category: javascript
 ---
 {% assign list = site.categories[page.category] %}
-{% include list.html %}
+{% include {{ site.theme_version }}/{{ site.theme_version }}-list.html %}

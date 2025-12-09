@@ -2,12 +2,12 @@
 <html>
     <head>
         <!-- 헤더 (link,style) -->
-        {% include header.html %}
+        {% include {{ site.theme_version }}/{{ site.theme_version }}-header.html %}
     </head>
     <body>
         <div>
             <!-- 상단바 -->
-            {% include topbar.html %}
+            {% include {{ site.theme_version }}/{{ site.theme_version }}-topbar.html %}
             <!-- 컨텐츠 -->
             <div id="container_contents">
                 <div class="blog-contents-center" style="padding-top: 3rem;">
@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <!-- 사이드바 -->
-                        {% include sidebar.html %}
+                        {% include {{ site.theme_version }}/{{ site.theme_version }}-sidebar.html %}
                     </div>
                 </div>
             </div>
@@ -36,6 +36,6 @@
     </body>
     <foot>
         <!-- 푸터 (script) -->
-        {% include footer.html %}
+        {% include {{ site.theme_version }}/{{ site.theme_version }}-footer.html %}
     </foot>
 </html>

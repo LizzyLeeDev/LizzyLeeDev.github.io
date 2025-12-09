@@ -1,5 +1,5 @@
 ---
-layout: post-current
+layout: layout-post
 title: Project Nectar-Lounge [01] 다시 만들다
 date: 2025-12-08 13:45:00 +0900
 categories: nectar

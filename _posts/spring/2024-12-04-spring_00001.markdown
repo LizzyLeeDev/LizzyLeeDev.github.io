@@ -1,5 +1,5 @@
 ---
-layout: post-current
+layout: layout-post
 title: DTO, VO, Entity in Layered Architecture
 date: 2024-12-04 11:07:00 +0900
 categories: spring
