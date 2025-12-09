@@ -1,0 +1,71 @@
+---
+layout: post-current
+title: React.js 클래스vs함수 그리고 hook
+date: 2024-07-12 13:17:00 +0900
+categories: react
+---
+지금으로부터 딱 5년전에 리액트를 사용했었다.<br>
+그렇게 깊게+오래 사용한게 아니라서 큰 추억은 없고 약간의 "이거 좋네.."라는 느낌만 남았다.<br>
+이제는 업무용으로 쓰고 있는데, 5년 전과 비교하면 지금은 엄청나게 매끄럽게 쓰고있는 중이다.<br>
+<br>
+그런데 문법이 꽤 다른 것 같다. 예전엔 분명 class 어쩌고.. render.. 같은게 있었는데<br>
+지금은 function부터 시작하잖아..? (゜▽゜;)<br>
+<br>
+<div class="post-chapter">1. 클래스형과 함수형 코드 비교</div><br>
+다음 내용은 class형으로 작성된 컴포넌트이다. (공식 가이드 참고)
+<div class="post-code" style="font-size: 0.8rem;">
+class Test extends React.Component {<br>
+&nbsp;&nbsp;state = {name: "react"}<br>
+&nbsp;&nbsp;onBtnClick = () => { console.log("button clicked"); };<br>
+&nbsp;&nbsp;render() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button onClick={this.onBtnClick}>{this.state.name}&lt;/button><br>
+&nbsp;&nbsp;&nbsp;&nbsp;);<br>
+&nbsp;&nbsp;}<br>
+}<br>
+</div><br>
+<br>
+위 내용을 함수형으로 바꿔보면 다음과 같이 쓸 수 있다.
+<div class="post-code" style="font-size: 0.8rem;">
+function Test(){<br>
+&nbsp;&nbsp;const [name, setName] = useState("react")<br>
+&nbsp;&nbsp;const onBtnClick = () => { console.log("button clicked") }<br>
+&nbsp;&nbsp;return (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;button onClick={onBtnClick}>{name}&lt;/button><br>
+&nbsp;&nbsp;)<br>
+}<br>
+</div><br>
+<br>
+<div class="post-chapter">2. 공통점: 그래도 배치는 비슷하다</div><br>
+코드 모양만 보면 거의 비슷하다는 느낌이 든다.<br>
+클래스형의 경우 무조건 "class"이고 "component"를 extends 해야하고 render도 있어야하지만<br>
+그걸 제외하고 전체적인 모양만 보면<br>
+<br>
+<img src="{{ "/assets/img/react/00001/react_00001_001.png" }}" style="width: 40rem;"/><br>
+state를 정의하는 부분, 사용할 메소드를 정의하는 부분, 결과를 그려내는 부분으로 나눠지고<br>
+<br>
+약간의 코드 길이의 차이를 제외하면<br> 
+정의한다->가져온다->집어넣는다 라는 행위는<br>
+크게 달라짐이 없어 보인다.<br>
+<br>
+<div class="post-chapter">3. 차이점: 생명주기 관리가 심플해졌다</div><br>
+props의 사용법도 차이점이 있으나,<br>
+부모에서 자식으로 값을 넘긴다 / props로 접근한다 라는 큰 틀은<br>
+같다고 생각해서 제외했다.<br>
+<br>
+개발 시 가장 큰 차이점은 생명주기 관리의 차이점인 것 같다.<br>
+<br>
+기존 클래스형에서는 mount / update / unmount 로 상태변경을 관리했는데<br>
+함수형에서는 Hook 으로 일종의 병합이 되어버려서 <br>
+(개인적으로는) 기존의 생명주기보다 더 까다로운 접근법을 가지게 되었다는 생각이 든다.<br>
+<br>
+나는 내가 만드는 대부분의 프로그램이 "처음 로딩될 때" 그리고 "조작했을 때 일부" 변경되기를 바라는데,<br>
+Hook은 "날 쳐다봤어? 난 트리거될거야.." 이런 느낌으로 처리가 되어버려서<br>
+적응하는데에 시간이 조금 더 필요할 것 같다.<br>
+<br>
+<div class="post-chapter">4. 근데 결국 함수형으로 가는 수밖에 없다</div><br>
+그런데 어쩔수없이 함수형으로 가는 수밖에 없을 것 같다.<br>
+유용한 대부분의 라이브러리가 Hook을 쓰고 있다고 하니, Hook을 쓰지 않는<br>
+class형 컴포넌트로는 대응이 쉽지가 않다고 한다. ⁎′̥̥̥ ㅅ ‵̥̥̥<br>
+<br>
+리액트 팀은 선택권을 주고싶었겠지만 현실은 늘 차갑다.......

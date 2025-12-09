@@ -1,0 +1,108 @@
+---
+layout: post-current
+title: KMP 알고리즘
+date: 2023-09-19 19:32:00 +0900
+categories: algorithm
+---
+한동안 알고리즘 책을 읽느랴 블로그에 글을 못 썼는데,<br>
+한쪽 손에 화상까지 입어서 공부가 더 늦어질 것 같다..<br>
+<br>
+문자열 검색에 쓰이는 알고리즘인 KMP 알고리즘에 대해 적어보려고 한다.<br>
+<br>
+<div class="post-chapter">1. 기본적인 문자열 검색 알고리즘</div><br>
+문자열 "AABABABCCA"에서 "ABC"를 찾으려면 어떻게 해야할까?
+문자열의 가장 앞부분부터 ABC와 한글자씩 비교해서 찾는 방법이 있을것이다.
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_004.gif" }}" style="width: 40rem;"/><br>
+위와 같이 찾는 경우 두 문자열의 길이를 곱한 만큼의 시간이 걸린다.
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_005.png" }}" style="width: 40rem;"/><br>
+AB가 계속 반복되는 것 같은데, AB와 AB의 비교도 반복할거라면 <br>
+어차피 앞에 있을 AB는 건너뛰고 그 다음부터 비교하면 되지 않을까?<br>
+<br>
+..이렇게 검색하는 방법이 KMP 알고리즘이다.<br>
+<br>
+<div class="post-chapter">2. 접두사와 접미사</div><br>
+접두사란 문자열을 0~N까지 자른 부분 문자열이다.<br>
+그림으로 나타내면 다음과 같다.<br>
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_001.png" }}" style="width: 40rem;"/><br>
+반대로 접미사는 문자열을 끝에서 N개 자른 부분 문자열이다.
+그림으로 나타내면 다음과 같다.
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_002.png" }}" style="width: 40rem;"/><br>
+<br>
+이 중에서 접두사와 접미사가 같은 경우가 오늘 알고리즘의 핵심이다.<br>
+문자열 "abacabc"에 대해 생각해보면,<br>
+<br>
+접두사 ["a", "ab", "aba", "abac", "abaca", "abacab"] 등이 있다.<br>
+<br>
+이제 "길이가 2 이상인 접두사와 전체 문자열"에 대해 접미사를 구해보면<br>
+<br>
+부분문자열 "ab"에서는 ["b"] 접미사,<br>
+부분문자열 "aba"에서는 ["a", "ba"] 접미사,<br>
+부분문자열 "abac"에서는 ["c", "ac", "bac"] 접미사,<br>
+부분문자열 "abaca"에서는  ["a", "ca", "aca", "baca"] 접미사,<br>
+부분문자열 "abacab"에서는 ["b", "ab", "cab", "acab", "bacab"] 접미사,<br>
+부분문자열 "abacabc"에서는 ["c", "bc", "abc", "cabc", "acabc", "bacabc"] 접미사<br>
+<br>
+이 모든 접미사 중, 접두사와 겹쳐지는 것은 ["a", "ab"] 가 있다.<br>
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_003.png" }}" style="width: 40rem;"/><br>
+위와 같이 문자열에서 문자열의 중간에 접두사와 같은 패턴이 얼마나 반복되는지 표를 만들 수 있다.
+KMP 알고리즘은 해당 표를 이용해 동작한다.<br>
+<br>
+<div class="post-chapter">3. KMP 알고리즘</div><br>
+실제로 KMP알고리즘이 동작하는 과정을 설명해봤다.<br>
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_006.png" }}" style="width: 40rem;"/><br>
+위와 같은 문자열 String에서 Search를 찾는다고 가정하자.<br>
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_007.png" }}" style="width: 40rem;"/><br>
+일단 검색할 문자열인 Search의 접두사 패턴 표를 만든다.<br>
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_008.png" }}" style="width: 40rem;"/><br>
+인덱스 0이 있다고 가정하고, Search의 인덱스를 1부터 넣는다.<br>
+(0부터 하는 방법도 있지만, 이쪽이 코드 짜기엔 더 쉬운 것 같다.)<br>
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_009.png" }}" style="width: 40rem;"/><br>
+String과 Search를 각각 인덱스 0을 기준으로 비교한다.<br>
+여기서, Search는 인덱스+1에 들어있는 문자와 비교한다.<br>
+즉, 기준은 빨간 화살표에 있지만 Search에서 실제 비교되는 문자는 파란 화살표이다.<br>
+둘다 A로 같으니 다음 인덱스로 진행한다.<br>
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_010.png" }}" style="width: 40rem;"/><br>
+둘다 B로 같으니 다음 인덱스로 진행한다.<br>
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_011.png" }}" style="width: 40rem;"/><br>
+둘다 A로 같으니 다음 인덱스로 진행한다.
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_012.png" }}" style="width: 40rem;"/><br>
+String은 C, Search는 B로 다른 문자를 만났다.<br>
+이때 Search의 인덱스인 3의 접두사 표 값(빨간 네모박스)이 1로 되어있으니 Search의 인덱스를 1로 옮긴다.<br>
+<br>
+위의 과정이 KMP 알고리즘의 제일 중요한 부분이다.<br>
+위 과정을 풀어서 설명하면 다음과 같다.<br>
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_013.png" }}" style="width: 40rem;"/><br>
+인덱스를 옮겼으니 다시 비교한다.
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_014.png" }}" style="width: 40rem;"/><br>
+String은 C, Search는 B로 다르다.<br>
+Search의 인덱스인 1의 접두사 표 값(빨간 네모박스)이 0으로 되어있으니 Search의 인덱스를 0으로 옮긴다.
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_015.png" }}" style="width: 40rem;"/><br>
+String은 C, Search는 A로 다르다.<br>
+Search의 인덱스가 0으로 더이상 옮길수 있는 방법이 없으니, String의 인덱스만 전진한다.
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_016.png" }}" style="width: 40rem;"/><br>
+둘다 A로 같으니 다음 인덱스로 진행한다.
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_017.png" }}" style="width: 40rem;"/><br>
+둘다 B로 같으니 다음 인덱스로 진행한다.
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_018.png" }}" style="width: 40rem;"/><br>
+둘다 A로 같으니 다음 인덱스로 진행한다.
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_019.png" }}" style="width: 40rem;"/><br>
+또 String은 C, Search는 로 다르다.<br>
+아까 진행했던 것처럼 Search의 인덱스를 1로 옮겨준다.
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_020.png" }}" style="width: 40rem;"/><br>
+String은 C, Search는 B로 다르다.<br>
+Search의 인덱스를 0으로 옮긴다.
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_021.png" }}" style="width: 40rem;"/><br>
+String은 C, Search는 A로 다르다.<br>
+Search의 인덱스가 0이므로 String의 인덱스만 전진한다.
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_022.png" }}" style="width: 40rem;"/><br>
+둘다 A로 같으니 다음 인덱스로 진행한다.
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_022.png" }}" style="width: 40rem;"/><br>
+String은 A, Search는 B로 다르다.<br>
+Search의 인덱스를 0으로 옮긴다.
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_023.png" }}" style="width: 40rem;"/><br>
+둘다 A로 같으니 다음 인덱스로 진행한다.
+<img src="{{ "/assets/img/algorithm/00001/algorithm_00001_024.png" }}" style="width: 40rem;"/><br>
+뒷부분을 진행하면 ABABC로 같을것이므로 생략한다.<br>
+<br>
+접두사 표를 통해 Search의 인덱스를 앞부분으로 옮기는 행위가 중복 부분을 뛰어넘는 역할을 하는 것을 알 수 있다.<br>
+String과 Search가 같지 않으면 String의 인덱스를 고정한 상태로 중복을 뛰어넘으면서 1~2번정도 비교하기 때문에 수행 시간은 String의 길이에 가까울 것이다.<br>

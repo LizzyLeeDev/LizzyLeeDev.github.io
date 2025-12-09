@@ -1,0 +1,143 @@
+---
+layout: post-current
+title: Project Nectarist [06] DB 연동과 models.py
+date: 2023-09-02 17:04:00 +0900
+categories: nectar
+---
+<div class="post-d-none"><br><br><br></div>
+<br>
+<div class="post-chapter">1. 컨테이너 간 연동</div><br>
+<br>
+DB연동 및 컨테이너 연결을 위해 docker-compose.yml을 수정하였다.<br>
+<br>
+<div class="post-code">
+version: "3.7"<br>
+<br>
+services:<br>
+&nbsp;&nbsp;app: <br>
+&nbsp;&nbsp;&nbsp;&nbsp;image: nectarist/nginx-django:2.2.2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ports:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 80:80<br>
+&nbsp;&nbsp;&nbsp;&nbsp;volumes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ./nectarist_web:/usr/nectarist/nectarist_web<br>
+&nbsp;&nbsp;&nbsp;&nbsp;container_name: nectarist_web<br>
+<br>
+&nbsp;&nbsp;mysql:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;image: nectarist/mysql:1.0.0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ports:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 3306:3306<br>
+&nbsp;&nbsp;&nbsp;&nbsp;env_file:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ./nectarist.env<br>    
+&nbsp;&nbsp;&nbsp;&nbsp;volumes:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ./nectarist_db:/var/lib/mysql
+&nbsp;&nbsp;&nbsp;&nbsp;container_name: nectarist_db<br>
+</div>
+<br>
+하단의 mysql:부분을 추가했는데, 이미지와 연결 포트를 설정했다.<br>
+/var/lib/mysql 폴더를 볼륨에 추가했다.<br>
+app(django)과 mysql부분에 각각 container_name도 선언했다.<br>
+<br>
+env_file은 DB관련 변수로, nectarist.env에 따로 저장했다.<br>
+<br>
+<div class="post-code">
+MYSQL_DATABASE: nectarist<br>
+MYSQL_ROOT_PASSWORD=nectaristpass
+</div>
+<br>
+<br>
+이제 nectarist-web 컨테이너에 ping을 설치후,<br>
+외부 터미널에서 docker exec nectarist_web ping nectarist_db 을 통해 <br>
+두 컨테이너 간 연결이 가능한지 확인했다.<br>
+<img src="{{ "/assets/img/nectar/00006/nectar_00006_001.png" }}" style="width: 40rem;"/><br>
+핑이 잘 통하는거 보니 컨테이너간 연결은 원활하다.<br>
+<br>
+nectarist-web은 settings.py의 DATABASES 부분을 다음과 같이 수정해준다.<br>
+<br>
+<div class="post-code">
+DATABASES = {<br>
+&nbsp;&nbsp;'default': {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'ENGINE': 'django.db.backends.mysql',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'NAME': "nectarist", #DB명<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"USER": "root", #로그인 아이디<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"PASSWORD": "nectaristpass", #로그인 패스워드<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"HOST": "nectarist_db", #db 컨테이너명<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"PORT": "3306"<br>
+&nbsp;&nbsp;}<br>
+}
+</div>
+<br>
+그리고 mysql 연결을 위해 mysqlclient를 설치한다.
+<div class="post-code">
+> pip install mysqlclient
+</div>
+이제 nectarist-web도 이미지를 커밋해 준다.<br>
+<br>
+이제 docker-compose up으로 두개의 컨테이너를 불러온 다음<br>
+둘다 정상적으로 구동이 되면 db컨테이너와 웹 컨테이너 실행이 완료되었다.<br>
+<br>
+<span class="post-overegg" style="color: blue; border: 0;">
+안되는 경우 db쪽 볼륨 폴더 삭제 + docker volume prune 후 다시 시도해보면 좋다.
+</span><br>
+<br>
+<div class="post-chapter">2. inspectdb로 만들었어요</div>
+<span style="color: red;">꼭 3번 챕터도 같이 읽으시길 권합니다..</span><br><br>
+mysql을 간편하게 다루기 위해 sqlyog를 설치했다.
+<img src="{{ "/assets/img/nectar/00006/nectar_00006_002.png" }}" style="width: 40rem;"/><br>
+<br>
+sqlyog로 접속한 후, 데이터베이스에 테스트용으로 NT_USER 테이블을 추가했다.<br>
+<br>
+이제 nectarist_web에서 다음 명령어를 실행한다.<br>
+<div class="post-code">
+> python manage_py inspectdb
+</div>
+<br>
+<img src="{{ "/assets/img/nectar/00006/nectar_00006_003.png" }}" style="width: 40rem;"/><br>
+<br>
+방금 생성한 테이블이 models.py에 적용할 수 있는 모양으로 변경되어 나온다.<br>
+테이블을 다 만든 뒤 해당 내용을 models.py에 복사-붙여넣기 해주면 된다.<br>
+<br>
+<span class="post-overegg" style="color: blue; border: 0;">
+안되는 경우 settings.py의 INSTALLED_APPS에 현재 앱이 있는지 확인한다.
+</span><br>
+<br>
+이제 views 에서 데이터를 불러오기 위해 최상단에 models.py의 내용을 import 시킨다.<br>
+views.py의 최상단에 추가 :<br>
+<div class="post-code">
+> from .models import *
+</div>
+<br>
+views.py의 "칵테일정보"메뉴 목록을 DB와 연동하려면 <br>
+해당 메뉴 템플릿을 불러오는 함수에서 모델을 통해 데이터를 가져온다음 넘겨준다.<br>
+<div class="post-code">
+def cocktailinfo(request):<br>
+&nbsp;&nbsp;# menu list data<br>
+&nbsp;&nbsp;#nt_cocktail_idx 역순으로 데이터 불러오기<br>
+&nbsp;&nbsp;list_data = NtCocktail.objects.order_by('-nt_cocktail_idx')<br>
+&nbsp;&nbsp;context.update({"list_data": list_data})<br>
+<br>
+&nbsp;&nbsp;return render(request, 'sites/cocktailinfo.html', context)<br>
+</div>
+테이블 클래스.objects.order_by(순서 기준)를 통해 데이터를 불러온다음<br>
+넘겨받은 템플릿에서 다음과 같이 목록으로 처리한다.<br>
+<br>
+<img src="{{ "/assets/img/nectar/00006/nectar_00006_004.png" }}" style="width: 40rem;"/><br>
+<img src="{{ "/assets/img/nectar/00006/nectar_00006_005.png" }}" style="width: 40rem;"/><br>
+목록이 DB와 연동 완료되었다.
+<br>
+<br>
+<div class="post-chapter">3. 다들 models.py로 만든다</div><br>
+sqlyog에서 직접 테이블을 만든 뒤 inspectDB로 테이블을 붙여 넣으면서<br>
+테이블이 간단해서 참 다행이고 django에도 바로 적용되는게 좋다고 생각했으나..<br>
+<br>
+알고보니 django는 models.py를 입력하고 makemigrations/migrate를 하면<br>
+알아서 테이블을 만들어주는 장점이 있었다.<br>
+<br>
+2번같은 방법을 사용한 뒤 다른곳에서 DB컨테이너를 올릴때 잘 적어놓은 models.py를 아무리 마이그레이션 해도 테이블이 생기지 않는 문제가 발생할 수 있다.<br>
+<br>
+이때 다음과 같이 해결할 수 있다.<br>
+<img src="{{ "/assets/img/nectar/00006/nectar_00006_006.png" }}" style="width: 40rem;"/><br>
+DB 구조를 sql 덤프로 백업한다.<br>
+<br>
+<img src="{{ "/assets/img/nectar/00006/nectar_00006_007.png" }}" style="width: 40rem;"/><br>
+해당 sql dump를 테이블이 필요한 서버에서 실행시킨다.<br>
+테이블이 생기고 마법처럼 동작이 잘 됐다.

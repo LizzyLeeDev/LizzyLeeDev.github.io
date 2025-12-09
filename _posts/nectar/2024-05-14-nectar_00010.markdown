@@ -1,0 +1,48 @@
+---
+layout: post-current
+title: Project Nectarist [10] view의 분리 
+date: 2024-05-14 14:41:00 +0900
+categories: nectar
+---
+어떻게 하면 더 좋은 Django 프로젝트를 구성할 수 있을까?<br>
+Django의 구조인 MTV를 하나씩 다시 확인하며 고민해봤다.<br>
+<br>
+<div class="post-chapter">1. Django의 MTV 돌아보기</div><br>
+<br>
+<img src="{{ "/assets/img/nectar/00010/nectar_00010_001.png" }}" style="width: 40rem;"/><br>
+우선 Nectarist의 models.py를 확인해보니<br>
+DB 테이블과 연동이 되어있어서 잘못 수정하면 다시 migrate가 필요할 것 같다.<br>
+현재 복잡한 구조가 아니라서 당장 추가적인 수정이 필요하지는 않아보인다.<br>
+<br>
+<img src="{{ "/assets/img/nectar/00010/nectar_00010_002.png" }}" style="width: 40rem;"/><br>
+다음은 urls.py를 확인했다.<br>
+단순히 페이지 내용을 요청하는 URI가 있고, ajax등으로 데이터를 요청하는 URI가 있다.<br>
+용도가 두가지로 정리가 되니, 좀더 내용을 보기쉽게 수정할 필요를 느꼈다.<br>
+<br>
+<img src="{{ "/assets/img/nectar/00010/nectar_00010_003.png" }}" style="width: 40rem;"/><br>
+views도 마찬가지로 단순히 페이지 내용을 요청하는 기능과<br>
+데이터를 주고받는 기능이 있으니 나누어 정리하는게 더 보기 좋을 것 같다.<br>
+<br>
+<div class="post-chapter">2. urls 정리</div><br>
+<br>
+<img src="{{ "/assets/img/nectar/00010/nectar_00010_004.png" }}" style="width: 40rem;"/><br>
+주석으로 페이지 요청하는 URI / 데이터 요청하는 URI를 나누고,<br>
+각 내용 위에 상세 메뉴와 기능을 추가하니 가독성이 조금 더 괜찮아졌다.<br>
+<br>
+<div class="post-chapter">3. view 정리</div><br>
+<br>
+view도 페이지/데이터의 두 종류로 분리할 수 있겠지만, <br>
+각 내용이 너무 길어서 아예 파일을 분리하기로 했다.<br>
+<br>
+일단 views.py를 삭제하고 views 디렉토리를 만든 다음<br>
+main_views.py / func_views.py / page_views.py 를 안에 생성했다.<br>
+<br>
+<img src="{{ "/assets/img/nectar/00010/nectar_00010_006.png" }}" style="width: 40rem;"/><br>
+공통적으로 들어가는 부분은 views/main_views.py에 집어넣고<br>
+func_views.py와 page_views.py에서 main_views.py를 불러오도록 처리했다.<br>
+<br>
+urls.py 등에서 view를 import 하는 부분은 기존의 views.py에서 views/func_views.py등으로 변경했다.<br>
+<br>
+<img src="{{ "/assets/img/nectar/00010/nectar_00010_007.png" }}" style="width: 40rem;"/><br>
+내용은 메뉴와 기능에 따라 주석을 추가했다.<br>
+이제 views 파일이 용도별로 분리되었으니 수정 및 가독성이 좀 괜찮아진 느낌이 든다.<br>

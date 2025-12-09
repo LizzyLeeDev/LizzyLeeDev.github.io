@@ -1,0 +1,246 @@
+---
+layout: post-current
+title: Calling Convention
+date: 2024-12-27 09:52:00 +0900
+categories: security
+---
+개인적으로는 함수 호출규약이 어셈블리를 이해하는데에 큰 도움이 되었어서<br>
+다시 정리해보면서도 참 좋은 내용이라는 생각이 든다.<br>
+<br>
+<div class="post-chapter">0. 개요</div><br>
+이 문서는 함수 호출 규약 (Calling Convention)에 대해 정리한 문서이다.<br>
+<br>
+<div class="post-chapter">1. 함수 호출 규약이란?</div><br>
+* 함수를 새로 호출하면 프로그램의 실행 흐름이 새 함수로 이동<br>
+* 호출된 함수가 반환되면 다시 원래의 함수로 돌아와서 기존의 실행 흐름을 유지<br>
+* 즉 함수를 호출할 때에는 <br>
+&nbsp;① 현재의 실행 흐름에 대한 임시 저장 <br>
+&nbsp;② 호출되는 함수에게 인자 전달 <br>
+&nbsp;③ 호출되는 함수가 반환하는 값 수신<br> 
+위 3가지 기능이 필요함<br>
+<br>
+<div class="post-chapter">2. 함수 호출 규약의 종류</div><br>
+<table class="post-table">
+<tbody>
+        <tr>
+            <th>이름</th>
+            <th>인자 전달 방식</th>
+            <th>리턴값<br/>레지스터</th>
+            <th>인자<br/>전달순서</th>
+            <th>클린업 방식</th>
+            <th>사용 환경</th>
+        </tr>
+        <tr>
+            <td>System V</td>
+            <td>레지스터(6개)<br/>+스택(7번째부터)</td>
+            <td>RAX</td>
+            <td>RTL</td>
+            <td>Caller-Cleanup</td>
+            <td>리눅스, macOS의 <br/>x86-64 아키텍처</td>
+        </tr>
+        <tr>
+            <td>cdecl</td>
+            <td>스택</td>
+            <td>EAX</td>
+            <td>RTL</td>
+            <td>Caller-Cleanup</td>
+            <td>일반 C 프로그램 (x86)</td>
+        </tr>
+        <tr>
+            <td>stdcall</td>
+            <td>스택</td>
+            <td>EAX</td>
+            <td>RTL</td>
+            <td>Callee-Cleanup</td>
+            <td>Windows API (x86)</td>
+        </tr>
+        <tr>
+            <td>fastcall</td>
+            <td>레지스터(2개)<br />+스택(3번째부터)</td>
+            <td>EAX</td>
+            <td>RTL</td>
+            <td>Caller-Cleanup</td>
+            <td>Windows API <br />(최적화 용)</td>
+        </tr>
+        <tr>
+            <td>thiscall</td>
+            <td>this포인터는 ECX<br />+스택(나머지)</td>
+            <td>EAX</td>
+            <td>RTL</td>
+            <td>Callee-Cleanup</td>
+            <td>C++ 멤버 함수 호출</td>
+        </tr>
+    </tbody>
+</table><br>
+* 인자 전달 방식 : 함수 func(a,b,c) 에서 인자 a,b,c를 저장해서 func으로 전달하는 방식<br>
+* 리턴값 레지스터 : 함수의 리턴값을 전달하기 위해 저장되는 레지스터<br>
+* 인자 전달 순서 : 함수 func(a,b,c)에서 스택으로 인자를 전달하는 경우 인자 a,b,c를 전달하는 순서<br>
+&nbsp;RTL(Right-to-Left) → c,b,a 순으로 스택에 저장<br>
+&nbsp;LTR(Left-to-Right) → a,b,c 순으로 스택에 저장<br>
+* 클린업 방식: 함수를 호출한 후 스택 프레임을 정리하는 방식<br>
+&nbsp;Caller-Cleanup → 호출자가 스택 프레임을 정리<br>
+&nbsp;Callee-Cleanup → 호출된 함수가 스택 프레임을 정리<br>
+(( 위의 5개 이외에도 Itanium이나 AArch64 ABI 같은 규약들이 더 있음 ))<br>
+<br>
+<div class="post-chapter">3. System V</div><br>
+<div class="post-code my-1" style="font-size: 0.7rem;">
+> void caller() {<br>
+> &nbsp;&nbsp;...<br>
+> &nbsp;&nbsp;long x = callee(1, 2, 3, 4, 5, 6, 7, 8);<br>
+> &nbsp;&nbsp;...<br>
+> }<br>
+> long callee(long a, long b, long c, long d, long e, long f, long g, long h) {<br>
+> &nbsp;&nbsp;long x;<br>
+> &nbsp;&nbsp;long y;<br>
+> &nbsp;&nbsp;long z;<br>
+> &nbsp;&nbsp;return 10;<br>
+> }<br>
+</div><br>
+▲ 예제 코드<br>
+<br>
+위의 예제 코드는 caller 실행 중 callee를 호출하는 코드이다.<br>
+callee 함수는 8개의 인자를 입력받아서 실행되고, long형 데이터를 반환한다.<br>
+위 코드를 64bit 운영체제에서 GCC 로 컴파일하면 다음과 같은 어셈블리 코드가 생성된다.<br>
+<br>
+<div class="post-code my-1" style="font-size: 0.7rem;">
+> caller:<br>
+> &nbsp;&nbsp;...<br>
+> &nbsp;&nbsp;subq   $16, %rsp<br>
+> &nbsp;&nbsp;movq   $8, 8(%rsp)<br>
+> &nbsp;&nbsp;movq   $7, (%rsp)<br>
+> &nbsp;&nbsp;movq   $6, %r9<br>
+> &nbsp;&nbsp;movq   $5, %r8<br>
+> &nbsp;&nbsp;movq   $4, %rcx<br>
+> &nbsp;&nbsp;movq   $3, %rdx<br>
+> &nbsp;&nbsp;movq   $2, %rsi<br>
+> &nbsp;&nbsp;movq   $1, %rdi<br>
+> &nbsp;&nbsp;call   callee <br>
+> &nbsp;&nbsp;addq   $16, %rsp  <br>     
+> &nbsp;&nbsp;movq   %rax, -8(%rbp) <br> 
+> &nbsp;&nbsp;...<br>
+> callee:<br>
+> &nbsp;&nbsp;pushq   %rbp           <br>
+> &nbsp;&nbsp;movq    %rsp, %rbp     <br>
+> &nbsp;&nbsp;subq    $24, %rsp      <br>
+> &nbsp;&nbsp;...<br>
+> &nbsp;&nbsp;movq    $10, %rax      <br>
+> &nbsp;&nbsp;leave                  <br>
+> &nbsp;&nbsp;ret<br>
+</div><br>
+▲ 예제 코드의 어셈블리 코드<br>
+<br>
+위 어셈블리 코드가 메모리에서 실제로 동작하는 방식은 다음과 같다.<br>
+<br>
+<img src="{{ "/assets/img/security/00003/security_00003_001.jpeg" }}" style="width: 40rem;"/><br>
+callee를 호출하기 전 메모리 스택의 모습이다. <br>
+레지스터가 스택의 마지막 부분을 가리키고 (주소를 저장하고) 있다.<br>
+<br>
+<img src="{{ "/assets/img/security/00003/security_00003_002.jpeg" }}" style="width: 40rem;"/><br>
+3번 라인의 subq $16, %rsp 를 실행한 모습이다. <br>
+callee 함수의 입력 파라미터가 총 8개이고, SystemV 호출규약은 파라미터 개수가 6개를 초과하면 Stack에 파라미터 데이터를 적재한다. <br>64bit 운영체제이기 때문에 한 파라미터당 8byte(64bit) 공간이 필요하고, 7번째와 8번째 파라미터의 적재를 위해 스택을 총 16byte 확장한다.<br>
+(스택의 끝 주소를 저장하는 rsp에서 16byte를 뺐으니 스택이 16byte 늘어난다)<br>
+<br>
+<img src="{{ "/assets/img/security/00003/security_00003_003.jpeg" }}" style="width: 40rem;"/><br>
+4번~11번 라인을 실행한 모습이다.<br>
+callee 함수로 전달할 파라미터를 레지스터와 스택에 저장했다.<br>
+<br>
+<img src="{{ "/assets/img/security/00003/security_00003_004.jpeg" }}" style="width: 40rem;"/><br>
+12번 라인의 call callee를 실행한 모습이다.<br>
+call 명령어는 내부적으로 push (주소); jmp (주소); 로 동작한다.<br>
+caller가 callee를 call 하면 원래 caller가 다음에 실행하려던 명령어를 스택에 push 하는데,<br>
+callee가 실행되고 난 다음 원래 caller의 실행 흐름으로 돌아오기 위함이다.<br>
+이때 caller가 실행하려던 명령어가 RET이다. (Return Address)<br>
+<br>
+<img src="{{ "/assets/img/security/00003/security_00003_005.jpeg" }}" style="width: 40rem;"/><br>
+17번 라인의 pushq %rbp를 실행한 모습이다.<br>
+caller의 실행 흐름으로 돌아오기 위해서 caller의 Stack Base Pointer 를 스택에 push 한다.<br>
+Stack Base Pointer는 현재 실행 흐름의 기준이 되는 주소로, RBP 레지스터에 저장되어있다.<br>
+지금은 callee의 실행 흐름으로 옮겨가는 상황이기 때문에 caller의 BP는 스택에 임시저장 하고,<br>
+callee를 위한 새 BP를 만들 것이다.<br>
+<br>
+<img src="{{ "/assets/img/security/00003/security_00003_006.jpeg" }}" style="width: 40rem;"/><br>
+18번 라인의 movq %rsp, %rbp를 실행한 모습이다.<br>
+현재의 RSP 값을 RBP 에 넣는다. 이제 해당 주소(위 상황에서는 X-32)가 callee를 위한 새 BP가 되고, <br>
+callee는 이 BP를 기준으로 스택을 관리하게 된다.<br>
+<br>
+<img src="{{ "/assets/img/security/00003/security_00003_007.jpeg" }}" style="width: 40rem;"/><br>
+19번 라인의 subq $24, %rsp를 실행한 모습이다.<br>
+callee의 지역변수 x,y,z를 위한 공간을 스택에 할당한다.<br>
+<br>
+<img src="{{ "/assets/img/security/00003/security_00003_008.jpeg" }}" style="width: 40rem;"/><br>
+21번 라인의 movq $10, %rax를 실행한 모습이다.<br>
+callee의 반환 값 10을 RAX에 담는다.<br>
+<br>
+<img src="{{ "/assets/img/security/00003/security_00003_009.jpeg" }}" style="width: 40rem;"/><br>
+22번~23번 라인의 leave-ret(함수 호출의 마지막 단계)이 실행되는 모습이다.<br>
+leave 명령어는 내부적으로 mov rsp, rbp; pop rbp; 로 동작한다.<br>
+callee의 BP가 가리키던 곳으로 RSP를 옮기고, 스택에 저장해둔 caller의 RBP 값을 다시 RBP에 담는다.<br>
+ret 명령어는 내부적으로 pop rip; 로 동작한다. 스택에 저장해둔 RET 값을 다시 RIP에 담는다.<br>
+leave-ret을 합쳐 두번의 pop이 끝나면 RSP가 변경된다. (위 상황에서는 X-16으로 변경)<br>
+이 과정으로 실행 흐름은 다시 caller에게 돌아온다. (caller가 원래 실행하려던 명령어와 스택 기준을 다시 얻음)<br>
+<br>
+<img src="{{ "/assets/img/security/00003/security_00003_010.jpeg" }}" style="width: 40rem;"/><br>
+13번~14번 라인이 실행된 모습이다.<br>
+스택에 남아있는 callee의 인자를 정리하기 위해 RSP를 이동시킨다.<br>
+callee의 return value를 사용하기 위해 caller의 스택에 저장한다.<br>
+<br>
+<div class="post-chapter">4. cdecl</div><br>
+<div class="post-code my-1" style="font-size: 0.7rem;">
+> long callee(long a, long b, long c, long d, long e, long f, long g, long h) {<br>
+> &nbsp;&nbsp;long x;<br>
+> &nbsp;&nbsp;long y;<br>
+> &nbsp;&nbsp;long z;<br>
+> &nbsp;&nbsp;return 10;<br>
+> }<br>
+> void caller() {<br>
+> &nbsp;&nbsp;...<br>
+> &nbsp;&nbsp;long x = callee(1, 2, 3, 4, 5, 6, 7, 8);<br>
+> &nbsp;&nbsp;...<br>
+> }<br>
+</div><br>
+▲ (3)번에서 사용했던 예제 코드<br>
+<br>
+위 예제 코드를 32비트 cdecl 호출규약에 맞춰 어셈블리로 만들면 다음과 같다.<br>
+<br>
+<div class="post-code my-1" style="font-size: 0.7rem;">
+> caller:<br>
+> &nbsp;&nbsp;...<br>
+> &nbsp;&nbsp;; 매개변수 준비 (역순으로 스택에 푸시)<br>
+> &nbsp;&nbsp;push 8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; 여덟 번째 매개변수<br>
+> &nbsp;&nbsp;push 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; 일곱 번째 매개변수<br>
+> &nbsp;&nbsp;push 6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; 여섯 번째 매개변수<br>
+> &nbsp;&nbsp;push 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; 다섯 번째 매개변수<br>
+> &nbsp;&nbsp;push 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; 네 번째 매개변수<br>
+> &nbsp;&nbsp;push 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; 세 번째 매개변수<br>
+> &nbsp;&nbsp;push 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; 두 번째 매개변수<br>
+> &nbsp;&nbsp;push 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; 첫 번째 매개변수<br>
+> <br>
+> &nbsp;&nbsp;; callee 호출<br>
+> &nbsp;&nbsp;call callee<br>
+> <br>
+> &nbsp;&nbsp;; 반환값(EAX)을 저장<br>
+> &nbsp;&nbsp;mov dword [ebp-4], eax&nbsp;&nbsp;; 반환값을 로컬 변수 x로 저장<br>
+> <br>
+> &nbsp;&nbsp;; 스택 복구<br>
+> &nbsp;&nbsp;add esp, 32&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; 8개의 매개변수를 제거 (8 * 4 = 32)<br>
+> &nbsp;&nbsp;...<br>
+> <br>
+> callee:<br>
+> &nbsp;&nbsp;push ebp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; 현재 프레임 저장<br>
+> &nbsp;&nbsp;mov ebp, esp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; 새로운 프레임 설정<br>
+> <br>
+> &nbsp;&nbsp;; 지역 변수 공간 생성<br>
+> &nbsp;&nbsp;sub esp, 12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; 지역 변수 x, y, z (3 * 4 = 12 바이트)<br>
+> <br>
+> &nbsp;&nbsp;; 반환값 설정<br>
+> &nbsp;&nbsp;mov eax, 10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; 반환값을 EAX에 저장<br>
+> <br>
+> &nbsp;&nbsp;; 스택 정리 및 복귀<br>
+> &nbsp;&nbsp;leave&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; EBP 복원 및 ESP 정리<br>
+> &nbsp;&nbsp;ret&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; 호출자에게 복귀<br>
+</div><br>
+<br>
+<div class="post-chapter">출처</div><br>
+<span class="post-overegg" style="color: blue; border: 0;">
+    https://waynestalk.com/en/x86-64-calling-conventions-en/
+</span><br>
