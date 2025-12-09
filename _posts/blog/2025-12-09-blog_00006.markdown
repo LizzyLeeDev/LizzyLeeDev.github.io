@@ -45,6 +45,7 @@ header나 footer를 불러오기도 하지만, 이 레이아웃 자체에서 화
     > &#123;% include &#123;&#123; site.theme_version }}/&#123;&#123; site.theme_version }}-layout-post.html %}<br>
 </div><br>
 그 다음엔 모든 포스트에 적용한 대표 레이아웃인 layout-post.html에서 <br>
-{{ site.theme_version }}를 이용해 특정 버전의 포스트 모양을 불러오도록 처리했다.
-
-
+{{ site.theme_version }}를 이용해 특정 버전의 포스트 모양을 불러오도록 처리했다.<br>
+<br>
+결과적으로 다음과 같은 구조로 기존 테마를 분리할 수 있었다.<br>
+<img src="{{ "/assets/img/blog/00006/blog_00006_005.png" }}" style="width: 40rem;"/><br>

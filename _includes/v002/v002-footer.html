@@ -1,0 +1,37 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/a5bdb78e74.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-latest.min.js" crossorigin="anonymous"></script>
+<script>
+    /* 사이드바 토글 */
+    $("#btn_sidebar_open").click(function () {
+        $("#container_sidebar").addClass("sidebar-open");
+        // popstate 이벤트용 더미 스테이트
+        console.log("pushstate");
+        history.pushState(null, null, null);
+    });
+    $("#btn_sidebar_close").click(function () {
+        // popstate 이벤트를 통해 닫기
+        history.back();
+    });
+    /* 모바일 뒤로가기 이벤트시 사이드바 우선 닫기 */
+    $(window).on("popstate", function(e) {
+        console.log("popstate");
+        if($("#container_sidebar").hasClass("sidebar-open")){
+            $("#container_sidebar").removeClass("sidebar-open");
+        }
+    });
+    /* 카테고리 */
+    $("#container_sidebar .sidebar-category-item").click(function () {
+        var category = $(this).attr("data-category");
+        switch(category){
+            case "all":
+                location.href = "/";
+                break;
+            case "project":
+                break;
+            default:
+                location.href = "/category/" + category + ".html";
+                break;
+        }
+    });
+</script>

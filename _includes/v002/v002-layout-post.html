@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- 헤더 (link,style) -->
+        {% include {{ site.theme_version }}/{{ site.theme_version }}-header.html %}
+    </head>
+    <body>
+        <div>
+            <!-- 상단바 -->
+            {% include {{ site.theme_version }}/{{ site.theme_version }}-topbar.html %}
+            <!-- 컨텐츠 -->
+            <div id="container_contents">
+                <div class="blog-contents-center" style="padding-top: 3rem;">
+                    <div class="row m-0">
+                        <!-- 포스트 -->
+                        <div id="container_post" class="col-12 col-lg-9 my-3">
+                            <div id="post" class="px-3 py-2">
+                                <div class="post-subject">{{ page.title }}</div>
+                                <div class="post-subtitle mt-2">
+                                    <span class="post-category">{{ page.categories[0] }}</span>
+                                    <span class="post-uploadtime">{{ page.date | slice: 0, 16 }}</span>
+                                </div>
+                                <hr class="post-border">
+                                <div class="post-contents p-2">
+                                    {{ content }}
+                                </div>
+                                <hr class="post-border">
+                            </div>
+                        </div>
+                        <!-- 사이드바 -->
+                        {% include {{ site.theme_version }}/{{ site.theme_version }}-sidebar.html %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <foot>
+        <!-- 푸터 (script) -->
+        {% include {{ site.theme_version }}/{{ site.theme_version }}-footer.html %}
+    </foot>
+</html>

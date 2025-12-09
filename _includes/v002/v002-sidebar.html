@@ -1,0 +1,176 @@
+<div id="container_sidebar" class="col-12 col-lg-3 my-3 py-3">
+    <!-- 모바일 사이드바 클로즈 아이콘 -->
+    <div id="btn_sidebar_close" class="d-block d-lg-none">
+        <i class="fa-solid fa-arrow-right align-middle"></i>
+    </div>
+    <div class="pb-4" style="height: 100%; overflow: auto;">
+        <!-- 로고와 프로필 -->
+        <div id="sidebar_profile" class="mt-2 p-2" onclick="location.href = '{{ site.abountlink }}';">
+            <div class="sidebar-profile-logo text-center" style="background-color: white; border: 0;">
+                <img src="{{ "/assets/img/sidebar_profile.jpg" }}" style="width: 100%;"/>
+            </div>
+            <div class="mt-2">
+                <div class="sidebar-profile-item">
+                    <span class="sidebar-profile-icon "><i class="fa fa-user"></i></span>
+                    {{ site.profile.mastername }}
+                </div>
+                <div class="sidebar-profile-item">
+                    <span class="sidebar-profile-icon "><i class="fa fa-envelope"></i></span>
+                    {{ site.profile.masteremail }}
+                </div>
+                <div class="sidebar-profile-item">
+                    <span class="sidebar-profile-icon "><i class="fa fa-comment"></i></span>
+                    {{ site.profile.mastercomment }}
+                </div>
+            </div>
+        </div>
+        <!-- 카테고리 리스트 -->
+        <div class="mt-2">
+            <hr class="sidebar-category-border-bold">
+            <div class="sidebar-category-item" data-category="all" style="color: black!important;">
+                <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
+                ALL
+                <span class="sidebar-category-size">( {{ site.posts.size }} )</span>
+            </div>
+            <hr class="sidebar-category-border-bold">
+            <!-- 카테고리 : 블로그 -->
+                <div class="sidebar-category-item" data-category="blog">
+                    <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
+                    BLOG
+                    <span class="sidebar-category-size">
+                        {% if site.categories['blog'].size %}
+                        ( {{ site.categories['blog'].size }} )
+                        {% else %}
+                        ( 0 )
+                        {% endif %}
+                    </span>
+                </div>
+            <!-- 카테고리 : 개념 및 이론 -->
+                <div class="sidebar-category-item" data-category="concepts" style="pointer-events: none;">
+                    <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
+                    CONCEPTS
+                </div>
+            <!-- 카테고리 : 시큐리티(서브) -->
+                <div class="sidebar-category-item" data-category="security">
+                    &nbsp;&nbsp;
+                    <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
+                    Security
+                    <span class="sidebar-category-size">
+                        {% if site.categories['security'].size %}
+                        ( {{ site.categories['security'].size }} )
+                        {% else %}
+                        ( 0 )
+                        {% endif %}
+                    </span>
+                </div>
+            <!-- 카테고리 : 알고리즘(서브) -->
+                <div class="sidebar-category-item" data-category="algorithm">
+                    &nbsp;&nbsp;
+                    <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
+                    Algorithm
+                    <span class="sidebar-category-size">
+                        {% if site.categories['algorithm'].size %}
+                        ( {{ site.categories['algorithm'].size }} )
+                        {% else %}
+                        ( 0 )
+                        {% endif %}
+                    </span>
+                </div>
+            <!-- 카테고리 : 프로그래밍 언어 -->
+                <div class="sidebar-category-item" data-category="frontend" style="pointer-events: none;">
+                    <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
+                    FRONTEND
+                </div>
+            <!-- 카테고리 : 자바스크립트(서브) -->
+                <div class="sidebar-category-item" data-category="javascript">
+                    &nbsp;&nbsp;
+                    <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
+                    Javascript
+                    <span class="sidebar-category-size">
+                        {% if site.categories['javascript'].size %}
+                        ( {{ site.categories['javascript'].size }} )
+                        {% else %}
+                        ( 0 )
+                        {% endif %}
+                    </span>
+                </div>
+            <!-- 카테고리 : 리액트(서브) -->
+                <div class="sidebar-category-item" data-category="react">
+                    &nbsp;&nbsp;
+                    <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
+                    React
+                    <span class="sidebar-category-size">
+                        {% if site.categories['react'].size %}
+                        ( {{ site.categories['react'].size }} )
+                        {% else %}
+                        ( 0 )
+                        {% endif %}
+                    </span>
+                </div>
+            <!-- 카테고리 : 프레임워크 -->
+                <div class="sidebar-category-item" data-category="backend" style="pointer-events: none;">
+                    <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
+                    BACKEND
+                </div>
+            <!-- 카테고리 : 스프링(서브) -->
+                <div class="sidebar-category-item" data-category="spring">
+                    &nbsp;&nbsp;
+                    <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
+                    Spring
+                    <span class="sidebar-category-size">
+                        {% if site.categories['spring'].size %}
+                        ( {{ site.categories['spring'].size }} )
+                        {% else %}
+                        ( 0 )
+                        {% endif %}
+                    </span>
+                </div>
+            <!-- 카테고리 : 파이선(서브) -->
+                <div class="sidebar-category-item" data-category="python">
+                    &nbsp;&nbsp;
+                    <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
+                    Python
+                    <span class="sidebar-category-size">
+                        {% if site.categories['python'].size %}
+                        ( {{ site.categories['python'].size }} )
+                        {% else %}
+                        ( 0 )
+                        {% endif %}
+                    </span>
+                </div>
+            <!-- 카테고리 : 프로젝트 -->
+                <div class="sidebar-category-item" data-category="project" style="pointer-events: none;">
+                    <span class="sidebar-category-icon"><i class="fa fa-asterisk"></i></span>
+                    PROJECT
+                </div>
+            <!-- 카테고리 : 넥타리스트(서브) -->
+                <div class="sidebar-category-item" data-category="nectar">
+                    &nbsp;&nbsp;
+                    <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
+                    Nectar
+                    <span class="sidebar-category-size">
+                        {% if site.categories['nectar'].size %}
+                        ( {{ site.categories['nectar'].size }} )
+                        {% else %}
+                        ( 0 )
+                        {% endif %}
+                    </span>
+                </div>
+            <!-- 카테고리 : 코예(서브) -->
+                <div class="sidebar-category-item" data-category="comaid">
+                    &nbsp;&nbsp;
+                    <span class="sidebar-category-icon"><i class="fa fa-chevron-right"></i></span>
+                    CoMaid
+                    <span class="sidebar-category-size">
+                        {% if site.categories['comaid'].size %}
+                        ( {{ site.categories['comaid'].size }} )
+                        {% else %}
+                        ( 0 )
+                        {% endif %}
+                    </span>
+                </div>
+            <!-- -->
+            <hr class="sidebar-category-border-bold">
+        </div>
+    </div>
+</div>
