@@ -13,7 +13,6 @@ categories: nectar
 기존 프로젝트를 다시 꺼내서 읽어봤다.<br>
 <br>
 <div class="post-chapter">1. 다시 보니까 아쉬운 것들</div><br>
-<br>
 기존 프로젝트의 화면기획/데이터 설계 등을 다시 보니 아쉬운 점이 많았다.<br>
 <br>
 <img src="{{ "/assets/img/nectarist_00011_001.jpg" }}" style="width: 40rem;"/><br>
@@ -29,7 +28,6 @@ categories: nectar
 🔹 등록정보와 수정정보가 부족<br>
 <br>
 <div class="post-chapter">2. 새로 만드는건 이렇게 해야지</div><br>
-<br>
 🔹 사용자 관련 기능 덜기 : 사용자 관련 기능은 붙이더라도 나중에 붙인다<br>
 🔹 괜찮은 디자인 하기 : 정말 괜찮은 디자인을, Figma를 써서 뽑는다<br>
 🔹 튼튼한 데이터 설계하기<br>
