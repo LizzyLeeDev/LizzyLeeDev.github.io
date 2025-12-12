@@ -21,16 +21,13 @@
 timezone: Asia/Seoul
 
 profile:
-  mastername: Lizzy Lee (이지연)
+  mastername: Lizzy Lee
   masteremail: lizzy.lee.dev@gmail.com
-  mastercomment: 스프링 고수가 될 거야 _〆(´Д⊂
+  mastercomment: 개발의 바다를 항해 중
 
 abountlink: /category/about
 
-theme_version: v001
-
-# FFA8DB
-# FF6FC4
+theme_version: v002
 
 permalink: /:categories/:year:month:day/:title
 
