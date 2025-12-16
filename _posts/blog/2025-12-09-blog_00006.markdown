@@ -49,3 +49,18 @@ header나 footer를 불러오기도 하지만, 이 레이아웃 자체에서 화
 <br>
 결과적으로 다음과 같은 구조로 기존 테마를 분리할 수 있었다.<br>
 <img src="{{ "/assets/img/blog/00006/blog_00006_005.png" }}" style="width: 40rem;"/><br>
+<br>
+<div class="post-chapter">3. 신규 테마</div><br>
+<img src="{{ "/assets/img/blog/00006/blog_00006_006.png" }}" style="width: 40rem;"/><br>
+<br>
+별도로 디자인을 정해놓고 작업하지는 않았고,<br>
+(1) 어두운 배경 (2) 1~2개의 테마 컬러 (3) 깔끔한 폰트<br>
+이렇게 3가지 정도를 목표로 삼고 새 테마를 만들었다.<br>
+<br>
+특히 폰트는 질리지 않을만한 것으로 고르다가<br>
+제목 -> Noto Serif, 내용 -> Noto Sans 로 설정했는데<br>
+<br>
+카테고리를 세리프로 하려니 너무 눈에 띄어서<br>
+중간 정도 느낌의 폰트를 찾다가 Bitter로 결정했다. <br>
+<br>
+생각한거보다 더 깔끔하게 나와서 만족스럽다.<br>
