@@ -20,7 +20,7 @@ x86-64 CPU 아키텍쳐의 레지스터에 대해 정리한 내용이다.<br>
 <table class="post-table">
     <tbody>
         <tr>
-            <th>이름</th>
+            <th class="table-header-fit">이름</th>
             <th>의미</th>
             <th>용도</th>
             <th>비고</th>
@@ -29,25 +29,25 @@ x86-64 CPU 아키텍쳐의 레지스터에 대해 정리한 내용이다.<br>
             <td>EAX</td>
             <td>Accumulator Register</td>
             <td>산술,논리 연산을 담당하는 레지스터로, 함수의 반환값을 저장한다.</td>
-            <td>RAX(64bit): 확장된 EAX로, 64bit 아키텍처에서 사용된다.</br>EAX(32bit): 32bit 아키텍처에서 사용된다.</br>AX(16bit): EAX의 하위 16bit를 가리킨다.</br>AH(8bit): AX의 상위(High) 8bit를 가리킨다.</br>AL(8bit): AX의 하위(Low) 8bit를 가리킨다.</td>
+            <td>RAX(64bit): 확장된 EAX로, 64bit 아키텍처에서 사용된다.<br>EAX(32bit): 32bit 아키텍처에서 사용된다.<br>AX(16bit): EAX의 하위 16bit를 가리킨다.<br>AH(8bit): AX의 상위(High) 8bit를 가리킨다.<br>AL(8bit): AX의 하위(Low) 8bit를 가리킨다.</td>
         </tr>
         <tr>
             <td>EBX</td>
             <td>Base Register</td>
             <td>메모리 주소 저장 또는 배열 접근을 위한 기준 포인터로 사용된다.</td>
-            <td>RBX(64bit): 확장된 EBX로, 64bit 아키텍처에서 사용된다.</br>EBX(32bit): 32bit 아키텍처에서 사용된다.</br>BX(16bit): EBX의 하위 16bit를 가리킨다.</br>BH(8bit): BX의 상위(High) 8bit를 가리킨다.</br>BL(8bit): BX의 하위(Low) 8bit를 가리킨다.</td>
+            <td>RBX(64bit): 확장된 EBX로, 64bit 아키텍처에서 사용된다.<br>EBX(32bit): 32bit 아키텍처에서 사용된다.<br>BX(16bit): EBX의 하위 16bit를 가리킨다.<br>BH(8bit): BX의 상위(High) 8bit를 가리킨다.<br>BL(8bit): BX의 하위(Low) 8bit를 가리킨다.</td>
         </tr>
         <tr>
             <td>ECX</td>
             <td>Count Register</td>
             <td>반복 작업에서 카운트 역할을 위해 사용된다.</td>
-            <td>RCX(64bit): 확장된 ECX로, 64bit 아키텍처에서 사용된다.</br>ECX(32bit): 32bit 아키텍처에서 사용된다.</br>CX(16bit): ECX의 하위 16bit를 가리킨다.</br>CH(8bit): CX의 상위(High) 8bit를 가리킨다.</br>CL(8bit): CX의 하위(Low) 8bit를 가리킨다.</td>
+            <td>RCX(64bit): 확장된 ECX로, 64bit 아키텍처에서 사용된다.<br>ECX(32bit): 32bit 아키텍처에서 사용된다.<br>CX(16bit): ECX의 하위 16bit를 가리킨다.<br>CH(8bit): CX의 상위(High) 8bit를 가리킨다.<br>CL(8bit): CX의 하위(Low) 8bit를 가리킨다.</td>
         </tr>
         <tr>
             <td>EDX</td>
             <td>Data Register</td>
             <td>큰 수를 연산할때 사용된다. </td>
-            <td>RDX(64bit): 확장된 EDX로, 64bit 아키텍처에서 사용된다.</br>EDX(32bit): 32bit 아키텍처에서 사용된다.</br>DX(16bit): EDX의 하위 16bit를 가리킨다.</br>DH(8bit): DX의 상위(High) 8bit를 가리킨다.</br>DL(8bit): DX의 하위(Low) 8bit를 가리킨다.</td>
+            <td>RDX(64bit): 확장된 EDX로, 64bit 아키텍처에서 사용된다.<br>EDX(32bit): 32bit 아키텍처에서 사용된다.<br>DX(16bit): EDX의 하위 16bit를 가리킨다.<br>DH(8bit): DX의 상위(High) 8bit를 가리킨다.<br>DL(8bit): DX의 하위(Low) 8bit를 가리킨다.</td>
         </tr>
     </tbody>
 </table><br>
@@ -57,7 +57,7 @@ x86-64 CPU 아키텍쳐의 레지스터에 대해 정리한 내용이다.<br>
 <table class="post-table">
     <tbody>
         <tr>
-            <th>이름</th>
+            <th class="table-header-fit">이름</th>
             <th>의미</th>
             <th>용도</th>
             <th>비고</th>
@@ -66,13 +66,13 @@ x86-64 CPU 아키텍쳐의 레지스터에 대해 정리한 내용이다.<br>
             <td>ESI</td>
             <td>Source Index</td>
             <td>데이터 복사, 문자열 연산, 입출력 등 작업에서 소스 데이터의 주소를 가리키는 데 사용된다. </td>
-            <td>RSI(64bit): 확장된 ESI로, 64bit 아키텍처에서 사용된다.</br>ESI(32bit): 32bit 아키텍처에서 사용된다.</br>SI(16bit): ESI의 하위 16bit를 가리킨다.</td>
+            <td>RSI(64bit): 확장된 ESI로, 64bit 아키텍처에서 사용된다.<br>ESI(32bit): 32bit 아키텍처에서 사용된다.<br>SI(16bit): ESI의 하위 16bit를 가리킨다.</td>
         </tr>
         <tr>
             <td>EDI</td>
             <td>Destination Index</td>
             <td>데이터 복사, 문자열 연산, 입출력 등 작업에서 목적지 데이터의 주소를 가리키는 데 사용된다.</td>
-            <td>RDI(64bit): 확장된 EDI로, 64bit 아키텍처에서 사용된다.</br>EDI(32bit): 32bit 아키텍처에서 사용된다.</br>DI(16bit): EDI의 하위 16bit를 가리킨다.</td>
+            <td>RDI(64bit): 확장된 EDI로, 64bit 아키텍처에서 사용된다.<br>EDI(32bit): 32bit 아키텍처에서 사용된다.<br>DI(16bit): EDI의 하위 16bit를 가리킨다.</td>
         </tr>
     </tbody>
 </table><br>
@@ -82,7 +82,7 @@ x86-64 CPU 아키텍쳐의 레지스터에 대해 정리한 내용이다.<br>
 <table class="post-table">
     <tbody>
         <tr>
-            <th>이름</th>
+            <th class="table-header-fit">이름</th>
             <th>의미</th>
             <th>용도</th>
             <th>비고</th>
@@ -91,19 +91,19 @@ x86-64 CPU 아키텍쳐의 레지스터에 대해 정리한 내용이다.<br>
             <td>ESP</td>
             <td>Stack Pointer</td>
             <td>현재 스택의 최상단 주소를 저장하는 데 사용된다.</td>
-            <td>RSP(64bit): 확장된 ESP로, 64bit 아키텍처에서 사용된다.</br>ESP(32bit): 32bit 아키텍처에서 사용된다.</br>SP(16bit): ESP의 하위 16bit를 가리킨다.</td>
+            <td>RSP(64bit): 확장된 ESP로, 64bit 아키텍처에서 사용된다.<br>ESP(32bit): 32bit 아키텍처에서 사용된다.<br>SP(16bit): ESP의 하위 16bit를 가리킨다.</td>
         </tr>
         <tr>
             <td>EBP</td>
             <td>Base Pointer</td>
             <td>현재 스택의 하단 주소를 저장하는 데 사용된다.</td>
-            <td>RBP(64bit): 확장된 EBP로, 64bit 아키텍처에서 사용된다.</br>EBP(32bit): 32bit 아키텍처에서 사용된다.</br>BP(16bit): ESP의 하위 16bit를 가리킨다.</td>
+            <td>RBP(64bit): 확장된 EBP로, 64bit 아키텍처에서 사용된다.<br>EBP(32bit): 32bit 아키텍처에서 사용된다.<br>BP(16bit): ESP의 하위 16bit를 가리킨다.</td>
         </tr>
         <tr>
             <td>EIP</td>
             <td>Instruction Pointer</td>
             <td>다음에 실행할 명령의 메모리 주소를 저장하는 데 사용된다.</td>
-            <td>RIP(64bit): 확장된 EIP로, 64bit 아키텍처에서 사용된다.</br>EIP(32bit): 32bit 아키텍처에서 사용된다.</td>
+            <td>RIP(64bit): 확장된 EIP로, 64bit 아키텍처에서 사용된다.<br>EIP(32bit): 32bit 아키텍처에서 사용된다.</td>
         </tr>
     </tbody>
 </table><br>
@@ -164,7 +164,7 @@ x86-64 CPU 아키텍쳐의 레지스터에 대해 정리한 내용이다.<br>
             <td>상태 플래그</td>
             <td>ZF</td>
             <td>Zero Flag</td>
-            <td>연산 결과가 0일 경우 1로 설정된다. </br>(*JZ 또는 JNZ 명령어에서 사용)</td>
+            <td>연산 결과가 0일 경우 1로 설정된다. <br>(*JZ 또는 JNZ 명령어에서 사용)</td>
         </tr>
         <tr>
             <td>상태 플래그</td>
@@ -218,9 +218,9 @@ x86-64 CPU 아키텍쳐의 레지스터에 대해 정리한 내용이다.<br>
 </table><br>
 <br>
 <div class="post-chapter">출처</div><br>
-<span class="post-overegg" style="color: blue; border: 0;">
+<span class="post-overegg" style="border: 0;">
     https://ko.wikipedia.org/wiki/%ED%94%84%EB%A1%9C%EC%84%B8%EC%84%9C_%EB%A0%88%EC%A7%80%EC%8A%A4%ED%84%B0
 </span><br>
-<span class="post-overegg" style="color: blue; border: 0;">
+<span class="post-overegg" style="border: 0;">
     https://haekt-log.tistory.com/93
 </span><br>

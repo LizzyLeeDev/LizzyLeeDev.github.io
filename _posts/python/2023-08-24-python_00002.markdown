@@ -44,7 +44,7 @@ categories: python
     <p>
         연산자 양 옆, 콤마 뒤에 스페이스를 넣으세요.<br>
         괄호 바로 안쪽에는 스페이스를 넣지 마세요.<br>
-        <span class="post-overegg" style="color: blue; border: 0;">a = f(1, 2) + g(3, 4)</span>
+        <span class="post-overegg" style="border: 0;">a = f(1, 2) + g(3, 4)</span>
     </p>
 </div>
 <br>
@@ -72,4 +72,4 @@ categories: python
     </p>
 </div>
 <br>
-<span class="post-overegg" style="color: blue; border: 0;">출처: https://docs.python.org/3/tutorial/controlflow.html#intermezzo-coding-style</span>
+<span class="post-overegg" style="border: 0;">출처: https://docs.python.org/3/tutorial/controlflow.html#intermezzo-coding-style</span>

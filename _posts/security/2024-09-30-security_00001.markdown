@@ -183,12 +183,12 @@ categories: security
 </table>
 <br>
 <div class="post-chapter">출처</div><br>
-<span class="post-overegg" style="color: blue; border: 0;">
+<span class="post-overegg" style="border: 0;">
     https://ko.wikipedia.org/wiki/%EC%96%B4%EC%85%88%EB%B8%94%EB%A6%AC%EC%96%B4
 </span><br>
-<span class="post-overegg" style="color: blue; border: 0;">
+<span class="post-overegg" style="border: 0;">
     https://namu.wiki/w/%EC%96%B4%EC%85%88%EB%B8%94%EB%A6%AC%EC%96%B4
 </span><br>
-<span class="post-overegg" style="color: blue; border: 0;">
+<span class="post-overegg" style="border: 0;">
     https://namu.wiki/w/x86/%EB%AA%85%EB%A0%B9%EC%96%B4%20%EB%AA%A9%EB%A1%9D
 </span><br>

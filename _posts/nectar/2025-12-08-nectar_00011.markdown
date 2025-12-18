@@ -16,6 +16,7 @@ categories: nectar
 기존 프로젝트의 화면기획/데이터 설계 등을 다시 보니 아쉬운 점이 많았다.<br>
 <br>
 <img src="{{ "/assets/img/nectar/00011/nectar_00011_001.jpg" }}" style="width: 40rem;"/><br>
+<br>
 (1) 화면<br>
 🔹 너무 와이어프레임<br>
 🔹 기능이 몇개 없긴 했지만, 각 컴포넌트의 상태와 동작에 대한 상세한 설명이 부족<br>
@@ -24,6 +25,7 @@ categories: nectar
 <br>
 <br>
 <img src="{{ "/assets/img/nectar/00011/nectar_00011_002.png" }}" style="width: 40rem;"/><br>
+<br>
 (2) 데이터 설계<br>
 🔹 등록정보와 수정정보가 부족<br>
 <br>

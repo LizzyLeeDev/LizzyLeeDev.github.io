@@ -13,7 +13,7 @@ categories: python
     <br>
     <table class="post-table">
         <tr>
-            <td colspan="2" style="background-color: #F3F3F3;">산술연산자</td>
+            <td colspan="2">산술연산자</td>
         </tr>
         <tr>
             <td>+</td>
@@ -47,7 +47,7 @@ categories: python
     <br>
     <table class="post-table">
         <tr>
-            <td colspan="2" style="background-color: #F3F3F3;">비교연산자</td>
+            <td colspan="2">비교연산자</td>
         </tr>
         <tr>
             <td>==</td>
@@ -80,7 +80,7 @@ categories: python
     <br>
     <table class="post-table">
         <tr>
-            <td colspan="2" style="background-color: #F3F3F3;">대입연산자</td>
+            <td colspan="2">대입연산자</td>
         </tr>
         <tr>
             <td>=</td>
@@ -118,7 +118,7 @@ categories: python
     <br>
     <table class="post-table">
         <tr>
-            <td colspan="2" style="background-color: #F3F3F3;">논리연산자</td>
+            <td colspan="2">논리연산자</td>
         </tr>
         <tr>
             <td>and</td>
@@ -145,7 +145,7 @@ categories: python
     <br>
     <table class="post-table">
         <tr>
-            <td colspan="2" style="background-color: #F3F3F3;">비트연산자</td>
+            <td colspan="2">비트연산자</td>
         </tr>
         <tr>
             <td>&</td>
@@ -178,7 +178,7 @@ categories: python
     <br>
     <table class="post-table">
         <tr>
-            <td colspan="2" style="background-color: #F3F3F3;">멤버연산자</td>
+            <td colspan="2">멤버연산자</td>
         </tr>
         <tr>
             <td>in</td>
@@ -192,7 +192,7 @@ categories: python
     <br>
     <table class="post-table">
         <tr>
-            <td colspan="2" style="background-color: #F3F3F3;">아이디연산자</td>
+            <td colspan="2">아이디연산자</td>
         </tr>
         <tr>
             <td>is</td>
@@ -206,7 +206,7 @@ categories: python
     <br>
     <table class="post-table">
         <tr>
-            <td colspan="3" style="background-color: #F3F3F3;">연산자 우선순위</td>
+            <td colspan="3">연산자 우선순위</td>
         </tr>
         <tr>
             <td>01</td>
@@ -284,7 +284,7 @@ categories: python
     <br>
     <table class="post-table">
         <tr>
-            <td colspan="2" style="background-color: #F3F3F3;">숫자</td>
+            <td colspan="2">숫자</td>
         </tr>
         <tr>
             <td>정수형 (Int)</td>
@@ -316,7 +316,7 @@ categories: python
     <br>
     <table class="post-table">
         <tr>
-            <td colspan="2" style="background-color: #F3F3F3;">문자열</td>
+            <td colspan="2">문자열</td>
         </tr>
         <tr>
             <td colspan="2">
@@ -377,7 +377,7 @@ categories: python
     <br>
     <table class="post-table">
         <tr>
-            <td colspan="2" style="background-color: #F3F3F3;">리스트</td>
+            <td colspan="2">리스트</td>
         </tr>
         <tr>
             <td colspan="2">
@@ -391,7 +391,7 @@ categories: python
     <br>
     <table class="post-table">
         <tr>
-            <td colspan="2" style="background-color: #F3F3F3;">튜플</td>
+            <td colspan="2">튜플</td>
         </tr>
         <tr>
             <td colspan="2">
@@ -407,7 +407,7 @@ categories: python
     <br>
     <table class="post-table">
         <tr>
-            <td colspan="2" style="background-color: #F3F3F3;">세트</td>
+            <td colspan="2">세트</td>
         </tr>
         <tr>
             <td colspan="2">
@@ -424,7 +424,7 @@ categories: python
     <br>
     <table class="post-table">
         <tr>
-            <td colspan="2" style="background-color: #F3F3F3;">딕셔너리</td>
+            <td colspan="2">딕셔너리</td>
         </tr>
         <tr>
             <td colspan="2">
@@ -447,7 +447,7 @@ categories: python
     <br>
     <table class="post-table">
         <tr>
-            <td colspan="2" style="background-color: #F3F3F3;">if-elif-else</td>
+            <td colspan="2">if-elif-else</td>
         </tr>
         <tr>
             <td>if</td>
@@ -486,7 +486,7 @@ categories: python
     <br>
     <table class="post-table">
         <tr>
-            <td colspan="2" style="background-color: #F3F3F3;">for</td>
+            <td colspan="2">for</td>
         </tr>
         <tr>
             <td>for</td>
@@ -535,7 +535,7 @@ categories: python
     <br>
     <table class="post-table">
         <tr>
-            <td colspan="2" style="background-color: #F3F3F3;">while</td>
+            <td colspan="2">while</td>
         </tr>
         <tr>
             <td>while</td>
@@ -588,7 +588,7 @@ categories: python
     <br>
     <table class="post-table">
         <tr>
-            <td colspan="2" style="background-color: #F3F3F3;">함수 정의</td>
+            <td colspan="2">함수 정의</td>
         </tr>
         <tr>
             <td colspan="2">

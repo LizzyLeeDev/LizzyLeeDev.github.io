@@ -82,8 +82,8 @@ categories: algorithm
 <span style="font-weight: bold; font-size: 1.1rem;">x = 23</span><br>
 </div><br>
 <div class="post-chapter">참고 및 출처</div><br>
-<span class="post-overegg" style="color: blue; border: 0;">https://ko.wikipedia.org/wiki/%EC%A4%91%EA%B5%AD%EC%9D%B8%EC%9D%98_%EB%82%98%EB%A8%B8%EC%A7%80_%EC%A0%95%EB%A6%AC</span><br>
+<span class="post-overegg" style="border: 0;">https://ko.wikipedia.org/wiki/%EC%A4%91%EA%B5%AD%EC%9D%B8%EC%9D%98_%EB%82%98%EB%A8%B8%EC%A7%80_%EC%A0%95%EB%A6%AC</span><br>
 <br>
-<span class="post-overegg" style="color: blue; border: 0;">https://namu.wiki/w/%EC%A4%91%EA%B5%AD%EC%9D%B8%EC%9D%98%20%EB%82%98%EB%A8%B8%EC%A7%80%20%EC%A0%95%EB%A6%AC</span><br>
+<span class="post-overegg" style="border: 0;">https://namu.wiki/w/%EC%A4%91%EA%B5%AD%EC%9D%B8%EC%9D%98%20%EB%82%98%EB%A8%B8%EC%A7%80%20%EC%A0%95%EB%A6%AC</span><br>
 <br>
-<span class="post-overegg" style="color: blue; border: 0;">https://www.youtube.com/watch?v=zOSS3fCiKzI</span><br>
+<span class="post-overegg" style="border: 0;">https://www.youtube.com/watch?v=zOSS3fCiKzI</span><br>

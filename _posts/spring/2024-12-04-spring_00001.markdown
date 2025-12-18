@@ -145,4 +145,4 @@ public class UserService {<br>
 &nbsp;&nbsp;- 항상 VO가 필요하진 않은 듯<br>
 <br>
 <div class="post-chapter">출처</div><br>
-<span class="post-overegg" style="color: blue; border: 0;">출처는 챗GPT</span><br>
+<span class="post-overegg" style="border: 0;">출처는 챗GPT</span><br>
